@@ -1,6 +1,31 @@
 # ADR-0003 — dunnhumby Complete Journey as seed, synthetic amplifier for scale
 
-**Status:** Accepted · **Date:** 2026-08-06 · **Reversal cost:** Medium
+**Status:** Accepted, **amended 2026-08-06** · **Date:** 2026-08-06 · **Reversal cost:** Medium
+
+> **Amendment — the amplifier's job shrank after the data was profiled.**
+>
+> This ADR was written before the seed was downloaded, on the assumption that a 2,500-household
+> dataset would be too clean and too small to exhibit the pathologies the platform needs to
+> demonstrate. Profiling proved that assumption wrong on two of the five stress scenarios.
+>
+> `STORE_ID` skew is native and severe: the top 10% of stores carry **69.3%** of transaction lines,
+> and max/median is **2,519×**. `PRODUCT_ID` is worse at **9,926×**. And `causal_data` holds
+> **36.8M rows**, so the wide join is genuinely expensive without any amplification at all.
+>
+> Injecting skew on top of that would have been a strawman — a reviewer is entitled to ask whether
+> a mitigation tuned against manufactured skew works on real distributions, and the honest answer
+> would have been "unknown". Now the answer is "yes, measured on real ones".
+>
+> **Revised scope of the amplifier:** streaming volume and event ordering only — small files, late
+> arrival, schema drift, duplicate CDC delivery. It **preserves** observed skew rather than
+> creating it, with an optional multiplier for stress-testing beyond the observed level.
+>
+> Full evidence: [`docs/architecture/dataset-findings.md`](../architecture/dataset-findings.md).
+> Raw measurements: [`docs/architecture/dataset-profile.md`](../architecture/dataset-profile.md).
+>
+> The original text below is left unedited. Rewriting it to look prescient would destroy the most
+> useful thing in this record: that profiling the data changed the plan, which is the entire
+> argument for profiling before building.
 
 ---
 
