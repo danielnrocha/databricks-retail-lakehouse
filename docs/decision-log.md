@@ -96,6 +96,26 @@ bootstrap script is one typo away from deleting prod, and bootstrap scripts get 
 
 ---
 
+### 2026-08-06 — Seed loads as Parquet via the SDK; `databricks fs cp` abandoned
+
+**Forced by:** `fs cp` taking over ten minutes on a 6.4 MB file.
+
+Measured and isolated in [`architecture/perf-evidence.md`](architecture/perf-evidence.md) (PE-001):
+the SDK's `files.upload` is **>200× faster** than `databricks fs cp` for the same file in the same
+session. Parquet conversion is a separate, additive win — 15.6× on storage across the seed, 19× on
+the 36.8M-row promotion table.
+
+Recording the isolation matters more than the numbers. The first version of this change moved from
+"CSV via CLI" to "Parquet via SDK" and looked like a 40× improvement attributable to Parquet. It
+was not. Changing two variables and crediting the interesting one is the most common way a
+performance story becomes folklore.
+
+One counter-result kept deliberately: `campaign_desc` (30 rows) got **larger** as Parquet, 0.3×.
+Blanket format rules are wrong at small scale, and here the cost of being wrong is a few kilobytes
+— which is precisely why the rule survives to places where it is expensive.
+
+---
+
 ### 2026-08-06 — SHAP removed from the ML dependency set
 
 **Forced by:** `shap` → `numba` → `llvmlite 0.36`, which refuses to build on Python 3.12
