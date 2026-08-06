@@ -24,9 +24,21 @@ help: ## Show this help
 setup: $(VENV) ## Create the local (pyspark) environment
 	@echo "Local environment ready. Run 'make setup-dbconnect' for integration work."
 
+# macOS prerequisite: LightGBM links against the OpenMP runtime and fails at import with a
+# dlopen error on libomp.dylib without it. Homebrew's python does not ship it.
+#   brew install libomp
 $(VENV):
 	$(UV) venv $(VENV) --python 3.12
 	VIRTUAL_ENV=$(VENV) $(UV) pip install -e ".[local-spark,data,ml,dev]"
+
+.PHONY: bootstrap
+bootstrap: ## Create the dev/test/prod catalogs, schemas and volumes (idempotent)
+	DATABRICKS_CONFIG_PROFILE=$${DATABRICKS_PROFILE:-dng} $(PY) scripts/bootstrap_catalogs.py
+
+.PHONY: data
+data: ## Fetch and profile the dunnhumby seed
+	python3 scripts/fetch_data.py
+	python3 scripts/profile_seed.py
 
 .PHONY: setup-dbconnect
 setup-dbconnect: ## Create the separate Databricks Connect environment

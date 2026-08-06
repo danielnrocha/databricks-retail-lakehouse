@@ -73,6 +73,45 @@ incrementally will be disabled, and a disabled gate is worse than a lenient one.
 
 ---
 
+### 2026-08-06 — Catalogs are created via SQL DDL, not the Unity Catalog REST API
+
+**Forced by:** the REST path failing on an account with Default Storage.
+
+`databricks catalogs create dng_dev` returns:
+
+> Metastore storage root URL does not exist. Default Storage is enabled in your account. You can
+> use the UI to create a new catalog using Default Storage, or please provide a storage location.
+
+The REST endpoint requires an explicit `storage_root`. A Free Edition account has no metastore
+storage root to point at and cannot create one. The SQL DDL path (`CREATE CATALOG IF NOT EXISTS`
+executed through the Statement Execution API) resolves Default Storage automatically and succeeds.
+
+Worth recording because the natural assumption — that the REST API and the SQL surface are
+equivalent views of the same operation — is wrong here, and the error message points you at the
+UI, which is the one option that cannot be scripted. `scripts/bootstrap_catalogs.py` uses SQL
+throughout and explains why in its module docstring.
+
+The script also refuses to drop any of the three environment catalogs. An unguarded `--drop` in a
+bootstrap script is one typo away from deleting prod, and bootstrap scripts get run in a hurry.
+
+---
+
+### 2026-08-06 — SHAP removed from the ML dependency set
+
+**Forced by:** `shap` → `numba` → `llvmlite 0.36`, which refuses to build on Python 3.12
+(`only versions >=3.6,<3.10 are supported`), taking the whole environment with it.
+
+Explainability is covered by LightGBM's native gain importance plus
+`sklearn.inspection.permutation_importance`, neither of which adds a dependency. Taking a fragile
+transitive chain for a capability no stakeholder has asked for is a bad trade; revisit only if
+per-prediction attributions become a requirement.
+
+Related: LightGBM on Apple Silicon needs the OpenMP runtime (`brew install libomp`) or it fails at
+import with a `dlopen` error on `libomp.dylib`. Documented as a prerequisite rather than worked
+around.
+
+---
+
 ### 2026-08-06 — Discovered but deferred: *Let's Get Sort-of-Real*
 
 dunnhumby also publishes a 4.3 GB dataset covering 117 weeks, ~300M transactions and 47M baskets,

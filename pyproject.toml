@@ -46,8 +46,13 @@ data = [
 ml = [
     "scikit-learn>=1.5",
     "lightgbm>=4.5",
-    "shap>=0.46",
 ]
+
+# SHAP is deliberately absent. It pulls numba -> llvmlite, and the resolver lands on an
+# llvmlite pinned to Python <3.10, which breaks the whole environment on 3.12. Taking a fragile
+# transitive dependency for explainability we do not need yet is a bad trade; LightGBM's native
+# gain importance plus sklearn's permutation_importance cover the requirement with zero new deps.
+# Revisit only if a stakeholder asks for per-prediction attributions.
 
 dev = [
     "pytest>=8.3",
