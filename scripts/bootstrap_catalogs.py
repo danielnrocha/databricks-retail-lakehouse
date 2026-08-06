@@ -130,7 +130,9 @@ def bootstrap_environment(runner: Runner, env: str) -> None:
 
     # Tags make the environment queryable from system tables, which is what makes a
     # "which objects belong to prod?" question answerable without a naming convention.
-    runner.sql(f"ALTER CATALOG {catalog} SET TAGS ('environment' = '{env}', 'project' = 'dng-retail')")
+    runner.sql(
+        f"ALTER CATALOG {catalog} SET TAGS ('environment' = '{env}', 'project' = 'dng-retail')"
+    )
 
 
 def verify(client: WorkspaceClient) -> int:

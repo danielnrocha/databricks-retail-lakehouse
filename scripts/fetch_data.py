@@ -69,7 +69,7 @@ DATASETS: dict[str, Dataset] = {
 
 def _download(url: str, dest: Path) -> None:
     print(f"  fetching {url}")
-    with urllib.request.urlopen(url) as response, dest.open("wb") as out:  # noqa: S310
+    with urllib.request.urlopen(url) as response, dest.open("wb") as out:
         shutil.copyfileobj(response, out)
 
 

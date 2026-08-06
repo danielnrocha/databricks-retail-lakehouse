@@ -47,7 +47,9 @@ def _iter_csv(path: Path):
         yield from csv.DictReader(handle)
 
 
-def profile_table(path: Path, *, track_distinct: tuple[str, ...], track_range: tuple[str, ...]) -> TableProfile:
+def profile_table(
+    path: Path, *, track_distinct: tuple[str, ...], track_range: tuple[str, ...]
+) -> TableProfile:
     prof = TableProfile(name=path.stem, path=path, bytes_=path.stat().st_size)
     seen: dict[str, set[str]] = {c: set() for c in track_distinct}
     ranges: dict[str, list[float]] = {}
@@ -61,7 +63,7 @@ def profile_table(path: Path, *, track_distinct: tuple[str, ...], track_range: t
                 if value is None or value.strip() == "":
                     prof.blank_counts[col] += 1
             for col in track_distinct:
-                if col in row and row[col]:
+                if row.get(col):
                     seen[col].add(row[col])
             for col in track_range:
                 raw = row.get(col)
@@ -87,7 +89,7 @@ def skew_curve(counts: Counter[str]) -> list[tuple[float, int, float]]:
     n = len(ordered)
     out: list[tuple[float, int, float]] = []
     for point in SKEW_POINTS:
-        take = max(1, int(round(n * point)))
+        take = max(1, round(n * point))
         out.append((point, take, sum(ordered[:take]) / total))
     return out
 
@@ -119,7 +121,10 @@ def build_report(root: Path) -> str:
 
     profiles: dict[str, TableProfile] = {}
     spec = {
-        "transaction_data": (("household_key", "STORE_ID", "PRODUCT_ID", "BASKET_ID"), ("DAY", "WEEK_NO", "SALES_VALUE", "QUANTITY")),
+        "transaction_data": (
+            ("household_key", "STORE_ID", "PRODUCT_ID", "BASKET_ID"),
+            ("DAY", "WEEK_NO", "SALES_VALUE", "QUANTITY"),
+        ),
         "product": (("PRODUCT_ID", "DEPARTMENT", "COMMODITY_DESC", "MANUFACTURER", "BRAND"), ()),
         "hh_demographic": (("household_key",), ()),
         "causal_data": (("PRODUCT_ID", "STORE_ID"), ("WEEK_NO",)),
@@ -162,7 +167,11 @@ def build_report(root: Path) -> str:
     add("This is the single most consequential measurement in the profile. It determines whether")
     add("skew handling is a demonstration or a requirement.")
     add("")
-    for column, label in (("STORE_ID", "store"), ("household_key", "household"), ("PRODUCT_ID", "product")):
+    for column, label in (
+        ("STORE_ID", "store"),
+        ("household_key", "household"),
+        ("PRODUCT_ID", "product"),
+    ):
         print(f"  skew: {column} ...", file=sys.stderr)
         counts = key_frequency(tx, column)
         ordered = sorted(counts.values(), reverse=True)
@@ -183,8 +192,10 @@ def build_report(root: Path) -> str:
     add("## Coverage gaps")
     add("")
     add(f"- Households appearing in transactions: **{hh_tx:,}**")
-    add(f"- Households with demographic attributes: **{hh_demo:,}** "
-        f"(**{hh_demo / hh_tx:.0%}** coverage)")
+    add(
+        f"- Households with demographic attributes: **{hh_demo:,}** "
+        f"(**{hh_demo / hh_tx:.0%}** coverage)"
+    )
     add("")
     add("This gap is a modelling constraint, not a data-loading bug. Any feature set that assumes")
     add("demographics will silently train on a biased third of the population. Behavioural")

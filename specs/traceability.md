@@ -19,6 +19,11 @@ the owning phase is open) · `WAIVED` (requires paid-tier features; see note).
 | ING-005 | `tests/integration/test_cdc_idempotency.py::test_replay_window_is_idempotent` | integration | PLANNED |
 | ING-006 | `tests/integration/test_watermark.py::test_late_within_watermark_is_counted` | integration | PLANNED |
 | ING-007 | `tests/integration/test_watermark.py::test_late_beyond_watermark_is_recorded_not_silent` | integration | PLANNED |
+| GEN-001 | `tests/unit/test_generator_sampler.py::test_uniform_draw_preserves_store_distribution` | unit | PASSING |
+| GEN-002 | `tests/unit/test_generator_sampler.py::test_baskets_are_drawn_intact` | unit | PASSING |
+| GEN-003 | `tests/unit/test_generator_sampler.py::test_generation_is_deterministic` | unit | PASSING |
+| GEN-004 | `tests/unit/test_generator_emit.py::test_control_run_has_no_stress_events` | unit | PLANNED |
+| GEN-005 | `tests/unit/test_generator_emit.py::test_every_event_labelled_synthetic` | unit | PLANNED |
 | QLT-001 | `tests/unit/test_quality_rules.py::test_every_silver_table_has_rules` | unit | PLANNED |
 | QLT-002 | `tests/integration/test_quarantine.py::test_quarantine_row_carries_reason` | integration | PLANNED |
 | QLT-003 | `tests/integration/test_quarantine.py::test_row_conservation` | integration | PLANNED |

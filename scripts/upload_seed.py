@@ -42,43 +42,51 @@ INTERIM = REPO_ROOT / "data" / "interim" / "seed-parquet"
 # string in another, and the join then silently matches nothing. Typing at the boundary is
 # cheaper than debugging a zero-row result three layers downstream.
 SCHEMAS: dict[str, pa.Schema] = {
-    "transaction_data": pa.schema([
-        ("household_key", pa.int32()),
-        ("BASKET_ID", pa.int64()),
-        ("DAY", pa.int16()),
-        ("PRODUCT_ID", pa.int64()),
-        ("QUANTITY", pa.int32()),
-        ("SALES_VALUE", pa.float64()),
-        ("STORE_ID", pa.int32()),
-        ("RETAIL_DISC", pa.float64()),
-        ("TRANS_TIME", pa.int16()),
-        ("WEEK_NO", pa.int16()),
-        ("COUPON_DISC", pa.float64()),
-        ("COUPON_MATCH_DISC", pa.float64()),
-    ]),
-    "causal_data": pa.schema([
-        ("PRODUCT_ID", pa.int64()),
-        ("STORE_ID", pa.int32()),
-        ("WEEK_NO", pa.int16()),
-        ("display", pa.string()),
-        ("mailer", pa.string()),
-    ]),
-    "product": pa.schema([
-        ("PRODUCT_ID", pa.int64()),
-        ("MANUFACTURER", pa.int32()),
-        ("DEPARTMENT", pa.string()),
-        ("BRAND", pa.string()),
-        ("COMMODITY_DESC", pa.string()),
-        ("SUB_COMMODITY_DESC", pa.string()),
-        ("CURR_SIZE_OF_PRODUCT", pa.string()),
-    ]),
+    "transaction_data": pa.schema(
+        [
+            ("household_key", pa.int32()),
+            ("BASKET_ID", pa.int64()),
+            ("DAY", pa.int16()),
+            ("PRODUCT_ID", pa.int64()),
+            ("QUANTITY", pa.int32()),
+            ("SALES_VALUE", pa.float64()),
+            ("STORE_ID", pa.int32()),
+            ("RETAIL_DISC", pa.float64()),
+            ("TRANS_TIME", pa.int16()),
+            ("WEEK_NO", pa.int16()),
+            ("COUPON_DISC", pa.float64()),
+            ("COUPON_MATCH_DISC", pa.float64()),
+        ]
+    ),
+    "causal_data": pa.schema(
+        [
+            ("PRODUCT_ID", pa.int64()),
+            ("STORE_ID", pa.int32()),
+            ("WEEK_NO", pa.int16()),
+            ("display", pa.string()),
+            ("mailer", pa.string()),
+        ]
+    ),
+    "product": pa.schema(
+        [
+            ("PRODUCT_ID", pa.int64()),
+            ("MANUFACTURER", pa.int32()),
+            ("DEPARTMENT", pa.string()),
+            ("BRAND", pa.string()),
+            ("COMMODITY_DESC", pa.string()),
+            ("SUB_COMMODITY_DESC", pa.string()),
+            ("CURR_SIZE_OF_PRODUCT", pa.string()),
+        ]
+    ),
 }
 
 
 def convert(csv_path: Path, out_path: Path) -> tuple[int, int, int]:
     """CSV -> Parquet. Returns (rows, csv_bytes, parquet_bytes)."""
     schema = SCHEMAS.get(csv_path.stem)
-    convert_options = pacsv.ConvertOptions(column_types=schema) if schema else pacsv.ConvertOptions()
+    convert_options = (
+        pacsv.ConvertOptions(column_types=schema) if schema else pacsv.ConvertOptions()
+    )
     table = pacsv.read_csv(csv_path, convert_options=convert_options)
 
     out_path.parent.mkdir(parents=True, exist_ok=True)

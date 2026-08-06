@@ -26,6 +26,24 @@ without it. `MAY` = deliberate stretch, cut first under pressure.
 ING-007 is the requirement that separates a real streaming implementation from a demo. Dropping
 late data is legitimate; dropping it *invisibly* is a data-loss bug wearing a watermark costume.
 
+## GEN — Synthetic amplifier
+
+The amplifier is the one component whose defects would be invisible everywhere else: distorted
+synthetic data produces confident, wrong conclusions in the performance lab and the ML layer, and
+nothing downstream would flag it. These requirements make the "resamples reality, does not invent
+it" claim falsifiable.
+
+| ID | Pri | Requirement | Acceptance criterion |
+|---|---|---|---|
+| GEN-001 | MUST | Resampling preserves the observed store distribution | Total variation distance from the source distribution is within 1.5× the measured multinomial noise floor, and top-decile share is preserved within 3 points |
+| GEN-002 | MUST | Baskets are drawn intact, never reassembled | A drawn basket's line count, store, product set, and value total match its source basket exactly |
+| GEN-003 | MUST | Generation is deterministic given a seed | Identical seeds produce identical draw sequences; different seeds do not |
+| GEN-004 | SHOULD | Every stress scenario can be disabled independently | A control run with all scenarios off produces no late, duplicate, or drifted events |
+| GEN-005 | MUST | Synthetic rows are labelled at source | Every emitted event carries `is_synthetic = true`, so MLR-003 can be enforced downstream |
+
+GEN-005 is what makes MLR-003 (evaluation never touches synthetic rows) checkable rather than
+aspirational. A label applied later, by inference, is a label that will be wrong.
+
 ## QLT — Data quality
 
 | ID | Pri | Requirement | Acceptance criterion |
