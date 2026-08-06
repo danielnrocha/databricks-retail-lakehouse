@@ -26,8 +26,8 @@ started — writing them now would be fiction.
 | [0003](ADR-0003-dataset-selection.md) | dunnhumby Complete Journey + synthetic amplifier | Accepted | Medium |
 | [0005](ADR-0005-streaming-batch-boundary.md) | Where streaming stops and batch begins | Accepted | Low |
 | [0007](ADR-0007-table-layout.md) | Liquid clustering + Predictive Optimization; no partitioning, no Z-ORDER | Accepted | Medium |
+| [0004](ADR-0004-ingestion-framework.md) | Lakeflow Declarative Pipelines over hand-rolled Structured Streaming | Accepted | Medium |
 | 0001 | Spec-driven development with an adversarial agent loop | Pending (Phase 0) | Low |
-| 0004 | Lakeflow Declarative Pipelines over hand-rolled Structured Streaming | Pending (Phase 4) | Medium |
 | 0006 | Two-layer data quality: DQX + UC-governed expectations | Pending (Phase 5) | Low |
 | 0008 | SCD Type 2 via AUTO CDC, not hand-written MERGE | Pending (Phase 5) | Medium |
 | 0009 | Declarative Automation Bundles + GitHub Actions | Pending (Phase 10) | Low |
