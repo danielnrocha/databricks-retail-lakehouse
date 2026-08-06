@@ -50,3 +50,6 @@ derby.log
 
 # Claude Code local settings — machine-specific, never shared
 .claude/settings.local.json
+
+# Bundle state
+.databricks/

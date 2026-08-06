@@ -99,6 +99,10 @@ ignore = [
     # prose, × in generated measurement tables. The rule exists to catch homoglyph attacks in
     # identifiers, which is a real concern; it is noise in docstrings and markdown generators.
     "RUF001", "RUF002", "RUF003",
+    # `from pyspark.sql import functions as F` is the universal PySpark convention. Renaming it to
+    # satisfy a naming rule would make every Spark example on the internet stop matching this
+    # codebase, which is a worse outcome than an unconventional capital.
+    "N812",
 ]
 
 [tool.ruff.lint.per-file-ignores]

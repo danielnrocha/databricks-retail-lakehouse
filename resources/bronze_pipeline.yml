@@ -1,0 +1,50 @@
+# Bronze ingest pipeline.
+#
+# Free Edition allows ONE active pipeline per pipeline type per account. That is a hard
+# constraint with no elegant workaround, and it shapes the design: bronze, silver and gold live
+# in one pipeline graph rather than three independently schedulable ones. On a paid tier they
+# would be split, because independent failure domains and independent schedules are worth real
+# money — see docs/architecture/production-delta.md.
+
+resources:
+  pipelines:
+    dng_medallion:
+      name: dng-medallion-${var.environment}
+
+      # Serverless is not a choice here — Free Edition offers nothing else. Worth stating because
+      # it removes every cluster-sizing lever the performance work would normally use, which is
+      # itself a constraint the optimisation chapter has to work within rather than around.
+      serverless: true
+      photon: true
+
+      catalog: ${var.catalog}
+      schema: bronze
+
+      # Continuous vs triggered. Triggered, deliberately: the streaming path's SLO is "minutes"
+      # (ADR-0005), and a triggered pipeline on a short interval meets that at a fraction of the
+      # cost of a permanently-running one. Choosing the loosest trigger that satisfies the SLO is
+      # the engineering decision; choosing the tightest is a reflex.
+      continuous: false
+      development: true
+
+      channel: CURRENT
+
+      configuration:
+        # The only route by which a catalog name reaches code (ENV-001).
+        dng.catalog: ${var.catalog}
+        dng.environment: ${var.environment}
+        dng.events_landing: ${var.events_landing}
+        dng.schema_location: ${var.events_landing}/_schema
+        dng.sample_pct: ${var.sample_pct}
+
+      libraries:
+        - glob:
+            include: ../src/retail_lakehouse/bronze/**
+
+      # Pipeline event log as a governed table rather than a UI-only artifact. Without this,
+      # "what did the pipeline do last Tuesday?" is answerable only by clicking, and every
+      # data-quality metric in NFR-3 would have to be reconstructed by hand.
+      event_log:
+        catalog: ${var.catalog}
+        schema: ops
+        name: pipeline_events

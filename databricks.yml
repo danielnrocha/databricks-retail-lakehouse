@@ -1,0 +1,67 @@
+# Declarative Automation Bundle (formerly Databricks Asset Bundles).
+#
+# The single most important property of this file: it is the ONLY place a catalog name appears.
+# Code in src/ never reads an environment variable to discover where it should write, and never
+# contains a literal catalog name. The chain is exactly:
+#
+#     target -> var.catalog -> pipeline/job parameter -> Spark conf -> code
+#
+# ENV-001 fails the build if a literal catalog name appears anywhere in src/. That rule is
+# enforced by machine because it is precisely the rule that erodes under deadline pressure — one
+# hardcoded catalog in a notebook is how a dev run writes to prod.
+
+bundle:
+  name: dng-retail-lakehouse
+
+variables:
+  catalog:
+    description: Environment catalog. Injected by the target; never read from the environment.
+  environment:
+    description: Environment name, used for tagging and for the ops schema.
+  sample_pct:
+    description: >
+      Share of input processed. Dev defaults to a sample because Free Edition quota exhaustion
+      shuts down ALL compute for the rest of the day — including prod. The expensive path is
+      opt-in rather than the default.
+    default: "1.0"
+  events_landing:
+    description: Landing volume path for the amplifier's event stream.
+
+targets:
+  dev:
+    mode: development
+    default: true
+    variables:
+      catalog: dng_dev
+      environment: dev
+      sample_pct: "0.05"
+      events_landing: /Volumes/dng_dev/bronze/landing
+    workspace:
+      host: https://dbc-b1debb7b-807a.cloud.databricks.com
+
+  test:
+    mode: development
+    variables:
+      catalog: dng_test
+      environment: test
+      sample_pct: "1.0"
+      events_landing: /Volumes/dng_test/bronze/landing
+    workspace:
+      host: https://dbc-b1debb7b-807a.cloud.databricks.com
+
+  prod:
+    # `mode: production` is not cosmetic — it forbids the development-mode conveniences that
+    # would otherwise silently apply: no username prefix on resource names, no pausing of
+    # schedules, and a refusal to deploy if the tree is dirty.
+    mode: production
+    variables:
+      catalog: dng_prod
+      environment: prod
+      sample_pct: "1.0"
+      events_landing: /Volumes/dng_prod/bronze/landing
+    workspace:
+      host: https://dbc-b1debb7b-807a.cloud.databricks.com
+      root_path: /Workspace/Users/daniel.rocha@dadosnagringa.com/.bundle/${bundle.name}/${bundle.target}
+
+include:
+  - resources/*.yml
