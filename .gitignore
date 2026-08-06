@@ -1,0 +1,52 @@
+# Environments
+.venv/
+.venv-dbconnect/
+__pycache__/
+*.py[cod]
+.python-version
+
+# Tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Databricks
+.databricks/
+.databricks-login.json
+
+# Credentials — nothing resembling a secret belongs in this repo.
+# The Databricks CLI stores OAuth tokens in ~/.databrickscfg, outside the tree, on purpose.
+.env
+.env.*
+!.env.example
+*.pem
+*.token
+
+# Data.
+# The dunnhumby seed is CC BY 4.0 but is NOT vendored: it is ~100MB of CSV, it belongs in a
+# volume rather than in git, and vendoring it would make the repo's history permanently heavy.
+# `make data` fetches it. Small golden fixtures used by tests ARE committed — they are the
+# contract, and a test fixture you cannot read in a diff is not a fixture.
+data/raw/
+data/interim/
+data/generated/
+!data/fixtures/
+!data/README.md
+
+# Local Spark scratch
+spark-warehouse/
+metastore_db/
+derby.log
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Claude Code local settings — machine-specific, never shared
+.claude/settings.local.json
