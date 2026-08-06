@@ -25,19 +25,41 @@ class LateArrival:
     Real feeds are late for mundane reasons: a store's uplink drops, a batch retries, a mobile
     POS syncs when it reconnects. The watermark decision in ADR-0005 is only defensible against a
     measured lag distribution, so the generator produces one.
+
+    **Every `*_fraction` here is a share of the TOTAL event stream**, never a conditional share.
+
+    That sentence exists because this codebase got the same defect wrong twice in one sitting.
+    `DuplicateDelivery.fraction` was implemented as a per-basket trigger probability and produced
+    73% duplicates against a configured 0.5%. Then `beyond_watermark_fraction` was implemented as
+    a share *of late events*, yielding 0.003% observed against 0.200% configured — a 60x
+    discrepancy that looked like noise rather than a bug.
+
+    Both survived code review because the code matched the variable name; only the units were
+    wrong. Rate parameters are worth stating units for explicitly, and worth asserting on with a
+    test that compares configured against observed, because "the feature fires" is not evidence
+    that "the feature fires at the configured rate".
     """
 
     enabled: bool = True
-    # Share of events emitted out of order.
+    # Share of TOTAL events emitted out of order.
     fraction: float = 0.03
     # Lag is drawn log-uniformly between these bounds: many slightly-late events, few very late
     # ones. A uniform draw would produce an unrealistically fat tail and make any watermark look
     # bad, which would be a strawman argument for a longer watermark.
     min_lag_seconds: int = 60
     max_lag_seconds: int = 6 * 3600
-    # A deliberate slice beyond the configured watermark, so ING-007 (late events are counted,
-    # never silently dropped) has something to count.
+    # Share of TOTAL events pushed beyond any sane watermark, so ING-007 (late events are
+    # counted, never silently dropped) has something to count. Must be <= `fraction`, since an
+    # event can only be beyond the watermark if it is late at all.
     beyond_watermark_fraction: float = 0.002
+
+    def __post_init__(self) -> None:
+        if self.enabled and self.beyond_watermark_fraction > self.fraction:
+            raise ValueError(
+                f"beyond_watermark_fraction ({self.beyond_watermark_fraction}) exceeds "
+                f"fraction ({self.fraction}). Both are shares of the total stream, and an event "
+                "cannot be beyond the watermark without being late."
+            )
 
 
 @dataclass(frozen=True)
@@ -68,11 +90,25 @@ class DuplicateDelivery:
     """
 
     enabled: bool = True
+
+    # Share of the OUTPUT stream that is duplicated. This is the quantity anyone reasoning about
+    # the feed actually cares about ("about 0.5% of what we receive is a repeat"), and it is what
+    # the emitter targets.
+    #
+    # An earlier version defined this as "probability, per basket, of replaying the whole window".
+    # That reads plausibly and is badly wrong: with a 5,000-event window and ~22,000 baskets, a
+    # 0.5% per-basket probability produced 110 replays of 5,000 events each — 73% of the output
+    # was duplicates. It also distorted the store distribution the sampler works hard to preserve,
+    # so a skew measurement taken on that stream would have been measuring the bug.
+    #
+    # The lesson generalises past this file: a rate parameter whose units are not the units the
+    # reader assumes is a defect that survives review, because the code matches the variable name.
     fraction: float = 0.005
+
     # Replay a contiguous window rather than scattering duplicates. A scattered duplicate is
     # caught by any dedupe; a replayed window is what actually happens when a consumer restarts
     # from a stale offset, and it is the case that breaks naive watermark-scoped deduplication.
-    replay_window_events: int = 5_000
+    replay_window_events: int = 500
 
 
 @dataclass(frozen=True)

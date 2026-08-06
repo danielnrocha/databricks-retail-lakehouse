@@ -22,8 +22,8 @@ the owning phase is open) · `WAIVED` (requires paid-tier features; see note).
 | GEN-001 | `tests/unit/test_generator_sampler.py::test_uniform_draw_preserves_store_distribution` | unit | PASSING |
 | GEN-002 | `tests/unit/test_generator_sampler.py::test_baskets_are_drawn_intact` | unit | PASSING |
 | GEN-003 | `tests/unit/test_generator_sampler.py::test_generation_is_deterministic` | unit | PASSING |
-| GEN-004 | `tests/unit/test_generator_emit.py::test_control_run_has_no_stress_events` | unit | PLANNED |
-| GEN-005 | `tests/unit/test_generator_emit.py::test_every_event_labelled_synthetic` | unit | PLANNED |
+| GEN-004 | `tests/unit/test_generator_emit.py::test_control_run_has_no_stress_events` | unit | PASSING |
+| GEN-005 | `tests/unit/test_generator_emit.py::test_every_event_labelled_synthetic` | unit | PASSING |
 | QLT-001 | `tests/unit/test_quality_rules.py::test_every_silver_table_has_rules` | unit | PLANNED |
 | QLT-002 | `tests/integration/test_quarantine.py::test_quarantine_row_carries_reason` | integration | PLANNED |
 | QLT-003 | `tests/integration/test_quarantine.py::test_row_conservation` | integration | PLANNED |
@@ -68,7 +68,7 @@ the owning phase is open) · `WAIVED` (requires paid-tier features; see note).
 
 ---
 
-## Why every row currently reads PLANNED
+## Why most rows read PLANNED
 
 This matrix was written **before** the tests, on purpose. Writing it first forces the acceptance
 criterion to be stated in terms a test can check, which is the moment most vague requirements
@@ -78,6 +78,23 @@ The rows flip to `PASSING` as each phase lands. The CI gate enforces two things 
 no requirement without a row, and no row pointing at a nonexistent test path. It does **not**
 require every test to pass immediately, because that would force either fake tests or a
 big-bang merge, and both are worse.
+
+## A `PASSING` row is not proof the test is any good
+
+Worth stating plainly, since this matrix could otherwise be read as a completeness score.
+
+`GEN-005` went green while the emitter was producing 73% duplicates against a configured 0.5%,
+because the duplicate test asserted only that *some* duplicates appeared. The requirement was
+mapped, the test ran, the row was green, and the generator was badly wrong. It was caught by
+running the thing and looking at the output, not by the suite.
+
+Three separate rate parameters in `generator/config.py` shipped with the wrong units, and each
+time the code matched the variable name. The fix was a test comparing configured against observed
+for every rate at once — `test_configured_rates_match_observed_rates` — which is now the general
+defence against that whole class.
+
+The matrix tracks whether a requirement has an assertion behind it. It cannot tell you whether the
+assertion is strong. Nothing can, except reading it.
 
 ## Waivers
 

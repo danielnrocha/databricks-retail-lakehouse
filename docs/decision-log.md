@@ -73,6 +73,38 @@ incrementally will be disabled, and a disabled gate is worse than a lenient one.
 
 ---
 
+### 2026-08-06 — Rate parameters state their units, and a test enforces them
+
+**Forced by:** the same defect shipping three times in one sitting, in three different parameters,
+each passing review because the code matched the variable name.
+
+| Parameter | Intended | Implemented as | Configured | Observed |
+|---|---|---|---|---|
+| `DuplicateDelivery.fraction` | share of output | per-basket probability of replaying the whole window | 0.5% | **73%** |
+| `LateArrival.beyond_watermark_fraction` | share of output | share of *late* events | 0.200% | **0.003%** |
+| `SchemaDrift.*_at_event` | a point inside the run | an absolute offset, unchecked against run length | fires at 250k | **never fired** at 200k |
+
+The first was caught only because a manual run printed an absurd number. The second would have
+gone unnoticed — 0.003% against 0.200% reads like sampling noise unless you compare it to what was
+asked for. The third made a run look *clean*, which is the worst failure of the three: a clean
+result gets read as evidence about the pipeline when it is evidence about the config.
+
+The duplicate flood also cascaded into the sampler's territory, dropping observed store coverage
+from 582 to 400 and the top-decile share from 67% to 53%. A skew experiment run on that stream
+would have measured the emitter's bug and attributed it to grocery retail.
+
+**Changes:** every `*_fraction` is now documented as a share of the total stream; impossible
+combinations are rejected in `__post_init__`; drift thresholds beyond the run length raise rather
+than silently no-op; and `test_configured_rates_match_observed_rates` asserts configured against
+observed for every rate in one place.
+
+The general lesson, which is the reason this entry exists: **"the feature fires" and "the feature
+fires at the configured rate" are different claims.** A test asserting the first passes happily
+while the second is wrong by two orders of magnitude. Existence checks are the cheapest test to
+write and the easiest to mistake for coverage.
+
+---
+
 ### 2026-08-06 — Catalogs are created via SQL DDL, not the Unity Catalog REST API
 
 **Forced by:** the REST path failing on an account with Default Storage.
