@@ -74,13 +74,27 @@ a joined column's meaning genuinely may differ from its source's — but it mean
 coverage silently degrades exactly where the modelling gets interesting**. The columns that most
 need explaining are the derived ones, and those are precisely the ones that arrive undocumented.
 
-**GOV-001 does not pass.** The `@dp.materialized_view(comment=...)` decorator sets the *table*
-comment only. Setting column comments requires either an explicit `schema=` on the decorator —
-which the silver work found does not escape its generated DDL, so a comment containing `'12 units'`
-produced a parse error — or `ALTER TABLE ... ALTER COLUMN ... COMMENT` after the fact, whose
-durability across a materialized-view refresh is **untested here**.
+### Resolved — GOV-001 now passes, and the route was not the obvious one
 
-Left open deliberately rather than papered over with a fix nobody verified survives a refresh.
+`@dp.materialized_view(comment=...)` sets the *table* comment only, so the column comments had to
+be applied separately. Two dead ends before the working form:
+
+| statement | result |
+|---|---|
+| `ALTER TABLE ... ALTER COLUMN ... COMMENT` | `EXPECT_TABLE_NOT_VIEW.NO_ALTERNATIVE` — a Lakeflow materialized view is a **view** |
+| `ALTER VIEW ... ALTER COLUMN ... COMMENT` | `PARSE_SYNTAX_ERROR` — not valid syntax |
+| **`COMMENT ON COLUMN ... IS ...`** | **works on both tables and views** |
+
+The first attempt failed 42 times before the error was read properly. Worth recording because the
+Databricks documentation reaches for `ALTER TABLE` as the canonical form, and every materialized
+view in a medallion architecture is a view.
+
+**And the durability question is answered.** The comments were applied, the pipeline was re-run
+(16 flows completed), and `--check` reported **0 uncommented columns** afterwards. Column comments
+survive a materialized-view refresh, so `scripts/document_gold_columns.py` is a fix rather than a
+treadmill.
+
+47 comments applied, 0 failures, 0 columns uncommented. GOV-001 passes.
 
 ## G4 — Two mistakes in the first deploy, both instructive
 

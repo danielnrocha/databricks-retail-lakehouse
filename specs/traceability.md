@@ -41,14 +41,14 @@ the owning phase is open) · `WAIVED` (requires paid-tier features; see note).
 | PRF-002 | `tests/integration/test_skew_lab.py::test_mitigation_reduces_task_time_ratio` | integration | PLANNED |
 | PRF-003 | `tests/integration/test_file_sizing.py::test_median_file_size_above_floor` | integration | PLANNED |
 | PRF-004 | `tests/integration/test_shuffle.py::test_shuffle_write_reduced` | integration | PLANNED |
-| PRF-005 | `tests/unit/test_perf_evidence_doc.py::test_every_claim_has_measurements` | unit | PLANNED |
-| PRF-006 | `tests/unit/test_table_properties.py::test_po_and_manual_optimize_disjoint` | unit | PLANNED |
-| ENV-001 | `tests/unit/test_no_hardcoded_catalog.py::test_no_literal_catalog_in_src` | unit | PLANNED |
+| PRF-005 | `tests/unit/test_perf_evidence_doc.py::test_every_claim_has_measurements` | unit | PASSING |
+| PRF-006 | `tests/unit/test_table_properties.py::test_po_and_manual_optimize_disjoint` | unit | PASSING |
+| ENV-001 | `tests/unit/test_no_hardcoded_catalog.py::test_no_literal_catalog_in_src` | unit | PASSING |
 | ENV-002 | `tests/integration/test_bundle_targets.py::test_test_target_writes_only_to_test_catalog` | integration | PLANNED |
 | ENV-003 | `tests/unit/test_deploy_provenance.py::test_prod_deploy_references_tested_sha` | unit | PLANNED |
 | ENV-004 | `tests/integration/test_reproducibility.py::test_clean_deploy_matches_golden_fixture` | integration | PLANNED |
 | ENV-005 | `tests/integration/test_rollback.py::test_redeploy_prior_sha_restores_state` | integration | PLANNED |
-| ENV-006 | `tests/unit/test_offline_capable.py::test_unit_suite_needs_no_workspace` | unit | PLANNED |
+| ENV-006 | `tests/unit/test_offline_capable.py::test_unit_suite_needs_no_workspace` | unit | PASSING |
 | MLR-001 | `tests/integration/test_ml_reproducibility.py::test_rerun_from_logged_params` | integration | PLANNED |
 | MLR-002 | `tests/integration/test_model_gate.py::test_beats_recency_baseline` | integration | PLANNED |
 | MLR-003 | `tests/unit/test_eval_dataset.py::test_eval_contains_no_synthetic_rows` | unit | PLANNED |
@@ -61,7 +61,7 @@ the owning phase is open) · `WAIVED` (requires paid-tier features; see note).
 | AGT-004 | `src/retail_lakehouse/agents/evaluate.py::gate` | integration | PASSING |
 | AGT-005 | `tests/integration/test_agent_monitoring.py::test_production_traces_sampled` | integration | PLANNED |
 | AGT-006 | `src/retail_lakehouse/agents/evaluate.py::gate` | integration | PASSING |
-| GOV-001 | `tests/integration/test_governance.py::test_all_gold_columns_documented` | integration | PLANNED |
+| GOV-001 | `scripts/document_gold_columns.py::uncommented` | integration | PASSING |
 | GOV-002 | `tests/integration/test_governance.py::test_lineage_terminates_at_source` | integration | PLANNED |
 | GOV-003 | `tests/integration/test_governance.py::test_gold_tables_have_domain` | integration | PLANNED |
 | GOV-004 | `tests/integration/test_governance.py::test_metric_terms_in_glossary` | integration | PLANNED |
