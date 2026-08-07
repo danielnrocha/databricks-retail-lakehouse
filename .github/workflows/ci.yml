@@ -1,94 +1,148 @@
 name: CI
 
+# Also callable, so `deploy.yml` gates every deploy on exactly these jobs rather than on a
+# copy of them that drifts. See docs/architecture/cicd.md and ADR-0009.
 on:
   pull_request:
   push:
     branches: [main]
+  workflow_call:
 
-# A pull request that supersedes an in-flight run should cancel it. CI minutes spent on a
-# commit nobody will merge are pure waste.
+# Least privilege. Nothing here writes to the repository, comments on a pull request, or
+# publishes anything, so read is the whole requirement. Declaring it explicitly matters on a
+# public repository: without it the job inherits whatever the repository default is, and that
+# default is a setting someone can change without touching this file.
+permissions:
+  contents: read
+
 concurrency:
-  group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  # A pull request that supersedes an in-flight run should cancel it. A push to main should not:
+  # main's history is what deploys are cut from, so every commit on it gets a verdict.
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 env:
   PYTHON_VERSION: "3.12"
+  INSTALL_EXTRAS: ".[local-spark,data,ml,dev]"
 
 jobs:
-  # Fast gates first. Ordering is deliberate: the cheapest check that can fail the build runs
-  # first, so a formatting mistake does not cost a Spark session start.
+  # -------------------------------------------------------------------------------------------
+  # Cheapest failure first. A formatting mistake must not cost a JVM start, and the traceability
+  # gate must not cost a dependency resolution it can fail before.
+  # -------------------------------------------------------------------------------------------
   static:
-    name: Lint · types · traceability
+    name: Static gates
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
 
-      - name: Install uv
-        uses: astral-sh/setup-uv@v5
-        with:
-          enable-cache: true
-
-      - name: Set up Python
-        run: uv python install ${{ env.PYTHON_VERSION }}
-
-      - name: Install
-        run: |
-          uv venv .venv --python ${{ env.PYTHON_VERSION }}
-          VIRTUAL_ENV=.venv uv pip install -e ".[local-spark,data,ml,dev]"
-
+      # The traceability gate is pure stdlib, so it runs before anything is installed. It is the
+      # single most likely check to fail on a spec change and the cheapest one in the repository.
       - name: Traceability gate
         run: python3 scripts/check_traceability.py
 
-      - name: Lint
+      - name: Install uv
+        uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6
+        with:
+          enable-cache: true
+
+      - name: Install
         run: |
-          .venv/bin/ruff format --check src tests generator scripts
-          .venv/bin/ruff check src tests generator scripts
+          uv venv .venv --python "$PYTHON_VERSION"
+          VIRTUAL_ENV=.venv uv pip install -e "$INSTALL_EXTRAS"
+
+      - name: Format
+        run: .venv/bin/ruff format --check src tests generator scripts
+
+      - name: Lint
+        run: .venv/bin/ruff check src tests generator scripts
 
       - name: Types
         run: .venv/bin/mypy src scripts
 
+  # -------------------------------------------------------------------------------------------
+  # ENV-006, enforced structurally rather than by intention.
+  #
+  # This job defines no DATABRICKS_* variable and reads no secret. There is nothing to strip
+  # because there is nothing to inherit — a unit test that acquires a workspace connection has
+  # no way to do so here, and fails rather than silently becoming an integration test.
+  #
+  # tests/unit/test_offline_capable.py re-proves the same property locally by re-running the
+  # suite in a scrubbed subprocess, so the rule holds on a developer machine too, where the
+  # credentials that would hide the problem actually exist.
+  # -------------------------------------------------------------------------------------------
   unit:
-    name: Unit tests (no workspace)
+    name: Unit tests (no workspace credentials in scope)
     runs-on: ubuntu-latest
     needs: static
+    timeout-minutes: 25
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
 
+      # Local PySpark needs a JVM. Pinned to 17 because that is what DBR 15/16 run; testing on a
+      # JVM the platform does not use is how you find out about a serialisation difference in
+      # production instead of here.
       - name: Set up JDK 17
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
         with:
           distribution: temurin
           java-version: "17"
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6
         with:
           enable-cache: true
 
       - name: Install
         run: |
-          uv venv .venv --python ${{ env.PYTHON_VERSION }}
-          VIRTUAL_ENV=.venv uv pip install -e ".[local-spark,data,ml,dev]"
+          uv venv .venv --python "$PYTHON_VERSION"
+          VIRTUAL_ENV=.venv uv pip install -e "$INSTALL_EXTRAS"
 
-      # ENV-006: this job has no DATABRICKS_* secrets in scope, by design. If a unit test starts
-      # needing a workspace it will fail here rather than quietly becoming an integration test.
       - name: Unit tests
         run: .venv/bin/pytest tests/unit -m unit --cov=src --cov-report=term-missing
 
+  # -------------------------------------------------------------------------------------------
+  # `databricks bundle validate` resolves ${workspace.current_user}, so it needs credentials.
+  # There is no offline mode — running it without auth prints "Found 1 error" and exits 0, which
+  # is worse than not running it, because it looks like a passing gate.
+  #
+  # Free Edition has no service principal and no account console, so workload identity federation
+  # is unavailable and there is no honest way to give a public repository durable credentials.
+  # This job therefore skips unless a host has been configured, and the offline half of the same
+  # check — every target declares a catalog, the catalog matches the environment, prod is
+  # production mode — lives in tests/unit/test_deploy_provenance.py and runs on every push.
+  # -------------------------------------------------------------------------------------------
   bundle:
-    name: Bundle validate
+    name: Bundle validate (${{ matrix.target }})
     runs-on: ubuntu-latest
     needs: static
+    if: vars.DATABRICKS_HOST != ''
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [dev, test, prod]
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          # The bundle records the deploying commit in its workspace state, so the CLI needs a
+          # real git context rather than a detached tarball.
+          fetch-depth: 0
 
-      - uses: databricks/setup-cli@main
+      - name: Install the Databricks CLI
+        uses: databricks/setup-cli@60b64e3937ee15f5a8b914664d1e78a586a9a4da # v1.11.0
 
-      # Validation is offline for schema and reference errors; it catches the majority of
-      # bundle mistakes without needing credentials on a fork PR.
-      - name: Validate dev target
-        run: databricks bundle validate -t dev
+      # TARGET goes through `env:` and is quoted at the point of use. Matrix values are trusted
+      # here, but the habit is the control: the moment one of these becomes event-derived, the
+      # shape is already right. See ADR-0009 on why this repository has no `${{ }}` inside any
+      # `run:` block at all.
+      - name: Validate
+        run: databricks bundle validate -t "$TARGET"
         env:
+          TARGET: ${{ matrix.target }}
           DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
-        continue-on-error: true

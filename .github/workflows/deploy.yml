@@ -1,0 +1,201 @@
+name: Deploy
+
+# Manual only, and deliberately so. An automatic deploy on every push to main is the right
+# default for a service with a rollback button and an on-call rota; it is the wrong default for a
+# platform sharing one Free Edition compute quota with a developer, where a redeploy that starts a
+# pipeline can take the account's compute out for the rest of the day (ADR-0002).
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "Bundle target. `prod` deploys to test first and requires the test deploy to succeed."
+        type: choice
+        options: [test, prod]
+        default: test
+
+permissions:
+  contents: read
+
+# Deploys are never cancelled in flight. A half-applied bundle is worse than a queued one, and
+# unlike CI there is no cheap way to tell which half applied.
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  # -------------------------------------------------------------------------------------------
+  # ENV-003, first half: nothing deploys that has not passed the same gates a pull request does.
+  # `uses:` rather than a copy, so the two cannot drift. A reusable workflow runs at the caller's
+  # commit, which is what makes "the tested artifact" and "the deployed artifact" the same object
+  # rather than two things that happen to share a branch name.
+  # -------------------------------------------------------------------------------------------
+  verify:
+    name: Verify
+    uses: ./.github/workflows/ci.yml
+    permissions:
+      contents: read
+
+  deploy-test:
+    name: Deploy → test
+    needs: verify
+    # Skips cleanly rather than failing when no workspace is configured. See ADR-0009: on Free
+    # Edition the recommended posture is to leave these unset and deploy from a developer machine,
+    # because the only credential available is a long-lived personal access token and a public
+    # repository is the wrong place to keep one.
+    if: vars.DATABRICKS_HOST != ''
+    runs-on: ubuntu-latest
+    environment: test
+    timeout-minutes: 20
+    outputs:
+      tested_sha: ${{ steps.provenance.outputs.sha }}
+    steps:
+      - name: Checkout the commit under test
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+
+      - name: Install the Databricks CLI
+        uses: databricks/setup-cli@60b64e3937ee15f5a8b914664d1e78a586a9a4da # v1.11.0
+
+      - name: Record the commit under test
+        id: provenance
+        env:
+          EXPECTED_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          actual="$(git rev-parse HEAD)"
+          if [ "$actual" != "$EXPECTED_SHA" ]; then
+            echo "::error::checked out $actual, expected $EXPECTED_SHA" >&2
+            exit 1
+          fi
+          echo "sha=$actual" >> "$GITHUB_OUTPUT"
+          echo "Testing $actual" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Validate
+        run: databricks bundle validate -t test
+        env:
+          DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+
+      - name: Deploy
+        run: databricks bundle deploy -t test
+        env:
+          DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+
+      # The bundle uploads `state/metadata.json` to the workspace, carrying the deploying
+      # commit. Reading it back is what turns "we deployed this SHA" from a claim into a
+      # server-side record — and it is the same file the prod gate below compares against.
+      - name: Verify recorded provenance
+        env:
+          EXPECTED_SHA: ${{ steps.provenance.outputs.sha }}
+          DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+        run: |
+          set -euo pipefail
+          root="$(databricks bundle summary -t test -o json | jq -r '.workspace.state_path')"
+          recorded="$(databricks workspace export "$root/metadata.json" | jq -r '.config.bundle.git.commit')"
+          if [ "$recorded" != "$EXPECTED_SHA" ]; then
+            echo "::error::test deployment records $recorded, expected $EXPECTED_SHA" >&2
+            exit 1
+          fi
+          echo "test deployment records $recorded" >> "$GITHUB_STEP_SUMMARY"
+
+  # -------------------------------------------------------------------------------------------
+  # ENV-003, second half: prod deploys the SHA that passed the test target, or it does not run.
+  #
+  # Three things make that true rather than intended:
+  #   1. `needs: deploy-test` — prod cannot start unless test finished green.
+  #   2. The checkout ref is the output of the test job, not `github.sha` re-read. Reading the
+  #      same expression twice would work today and would silently stop working the moment a
+  #      re-run or a queued dispatch changed what it resolves to.
+  #   3. The gate step below compares the checked-out commit against that output and fails loudly.
+  # -------------------------------------------------------------------------------------------
+  deploy-prod:
+    name: Deploy → prod
+    needs: [verify, deploy-test]
+    if: vars.DATABRICKS_HOST != '' && inputs.target == 'prod'
+    runs-on: ubuntu-latest
+    # A GitHub environment with a required reviewer is the human gate. Free Edition cannot express
+    # "only this service principal may deploy prod", so the approval is where that control lives.
+    environment: prod
+    timeout-minutes: 20
+    steps:
+      - name: Checkout the commit that passed test
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          ref: ${{ needs.deploy-test.outputs.tested_sha }}
+          fetch-depth: 0
+
+      - name: Install the Databricks CLI
+        uses: databricks/setup-cli@60b64e3937ee15f5a8b914664d1e78a586a9a4da # v1.11.0
+
+      - name: ENV-003 gate — the deployed artifact is the tested artifact
+        env:
+          TESTED_SHA: ${{ needs.deploy-test.outputs.tested_sha }}
+        run: |
+          set -euo pipefail
+          if [ -z "$TESTED_SHA" ]; then
+            echo "::error::no tested SHA from the test deploy; refusing to deploy prod" >&2
+            exit 1
+          fi
+          actual="$(git rev-parse HEAD)"
+          if [ "$actual" != "$TESTED_SHA" ]; then
+            echo "::error::prod would deploy $actual but test passed $TESTED_SHA" >&2
+            exit 1
+          fi
+          echo "Deploying $actual to prod (passed test)" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Validate
+        run: databricks bundle validate -t prod
+        env:
+          DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+
+      # `mode: production` refuses to deploy a dirty tree, so this step is also the tree-cleanliness
+      # check. That refusal is a feature of the target, not of this workflow, and it is the reason
+      # prod is the only target declared that way (databricks.yml).
+      - name: Deploy
+        run: databricks bundle deploy -t prod
+        env:
+          DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+
+      - name: Verify recorded provenance
+        env:
+          TESTED_SHA: ${{ needs.deploy-test.outputs.tested_sha }}
+          DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+        run: |
+          set -euo pipefail
+          root="$(databricks bundle summary -t prod -o json | jq -r '.workspace.state_path')"
+          recorded="$(databricks workspace export "$root/metadata.json" | jq -r '.config.bundle.git.commit')"
+          if [ "$recorded" != "$TESTED_SHA" ]; then
+            echo "::error::prod deployment records $recorded, expected $TESTED_SHA" >&2
+            exit 1
+          fi
+          {
+            echo "### Prod deployment provenance"
+            echo ""
+            echo "| | |"
+            echo "|---|---|"
+            echo "| Commit | \`$recorded\` |"
+            echo "| Passed target | test |"
+            echo "| Recorded at | \`$root/metadata.json\` |"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # ENV-005's manual path, written down where the person doing the rollback will look for it.
+      - name: Rollback instructions
+        if: failure()
+        run: |
+          {
+            echo "### Rollback"
+            echo ""
+            echo 'Re-run this workflow from the last known-good commit:'
+            echo ""
+            echo '    gh workflow run deploy.yml --ref <good-sha> -f target=prod'
+            echo ""
+            echo 'The bundle is declarative, so redeploying the prior commit restores the prior'
+            echo 'resource definitions without manual cleanup. See docs/architecture/cicd.md.'
+          } >> "$GITHUB_STEP_SUMMARY"
