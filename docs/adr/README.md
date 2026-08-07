@@ -27,7 +27,7 @@ started — writing them now would be fiction.
 | [0005](ADR-0005-streaming-batch-boundary.md) | Where streaming stops and batch begins | Accepted | Low |
 | [0007](ADR-0007-table-layout.md) | Liquid clustering + Predictive Optimization; no partitioning, no Z-ORDER | Accepted | Medium |
 | [0004](ADR-0004-ingestion-framework.md) | Lakeflow Declarative Pipelines over hand-rolled Structured Streaming | Accepted | Medium |
-| 0001 | Spec-driven development with an adversarial agent loop | Pending (Phase 0) | Low |
+| [0001](ADR-0001-spec-driven-agent-loop.md) | Spec-driven development with an adversarial agent loop | Accepted | Low |
 | 0006 | Two-layer data quality: DQX + UC-governed expectations | Pending (Phase 5) | Low |
 | 0008 | SCD Type 2 via AUTO CDC, not hand-written MERGE | Pending (Phase 5) | Medium |
 | 0009 | Declarative Automation Bundles + GitHub Actions | Pending (Phase 10) | Low |
