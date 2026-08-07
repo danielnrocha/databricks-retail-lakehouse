@@ -35,11 +35,12 @@ the author's job.
 | Managed MCP | Agent tools are UC functions called directly; same governance, different transport |
 | Adversarial robustness | No prompt-injection cases in the agent eval set |
 | Lakebase CDC | Designed in ADR-0005, not wired |
-| Unity Catalog Metrics · Domains | Availability on Free Edition unverified |
+| Unity Catalog Metrics · Domains | Both verified available and enforcing; neither implemented yet (`docs/architecture/governance-findings.md`) |
 
-`specs/traceability.md` is the authoritative count: **19 of 53 requirements proven.** Everything
-else reads `PLANNED`, and that file is the single source of truth for the difference between what
-is written and what is shown.
+`specs/traceability.md` is the authoritative count: **24 of 53 requirements proven, 1 waived.**
+Everything else reads `PLANNED`, and that file is the single source of truth for the difference
+between what is written and what is shown. The one waiver — ENV-004, reproducibility — carries its
+measured cost in `docs/architecture/production-delta.md` §11 rather than a shrug.
 
 ---
 
@@ -143,7 +144,7 @@ specs/
 src/retail_lakehouse/       bronze · silver · gold · quality · perf · ml · agents
 generator/                  distribution-preserving synthetic amplifier
 resources/                  bundle resource definitions
-tests/unit/                 no workspace required (71 tests)
+tests/unit/                 no workspace required (79 tests)
 tests/integration/          requires an authenticated workspace
 data/perf/                  84 measured runs, each with its statement_id
 data/agents/                curated eval set and judged results
