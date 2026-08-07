@@ -157,6 +157,69 @@ them ends up being the copy that does not check.
 
 ---
 
+### 2026-08-07 — `recency_days` was null on every row, and GOV-001 passed on it
+
+**Forced by:** writing a lapse KPI for MOD-005 and querying the column it depends on.
+
+`agg_household_rfm.recency_days` was NULL on all 2,337 rows while `first_seen_date` and
+`last_seen_date` were populated. The cause is a one-line shape error with a non-obvious mechanism:
+
+```python
+as_of = fact.agg(F.max("transaction_date")).collect()[0][0]   # eager, at graph-plan time
+... F.datediff(F.lit(as_of), F.max("transaction_date"))
+```
+
+A Lakeflow function body is evaluated when the graph is **planned**, and at that moment
+`fct_basket_line` is being built by the same update and holds no data. `collect()` returned `None`,
+`F.lit(None)` typed the anchor as null, and `datediff` propagated null through every row **without
+erroring**. Fixed by cross-joining a single-row aggregate instead of collecting one. After the
+rebuild: 0 nulls, range 0–691, mean 133.9, and 665 of 2,337 households lapsed at the 161-day window.
+
+Two things make this worth a log entry rather than a commit message.
+
+**GOV-001 passed on this column.** It carries a comment — "Days between the household's last
+transaction and the dataset's own maximum date" — describing behaviour it did not have. *Every gold
+column is documented* and *every gold column is correct* are different claims, and the first is the
+one this project had a gate for. Documentation coverage is not data quality, and a fully documented
+null column is the cleanest possible demonstration of that.
+
+**An eager action inside a declarative definition is a shape error, not a logic error.** Nothing
+about the line is wrong in isolation; it is wrong because of *when* it runs. No test failed, no
+exception was raised, and review would have to reconstruct the graph's evaluation order to see it.
+The general rule: in a declarative pipeline, a value derived from a table in the same graph must be
+expressed as part of the query, never collected into Python.
+
+---
+
+### 2026-08-07 — GOV-003 and MOD-005 implemented; `units_sold` was measuring coupons
+
+Both features had been verified available (below). Implemented now: five domains over seven gold
+assets via a governed tag policy that `scripts/publish_governance.py` owns — closing the gap where
+the policy existed only because a session created it by hand — and twelve KPIs across two metric
+views. Evidence in [`architecture/governance-findings.md`](architecture/governance-findings.md).
+
+Two corrections were forced by looking at the numbers rather than at the structure.
+
+`units_sold` was registered as `SUM(quantity_units)`. It published cleanly, resolved cleanly, and
+returned 20,319,550 units across 21,479 baskets — **946 units per basket**. 98.7% of it came from
+1,776 `COUPON/MISC ITEMS` lines carrying quantities up to 48,073, where the column holds a coupon
+face value rather than a count of items. Merchandise alone is 254,898 units, 11.87 per basket.
+**This is a mis-stated definition being corrected, not a threshold being moved to obtain a nicer
+number** — the measurement came first and is reproduced in the KPI's definition text so a reader
+can disagree with it. Saying which of the two it is remains mandatory, because from outside they
+are identical.
+
+The second was my own test failing on my own register: `test_every_kpi_states_a_unit_a_decision_and_a_definition`
+rejected `baskets` for a 22-character definition. The fix was to write the definition, not to lower
+the bound — and writing it surfaced something worth keeping. `COUNT(DISTINCT basket_id)` sliced by
+`promo_exposure` gives 20,190 / 8,665 / 6,082 / 4,995 / 561, summing to **40,493 against a true
+total of 21,479**, because one basket has lines in several exposure buckets. That non-additivity is
+the concrete argument for a governed metric definition over a well-named summary table: the engine
+re-derives the count per grouping, where a pre-aggregate would be right at one grain and quietly
+wrong at every other.
+
+---
+
 ### 2026-08-07 — **Correction:** ING-004 was not blocked; the pipeline needed cancelling, not retrying
 
 The entry below, written the same afternoon, concluded that ING-004 could not be proven on this

@@ -51,32 +51,62 @@ def agg_household_rfm() -> DataFrame:
     # relative with no calendar anchor (ADR-0003), so "days since last purchase" is only meaningful
     # relative to the observation window's end. Anchoring to wall-clock time would make every
     # household look lapsed by however long ago the data was collected.
-    as_of = fact.agg(F.max("transaction_date")).collect()[0][0]
+    #
+    # The anchor is a single-row DataFrame cross-joined in, NOT `.collect()[0][0]`. The eager form
+    # was here and produced `recency_days` null on all 2,337 rows: a Lakeflow function body is
+    # evaluated when the graph is *planned*, and at that moment `fct_basket_line` is being built by
+    # the same update and has no data. `collect()` therefore returned `None`, `F.lit(None)` typed
+    # the anchor as null, and `datediff` propagated null through every row without erroring.
+    #
+    # It survived review, and it survived GOV-001 — the column carries a comment describing
+    # behaviour it did not have. A documented column and a correct column are different claims.
+    as_of = fact.agg(F.max("transaction_date").alias("_as_of"))
 
-    return fact.groupBy("household_key").agg(
-        F.datediff(F.lit(as_of), F.max("transaction_date")).alias("recency_days"),
-        F.countDistinct("basket_id").alias("frequency_baskets"),
-        F.round(F.sum("sales_amt"), 2).alias("monetary_amt"),
-        F.round(F.sum("sales_amt") / F.countDistinct("basket_id"), 2).alias("avg_basket_amt"),
-        F.countDistinct("department").alias("distinct_departments"),
-        F.countDistinct("commodity_desc").alias("distinct_commodities"),
-        F.round(
-            F.sum(F.when(F.col("coupon_disc_amt") != 0, F.col("sales_amt")).otherwise(0))
-            / F.sum("sales_amt"),
-            4,
-        ).alias("coupon_share_of_spend"),
-        F.round(
-            F.sum(
-                F.when(
-                    F.col("promo_exposure").isin("display", "mailer", "both"), F.col("sales_amt")
-                ).otherwise(0)
-            )
-            / F.sum("sales_amt"),
-            4,
-        ).alias("promo_share_of_spend"),
-        F.max("household_has_demographics").alias("has_demographics"),
-        F.min("transaction_date").alias("first_seen_date"),
-        F.max("transaction_date").alias("last_seen_date"),
+    return (
+        fact.groupBy("household_key")
+        .agg(
+            F.max("transaction_date").alias("_last_seen"),
+            F.countDistinct("basket_id").alias("frequency_baskets"),
+            F.round(F.sum("sales_amt"), 2).alias("monetary_amt"),
+            F.round(F.sum("sales_amt") / F.countDistinct("basket_id"), 2).alias("avg_basket_amt"),
+            F.countDistinct("department").alias("distinct_departments"),
+            F.countDistinct("commodity_desc").alias("distinct_commodities"),
+            F.round(
+                F.sum(F.when(F.col("coupon_disc_amt") != 0, F.col("sales_amt")).otherwise(0))
+                / F.sum("sales_amt"),
+                4,
+            ).alias("coupon_share_of_spend"),
+            F.round(
+                F.sum(
+                    F.when(
+                        F.col("promo_exposure").isin("display", "mailer", "both"),
+                        F.col("sales_amt"),
+                    ).otherwise(0)
+                )
+                / F.sum("sales_amt"),
+                4,
+            ).alias("promo_share_of_spend"),
+            F.max("household_has_demographics").alias("has_demographics"),
+            F.min("transaction_date").alias("first_seen_date"),
+            F.max("transaction_date").alias("last_seen_date"),
+        )
+        .crossJoin(as_of)
+        .withColumn("recency_days", F.datediff(F.col("_as_of"), F.col("_last_seen")))
+        .drop("_as_of", "_last_seen")
+        .select(
+            "household_key",
+            "recency_days",
+            "frequency_baskets",
+            "monetary_amt",
+            "avg_basket_amt",
+            "distinct_departments",
+            "distinct_commodities",
+            "coupon_share_of_spend",
+            "promo_share_of_spend",
+            "has_demographics",
+            "first_seen_date",
+            "last_seen_date",
+        )
     )
 
 

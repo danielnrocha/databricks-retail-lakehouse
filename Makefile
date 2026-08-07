@@ -86,6 +86,14 @@ test-integration: ## Integration tests — requires an authenticated workspace
 test-slow: ## Workspace-mutating integration tests (ENV-005). Needs a clean tree.
 	$(VENV_DBC)/bin/pytest tests/integration -m slow
 
+.PHONY: governance
+governance: ## Publish the domain and KPI registers (GOV-003, MOD-005). CATALOG=dng_dev
+	$(VENV_DBC)/bin/python scripts/publish_governance.py --catalog $${CATALOG:-dng_dev}
+
+.PHONY: governance-check
+governance-check: ## Report governance drift without changing anything; non-zero on any gap
+	$(VENV_DBC)/bin/python scripts/publish_governance.py --catalog $${CATALOG:-dng_dev} --check
+
 .PHONY: check
 check: lint types trace test-unit ## Everything CI runs on a pull request
 

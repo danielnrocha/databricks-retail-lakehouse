@@ -35,7 +35,7 @@ the owning phase is open) · `WAIVED` (requires paid-tier features; see note).
 | MOD-002 | `tests/unit/test_scd2.py::test_no_overlapping_validity_windows` | unit | PASSING |
 | MOD-003 | `tests/unit/test_scd2.py::test_point_in_time_join_is_one_to_one` | unit | PASSING |
 | MOD-004 | `tests/integration/test_gold_determinism.py::test_rerun_produces_identical_checksums` | integration | PLANNED |
-| MOD-005 | `tests/unit/test_metrics_register.py::test_no_duplicate_kpi_definitions` | unit | PLANNED |
+| MOD-005 | `tests/unit/test_metrics_register.py::test_no_duplicate_kpi_definitions` | unit | PASSING |
 | MOD-006 | `tests/unit/test_naming_conventions.py::test_monetary_columns_declare_currency` | unit | PLANNED |
 | PRF-001 | `tests/integration/test_skew_lab.py::test_baseline_profile_shows_skew` | integration | PLANNED |
 | PRF-002 | `tests/integration/test_skew_lab.py::test_mitigation_reduces_task_time_ratio` | integration | PLANNED |
@@ -63,7 +63,7 @@ the owning phase is open) · `WAIVED` (requires paid-tier features; see note).
 | AGT-006 | `src/retail_lakehouse/agents/evaluate.py::gate` | integration | PASSING |
 | GOV-001 | `scripts/document_gold_columns.py::uncommented` | integration | PASSING |
 | GOV-002 | `tests/integration/test_governance.py::test_lineage_terminates_at_source` | integration | PLANNED |
-| GOV-003 | `tests/integration/test_governance.py::test_gold_tables_have_domain` | integration | PLANNED |
+| GOV-003 | `tests/integration/test_governance.py::test_gold_tables_have_domain` | integration | PASSING |
 | GOV-004 | `tests/integration/test_governance.py::test_metric_terms_in_glossary` | integration | PLANNED |
 
 ---

@@ -143,15 +143,76 @@ this section left state behind.
 
 ---
 
-## What this means for the two requirements
+## Both requirements are now implemented
 
-Neither GOV-003 nor MOD-005 needs a fallback, and neither is implemented yet. Both remain `PLANNED`
-in `specs/traceability.md`, now for an honest reason — the work is unwritten — rather than for the
-reason recorded before, which was that availability was unknown. The mechanism for each is settled:
+No fallback was built, because none was needed. `scripts/governance_register.py` is the committed
+source of truth and `scripts/publish_governance.py` applies it — idempotently, with `--check` as a
+gate that mutates nothing and exits non-zero on drift.
 
-- **GOV-003** — assign the governed `dng_domain` key to every gold table, assert exactly one value
-  per table from `information_schema.table_tags`, and assert the tag policy's allowed values match
-  the domain register. A bootstrap script must create the policy, or the requirement passes only on
-  the workspace where someone made it by hand.
-- **MOD-005** — one metric view per KPI, `table_type = METRIC_VIEW` asserted from
-  `information_schema`, and no two definitions sharing a measure expression.
+- **GOV-003** — five domains, seven gold assets, exactly one domain each. The script now *owns* the
+  `dng_domain` tag policy, which closes the gap in the previous section: the policy is created and
+  kept in sync from `DOMAINS` rather than existing because someone made it by hand.
+- **MOD-005** — two metric views, twelve KPIs. `mv_commercial` (8 measures over `fct_basket_line`)
+  and `mv_household_lifecycle` (4 over `agg_household_rfm`).
+
+### G2 — the shared fact has no business owner, and saying so is the design
+
+GOV-003 wants exactly one domain per asset. `fct_basket_line` genuinely serves all five North Star
+decisions, so any business domain named as its owner would be a fiction that survives until the
+first cross-domain change request. It is assigned to `commercial_core`, a shared/stewarded domain,
+and `gold_reconciliation` to `platform_operations` — an asset about the platform rather than about
+the business, kept separate so a reviewer filtering for business assets excludes it rather than
+finding a revenue-shaped table with no decision behind it.
+
+Worth admitting at this size: seven assets across five domains is close to one each, and a taxonomy
+only earns its keep once several assets share an owner. Here it documents intended ownership rather
+than organising a crowded catalog.
+
+### G3 — metric views are gold assets too
+
+`information_schema.tables` lists a metric view with `table_type = METRIC_VIEW`, so any GOV-003 scan
+over the gold schema picks them up. Publishing MOD-005 without registering its own output would
+have broken GOV-003 — the two requirements are coupled in a direction neither one mentions. The
+publish order in the script is metric-views-then-domains for the same reason: a view that does not
+exist yet cannot be tagged.
+
+## M2 — `units_sold` was measuring coupons, not units
+
+The first definition of `units_sold` was `SUM(quantity_units)`. It published, resolved and returned
+20,319,550 units across 21,479 baskets — **946 units per basket**, for a grocery chain.
+
+| | units | share |
+|---|---|---|
+| `COUPON/MISC ITEMS` (1,776 lines) | 20,064,652 | **98.7%** |
+| merchandise | 254,898 | 1.3% |
+
+Line-level median quantity is 1 and p99 is 10; the maximum is 48,073, all on `COUPON/MISC ITEMS`.
+On those rows the column carries a coupon face value, not a count of items. Excluding that
+commodity gives 254,898 units, **11.87 per basket**, which is a grocery basket.
+
+Stated explicitly because the two edits are indistinguishable from outside: **this corrects a
+definition that measured the wrong quantity — it does not move a threshold to obtain a nicer
+number.** The measurement was taken first, it is reproduced in the KPI's own definition text, and a
+reader can disagree with it.
+
+Nothing structural would have caught this. The measure was registered, published, unique, and
+returned a number. Only dividing it by baskets and knowing what a grocery basket looks like did.
+
+## M3 — non-additive measures are the argument for metric views
+
+`baskets` is `COUNT(DISTINCT basket_id)`. Sliced by `promo_exposure`:
+
+| exposure | baskets |
+|---|---|
+| not_promoted | 20,190 |
+| mailer | 8,665 |
+| display | 6,082 |
+| both | 4,995 |
+| unknown | 561 |
+| **sum of slices** | **40,493** |
+| **true total** | **21,479** |
+
+One basket contains lines in several exposure buckets, so the slices overlap. A pre-aggregated
+basket count would be correct at its own grain and silently wrong at every other — the metric view
+re-derives it from the fact per grouping instead. This is the concrete reason MOD-005 asks for a
+governed metric definition rather than a well-named summary table.
