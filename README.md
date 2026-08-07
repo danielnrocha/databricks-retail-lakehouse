@@ -131,13 +131,14 @@ suite that needs a workspace is a unit suite that gets skipped.
 ```
 docs/
   00-north-star.md          business decisions, staged failure modes, NFRs
+  decision-log.md           chronological, including every reversal
   adr/                      architecture decision records
-  architecture/             design detail, perf evidence, production delta
-  runbooks/                 what to do when it breaks
+  architecture/             findings, perf evidence, production delta
+  mentoring/                session plan and break-and-fix exercises
+  quality/                  DQX candidates and the human review of each
 specs/
   REQUIREMENTS.md           numbered, testable requirements
   traceability.md           requirement -> test, CI-enforced
-  mentoring/                session plan and break-and-fix exercises
 src/retail_lakehouse/       bronze · silver · gold · quality · perf
 generator/                  distribution-preserving synthetic amplifier
 resources/                  bundle resource definitions
