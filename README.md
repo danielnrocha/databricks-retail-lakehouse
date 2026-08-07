@@ -10,21 +10,35 @@ so the fixes can be measured rather than claimed.
 
 ---
 
-## What is actually here
+## What is actually built, and what is not
 
-| Area | What it demonstrates |
+This table is split on purpose. A portfolio README that lists intentions alongside results is
+making the reader do the verification, and this project's whole argument is that verification is
+the author's job.
+
+**Built and measured:**
+
+| Area | What it demonstrates | Evidence |
+|---|---|---|
+| **Ingestion** | Auto Loader with schema evolution and `_rescued_data`; Lakeflow Spark Declarative Pipelines; 200,000 events, zero loss | [bronze-findings](docs/architecture/bronze-findings.md) |
+| **Modelling** | SCD Type 2 via `AUTO CDC`, and the point-in-time join that stops it inflating revenue by 1.706% | [silver](docs/architecture/silver-findings.md) · [gold](docs/architecture/gold-findings.md) |
+| **Data quality** | DQX profiling as *candidates* + reviewed rules; quarantine with reason codes; row conservation asserted per run | [rule-review](docs/quality/rule-review.md) |
+| **Performance** | Skew and spill measured on real distributions across 84 runs, each traceable to a `statement_id` | [perf-lab](docs/architecture/perf-lab.md) |
+| **CI/CD** | Bundles with three catalog environments, GitHub Actions, no literal catalog in `src/` | [ci.yml](.github/workflows/ci.yml) |
+
+**Not built.** Named rather than implied, because an unstated gap reads as an oversight:
+
+| Area | Status |
 |---|---|
-| **Ingestion** | Auto Loader with schema evolution and `_rescued_data`; Lakeflow Spark Declarative Pipelines; CDC from Lakebase Postgres; idempotent replay handling |
-| **Modelling** | SCD Type 2 via `AUTO CDC` — plus the point-in-time join test that catches the fan-out bug most SCD2 implementations ship with |
-| **Data quality** | Two layers: DQX (profiling + PySpark rules) and Unity-Catalog-governed expectations; quarantine with reason codes; row conservation asserted, never assumed |
-| **Performance** | Skew, shuffle explosion, and small files induced deliberately, diagnosed from the Spark UI, fixed, and measured before/after |
-| **Streaming** | Real-time only where a business decision degrades without it — with a reconciliation table that makes the streaming/batch divergence observable instead of a rumour |
-| **ML** | MLflow 3 experiments, Unity Catalog model registry, a promotion gate against a naive baseline, data-drift vs model-drift separation |
-| **Agents** | Databricks managed MCP for grounding, MLflow 3 tracing, LLM-as-judge evaluation gating deployment, and an agent that declines rather than guesses |
-| **CI/CD** | Declarative Automation Bundles, three environments as catalogs, GitHub Actions, a reproducibility test that deploys to a throwaway catalog and diffs against a golden fixture |
-| **Governance** | Unity Catalog Metrics as governed KPI objects, column-level documentation enforced by test, lineage from gold back to source |
+| ML / MLflow 3 | Requirements written (`MLR-001..006`), nothing implemented |
+| Agentic layer / managed MCP | Requirements written (`AGT-001..006`), nothing implemented |
+| Lakebase CDC | Designed in ADR-0005, not wired |
+| Unity Catalog Metrics · Domains | Availability on Free Edition unverified |
+| `GOV-001` column documentation | **Fails** — 9 of 22 gold columns uncommented; see [G3](docs/architecture/gold-findings.md) |
 
----
+`specs/traceability.md` is the authoritative count: **10 of 53 requirements proven.** Everything
+else reads `PLANNED`, and that file is the single source of truth for the difference between what
+is written and what is shown.
 
 ---
 
@@ -44,7 +58,7 @@ Read in this order. The code will not make sense without the first two.
    to serve, and the engineering problems staged on purpose.
 2. **[docs/adr/](docs/adr/)** — every contested decision, with the alternatives that were rejected
    and why, plus a reversal-cost field on each.
-3. **[specs/REQUIREMENTS.md](specs/REQUIREMENTS.md)** — 48 numbered, testable requirements.
+3. **[specs/REQUIREMENTS.md](specs/REQUIREMENTS.md)** — 53 numbered, testable requirements.
 4. **[specs/traceability.md](specs/traceability.md)** — requirement → test mapping, enforced in CI
    by [`scripts/check_traceability.py`](scripts/check_traceability.py). A requirement with no test
    row fails the build.
@@ -58,9 +72,13 @@ two years of basket-level grocery transactions across 2,500 households, with pro
 household demographics, campaigns, coupons, redemptions, and in-store promotion exposure.
 
 It is used as a **seed**, not as the whole story. `generator/` resamples its empirical
-distributions to produce a continuous event stream at arbitrary volume, and injects five stress
-scenarios (store skew, small files, late arrival, schema drift, duplicate CDC delivery) that the
-seed is too small to exhibit.
+distributions to produce a continuous event stream at arbitrary volume, and injects the arrival
+pathologies the seed cannot exhibit: small files, late arrival, schema drift, duplicate delivery.
+
+It deliberately does **not** inject skew. Profiling found the seed's own skew is severe — the top
+10% of stores carry 69.3% of transaction lines, max/median 2,519x — so manufacturing more would
+have produced a mitigation validated only against invented distributions. See the amendment on
+[ADR-0003](docs/adr/ADR-0003-dataset-selection.md).
 
 The honesty constraint that makes this defensible: **models are trained on amplified data and
 evaluated exclusively on held-out real seed data.** A model trained on data generated by a rule you
@@ -119,11 +137,13 @@ docs/
 specs/
   REQUIREMENTS.md           numbered, testable requirements
   traceability.md           requirement -> test, CI-enforced
-src/retail_lakehouse/       bronze · silver · gold · quality · ml · agents · common
+  mentoring/                session plan and break-and-fix exercises
+src/retail_lakehouse/       bronze · silver · gold · quality · perf
 generator/                  distribution-preserving synthetic amplifier
-resources/                  bundle resource definitions (jobs, pipelines)
-tests/unit/                 no workspace required
+resources/                  bundle resource definitions
+tests/unit/                 no workspace required (63 tests)
 tests/integration/          requires an authenticated workspace
+data/perf/                  84 measured runs, each with its statement_id
 scripts/                    gates and operational tooling
 ```
 
