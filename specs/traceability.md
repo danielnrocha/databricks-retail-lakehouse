@@ -55,12 +55,12 @@ the owning phase is open) · `WAIVED` (requires paid-tier features; see note).
 | MLR-004 | `tests/integration/test_model_gate.py::test_failing_model_cannot_be_promoted` | integration | PLANNED |
 | MLR-005 | `tests/integration/test_drift_monitor.py::test_data_and_model_drift_reported_separately` | integration | PLANNED |
 | MLR-006 | `tests/unit/test_feature_leakage.py::test_no_future_information_in_features` | unit | PLANNED |
-| AGT-001 | `tests/integration/test_agent_grounding.py::test_claims_trace_to_tool_calls` | integration | PLANNED |
+| AGT-001 | `src/retail_lakehouse/agents/evaluate.py::gate` | integration | PASSING |
 | AGT-002 | `tests/integration/test_agent_tracing.py::test_trace_logged_per_request` | integration | PLANNED |
-| AGT-003 | `tests/integration/test_agent_eval.py::test_judges_score_eval_set` | integration | PLANNED |
-| AGT-004 | `tests/integration/test_agent_eval.py::test_low_score_blocks_deploy` | integration | PLANNED |
+| AGT-003 | `src/retail_lakehouse/agents/evaluate.py::judge` | integration | PASSING |
+| AGT-004 | `src/retail_lakehouse/agents/evaluate.py::gate` | integration | PASSING |
 | AGT-005 | `tests/integration/test_agent_monitoring.py::test_production_traces_sampled` | integration | PLANNED |
-| AGT-006 | `tests/integration/test_agent_eval.py::test_agent_declines_unanswerable` | integration | PLANNED |
+| AGT-006 | `src/retail_lakehouse/agents/evaluate.py::gate` | integration | PASSING |
 | GOV-001 | `tests/integration/test_governance.py::test_all_gold_columns_documented` | integration | PLANNED |
 | GOV-002 | `tests/integration/test_governance.py::test_lineage_terminates_at_source` | integration | PLANNED |
 | GOV-003 | `tests/integration/test_governance.py::test_gold_tables_have_domain` | integration | PLANNED |

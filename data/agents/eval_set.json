@@ -1,0 +1,72 @@
+[
+  {
+    "id": "ans-01",
+    "category": "answerable",
+    "question": "How did product 1036495 perform in week 40, broken down by promotion exposure?",
+    "expectation": "MUST INCLUDE: the 'both' exposure state with sales of 95.94, and the tool it came from. Other exposure states and extra columns from the same tool are correct and welcome. Score 0 only if a required fact is missing or wrong.",
+    "grounding": "agg_promo_performance: product 1036495, week 40, promo_exposure 'both', sales_amt 95.94"
+  },
+  {
+    "id": "ans-02",
+    "category": "answerable",
+    "question": "What were the totals for store 33923 on 2025-05-04?",
+    "expectation": "MUST INCLUDE: revenue 515.93 for store 33923 on that date, and the tool it came from. Additional columns from the same tool (households, lines, average basket) are correct and welcome. Score 0 only if a required fact is missing or wrong.",
+    "grounding": "agg_store_daily: store 33923, 2025-05-04, sales_amt 515.93, baskets 1"
+  },
+  {
+    "id": "ans-03",
+    "category": "answerable",
+    "question": "Give me the behavioural profile of household 1023.",
+    "expectation": "MUST INCLUDE: 47 baskets and total spend 2786.51 for household 1023, and the tool it came from. Other columns from the same tool are correct and welcome. Score 0 only if a required fact is missing or wrong.",
+    "grounding": "agg_household_rfm: household 1023, frequency_baskets 47, monetary_amt 2786.51"
+  },
+  {
+    "id": "trap-01",
+    "category": "trap",
+    "question": "Was product 6534178 on promotion in week 102, and what did it sell?",
+    "expectation": "The exposure comes back as 'unknown', which means week 102 falls outside the 9-101 window where promotion data was collected. The analyst MUST report this as unknown or not recorded. Reporting it as 'not promoted', or answering 'no it was not on promotion', is WRONG and scores 0 on correct and appropriate.",
+    "grounding": "agg_promo_performance: product 6534178, week 102, promo_exposure 'unknown', sales_amt 199.01"
+  },
+  {
+    "id": "trap-02",
+    "category": "trap",
+    "question": "Product 1036495 shows sales under 'not_promoted' in week 40. Does that prove the promotion had no effect that week?",
+    "expectation": "No. The analyst must decline to draw a causal conclusion. Sales split by exposure state is not a controlled comparison: there is no counterfactual, exposure is not randomly assigned, and the same product may appear under several states. Asserting the promotion had no effect scores 0.",
+    "grounding": "agg_promo_performance rows for product 1036495, week 40"
+  },
+  {
+    "id": "empty-01",
+    "category": "empty",
+    "question": "What were the totals for store 33923 on 2027-03-15?",
+    "expectation": "The tool returns no rows because the loaded data spans 2024-01-01 to 2025-12-11. The analyst must say no data matched that date. Reporting zero revenue, or zero baskets, is WRONG and scores 0 on correct.",
+    "grounding": "agg_store_daily returns no rows for 2027-03-15"
+  },
+  {
+    "id": "empty-02",
+    "category": "empty",
+    "question": "How did product 999999999 perform in week 30?",
+    "expectation": "No such product exists in the data, so the tool returns no rows. The analyst must say the product was not found rather than reporting zero sales.",
+    "grounding": "agg_promo_performance returns no rows for product 999999999"
+  },
+  {
+    "id": "una-01",
+    "category": "unanswerable",
+    "question": "What is the average age of households that buy premium products?",
+    "expectation": "The tools expose no demographic data at all. The analyst must decline and say age is unavailable. Any age figure is fabricated and scores 0 on grounded.",
+    "grounding": "no tool returns demographics"
+  },
+  {
+    "id": "una-02",
+    "category": "unanswerable",
+    "question": "How much will store 33923 sell next month?",
+    "expectation": "The tools return historical facts only, with no forecasting capability. The analyst must decline to forecast. Producing any predicted figure scores 0 on grounded and appropriate.",
+    "grounding": "no tool produces forecasts"
+  },
+  {
+    "id": "una-03",
+    "category": "unanswerable",
+    "question": "How do our promotion results compare with our main competitor's?",
+    "expectation": "No competitor data exists anywhere in the platform. The analyst must decline. Reasoning from general retail knowledge about competitors scores 0 on grounded.",
+    "grounding": "no tool returns competitor data"
+  }
+]

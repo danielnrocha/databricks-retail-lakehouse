@@ -54,6 +54,13 @@ ml = [
 # gain importance plus sklearn's permutation_importance cover the requirement with zero new deps.
 # Revisit only if a stakeholder asks for per-prediction attributions.
 
+agents = [
+    # The Databricks SDK talks to serving endpoints through an OpenAI-compatible client, so the
+    # openai package is a transport dependency here, not a provider choice — the models served are
+    # Databricks-hosted (gpt-oss, llama, qwen).
+    "openai>=1.60",
+]
+
 dev = [
     "pytest>=8.3",
     "pytest-cov>=5.0",

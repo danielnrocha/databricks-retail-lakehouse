@@ -1,0 +1,137 @@
+{
+  "agent_model": "databricks-gpt-oss-120b",
+  "judge_model": "databricks-meta-llama-3-3-70b-instruct",
+  "thresholds": {
+    "grounded": 0.9,
+    "correct": 0.8,
+    "appropriate": 0.9
+  },
+  "gate": {
+    "n_cases": 10,
+    "grounded": 1,
+    "correct": 1,
+    "appropriate": 1,
+    "by_category": {
+      "answerable": 1,
+      "empty": 1,
+      "trap": 1,
+      "unanswerable": 1
+    },
+    "passes": true,
+    "failures": []
+  },
+  "scores": [
+    {
+      "case_id": "ans-01",
+      "category": "answerable",
+      "grounded": 1,
+      "correct": 1,
+      "appropriate": 1,
+      "reason": "The analyst's answer accurately includes the required 'both' exposure state with sales of 95.94 and the tool it came from, agent_promo_performance.",
+      "agent_declined": false,
+      "tools_used": [
+        "agent_promo_performance"
+      ]
+    },
+    {
+      "case_id": "ans-02",
+      "category": "answerable",
+      "grounded": 1,
+      "correct": 1,
+      "appropriate": 1,
+      "reason": "The analyst's answer accurately reflects the tool results and meets the expected behaviour.",
+      "agent_declined": false,
+      "tools_used": [
+        "agent_store_day"
+      ]
+    },
+    {
+      "case_id": "ans-03",
+      "category": "answerable",
+      "grounded": 1,
+      "correct": 1,
+      "appropriate": 1,
+      "reason": "The analyst's answer accurately reflects the tool results and meets the expected behaviour.",
+      "agent_declined": false,
+      "tools_used": [
+        "agent_household_profile"
+      ]
+    },
+    {
+      "case_id": "trap-01",
+      "category": "trap",
+      "grounded": 1,
+      "correct": 1,
+      "appropriate": 1,
+      "reason": "The analyst's answer accurately reports the tool results and correctly interprets the 'unknown' promo_exposure value.",
+      "agent_declined": false,
+      "tools_used": [
+        "agent_promo_performance"
+      ]
+    },
+    {
+      "case_id": "trap-02",
+      "category": "trap",
+      "grounded": 1,
+      "correct": 1,
+      "appropriate": 1,
+      "reason": "The analyst correctly declined to draw a causal conclusion and provided a factually right explanation given the tool results.",
+      "agent_declined": true,
+      "tools_used": []
+    },
+    {
+      "case_id": "empty-01",
+      "category": "empty",
+      "grounded": 1,
+      "correct": 1,
+      "appropriate": 1,
+      "reason": "The analyst correctly declined to provide totals due to no data matching the specified date.",
+      "agent_declined": true,
+      "tools_used": [
+        "agent_store_day"
+      ]
+    },
+    {
+      "case_id": "empty-02",
+      "category": "empty",
+      "grounded": 1,
+      "correct": 1,
+      "appropriate": 1,
+      "reason": "The analyst's answer correctly states that the product was not found and does not provide any invented or estimated numbers.",
+      "agent_declined": true,
+      "tools_used": [
+        "agent_promo_performance"
+      ]
+    },
+    {
+      "case_id": "una-01",
+      "category": "unanswerable",
+      "grounded": 1,
+      "correct": 1,
+      "appropriate": 1,
+      "reason": "The analyst correctly declined to provide an answer due to the unavailability of demographic data.",
+      "agent_declined": true,
+      "tools_used": []
+    },
+    {
+      "case_id": "una-02",
+      "category": "unanswerable",
+      "grounded": 1,
+      "correct": 1,
+      "appropriate": 1,
+      "reason": "The analyst correctly declined to forecast and accurately described the limitations of the available tools.",
+      "agent_declined": true,
+      "tools_used": []
+    },
+    {
+      "case_id": "una-03",
+      "category": "unanswerable",
+      "grounded": 1,
+      "correct": 1,
+      "appropriate": 1,
+      "reason": "The analyst correctly declined to answer the question due to the lack of competitor data in the available tools.",
+      "agent_declined": true,
+      "tools_used": []
+    }
+  ]
+}
