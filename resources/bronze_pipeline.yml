@@ -1,10 +1,14 @@
-# Bronze ingest pipeline.
+# The medallion pipeline. The filename still says bronze; the graph no longer does.
 #
 # Free Edition allows ONE active pipeline per pipeline type per account. That is a hard
 # constraint with no elegant workaround, and it shapes the design: bronze, silver and gold live
 # in one pipeline graph rather than three independently schedulable ones. On a paid tier they
 # would be split, because independent failure domains and independent schedules are worth real
 # money — see docs/architecture/production-delta.md.
+#
+# One consequence is visible in `libraries` below and is worth naming: because everything shares
+# a graph, a silver defect fails the bronze ingest too. That is the cost of the constraint, not a
+# design preference, and pretending otherwise would misrepresent what this deployment proves.
 
 resources:
   pipelines:
@@ -36,10 +40,22 @@ resources:
         dng.events_landing: ${var.events_landing}
         dng.schema_location: ${var.events_landing}/_schema
         dng.sample_pct: ${var.sample_pct}
+        # Seed volume holding the dunnhumby dimension sources. Composed from var.catalog rather
+        # than declared as its own variable, so it cannot drift out of step with the environment
+        # the rest of the pipeline writes to (ADR-0002).
+        dng.seed: /Volumes/${var.catalog}/bronze/seed
 
       libraries:
         - glob:
             include: ../src/retail_lakehouse/bronze/**
+        # `silver/pipeline/**`, not `silver/**`. The subdirectory exists purely so this glob can
+        # exclude `silver/lib/`, which holds the pure Spark helpers the unit suite imports and
+        # which must never be executed as part of the graph. Two API constraints force the shape:
+        # single-asterisk patterns are rejected outright ("Use a double asterisk"), and a
+        # `libraries` list may contain globs or explicit file entries but not both — so
+        # enumerating the silver modules alongside the bronze glob is not available either.
+        - glob:
+            include: ../src/retail_lakehouse/silver/pipeline/**
 
       # Pipeline event log as a governed table rather than a UI-only artifact. Without this,
       # "what did the pipeline do last Tuesday?" is answerable only by clicking, and every

@@ -1,0 +1,279 @@
+# DQX profiler output — CANDIDATES ONLY. NOTHING HERE IS ENFORCED.
+#
+# Regenerate with:
+#   PYTHONPATH=src python -m retail_lakehouse.quality.profile_candidates --source <extract.parquet>
+#
+# This file is machine-written. Do not hand-edit it: edits would make the next regeneration look
+# like a change in the data when it was a change in the file.
+#
+# The review decision for every candidate below lives in docs/quality/rule-review.md, and the
+# rules actually enforced live in src/retail_lakehouse/quality/rules.py. QLT-005 is the assertion
+# that no candidate crosses that gap without a recorded decision; the test that enforces it is
+# tests/unit/test_quality_rules.py::test_generated_rules_require_review.
+#
+# The reason this gate exists is visible in the candidates themselves: the profiler derives a
+# bounded range for quantity_units from the interquartile spread, and that rule would quarantine
+# legitimate revenue, because weight-priced items express quantity in grams and reach five figures
+# (finding F6 in docs/architecture/dataset-findings.md).
+provenance:
+  generated_at: '2026-08-06T23:45:20+00:00'
+  generator: databricks-labs-dqx DQProfiler + DQGenerator
+  source_extract: bronze_events.parquet
+  rows_profiled: 200000
+  target_dataset: silver.fact_basket_line
+status: "UNREVIEWED \u2014 NOT APPLIED"
+column_summary:
+  event_id:
+    count: 1000
+    mean: null
+    stddev: null
+    min: null
+    25%: null
+    75%: null
+    max: null
+  store_id:
+    count: 1000
+    mean: 5998.994
+    stddev: 12225.364353406309
+    min: 27
+    25%: 346
+    75%: 438
+    max: 34280
+  product_id:
+    count: 1000
+    mean: 3124071.707
+    stddev: 4075622.9921575226
+    min: 562939
+    25%: 914513
+    75%: 1137507
+    max: 15350941
+  household_key:
+    count: 1000
+    mean: 1402.267
+    stddev: 686.9905703535928
+    min: 13
+    25%: 806
+    75%: 1922
+    max: 2490
+  week_no:
+    count: 1000
+    mean: 57.22
+    stddev: 26.649123358485475
+    min: 5
+    25%: 35
+    75%: 83
+    max: 102
+  quantity_units:
+    count: 1000
+    mean: 119.913
+    stddev: 1257.9674031621084
+    min: 0.0
+    25%: 1.0
+    75%: 1.0
+    max: 3893.8152094863253
+  transaction_time_hhmm:
+    count: 1000
+    mean: 1573.197
+    stddev: 359.3759608992683
+    min: 495
+    25%: 1250
+    75%: 1903
+    max: 2355
+  sales_amt:
+    count: 1000
+    mean: 3.00830999999999
+    stddev: 3.549110427801411
+    min: 0.0
+    25%: 1.24
+    75%: 3.49
+    max: 13.655641283404222
+  retail_disc_amt:
+    count: 1000
+    mean: -0.5246400000000001
+    stddev: 1.2343703417291507
+    min: -4.227751025187452
+    25%: -0.62
+    75%: 0.0
+    max: 0.0
+  coupon_disc_amt:
+    count: 1000
+    mean: -0.012750000000000001
+    stddev: 0.1418804692956982
+    min: -0.4383914078870946
+    25%: 0.0
+    75%: 0.0
+    max: 0.0
+  coupon_match_disc_amt:
+    count: 1000
+    mean: -0.00515
+    stddev: 0.05146480473222573
+    min: -0.15954441419667717
+    25%: 0.0
+    75%: 0.0
+    max: 0.0
+  transaction_ts:
+    count: 1000
+    min: '2024-01-30 00:00:00+00:00'
+    max: '2025-12-12 00:00:00+00:00'
+candidate_checks:
+- check:
+    function: is_not_null_and_not_empty
+    arguments:
+      column: event_id
+      trim_strings: true
+  name: event_id_is_null_or_empty
+  criticality: error
+- check:
+    function: is_not_null
+    arguments:
+      column: store_id
+  name: store_id_is_null
+  criticality: error
+- check:
+    function: is_in_range
+    arguments:
+      column: store_id
+      min_limit: 27
+      max_limit: 34280
+  name: store_id_isnt_in_range
+  criticality: error
+- check:
+    function: is_not_null
+    arguments:
+      column: product_id
+  name: product_id_is_null
+  criticality: error
+- check:
+    function: is_in_range
+    arguments:
+      column: product_id
+      min_limit: 562939
+      max_limit: 15350941
+  name: product_id_isnt_in_range
+  criticality: error
+- check:
+    function: is_not_null
+    arguments:
+      column: household_key
+  name: household_key_is_null
+  criticality: error
+- check:
+    function: is_in_range
+    arguments:
+      column: household_key
+      min_limit: 13
+      max_limit: 2490
+  name: household_key_isnt_in_range
+  criticality: error
+- check:
+    function: is_not_null
+    arguments:
+      column: week_no
+  name: week_no_is_null
+  criticality: error
+- check:
+    function: is_in_range
+    arguments:
+      column: week_no
+      min_limit: 5
+      max_limit: 102
+  name: week_no_isnt_in_range
+  criticality: error
+- check:
+    function: is_not_null
+    arguments:
+      column: quantity_units
+  name: quantity_units_is_null
+  criticality: error
+- check:
+    function: is_in_range
+    arguments:
+      column: quantity_units
+      min_limit: 0.0
+      max_limit: 3893.8152094863253
+  name: quantity_units_isnt_in_range
+  criticality: error
+- check:
+    function: is_not_null
+    arguments:
+      column: transaction_time_hhmm
+  name: transaction_time_hhmm_is_null
+  criticality: error
+- check:
+    function: is_in_range
+    arguments:
+      column: transaction_time_hhmm
+      min_limit: 495
+      max_limit: 2355
+  name: transaction_time_hhmm_isnt_in_range
+  criticality: error
+- check:
+    function: is_not_null
+    arguments:
+      column: sales_amt
+  name: sales_amt_is_null
+  criticality: error
+- check:
+    function: is_in_range
+    arguments:
+      column: sales_amt
+      min_limit: 0.0
+      max_limit: 13.655641283404222
+  name: sales_amt_isnt_in_range
+  criticality: error
+- check:
+    function: is_not_null
+    arguments:
+      column: retail_disc_amt
+  name: retail_disc_amt_is_null
+  criticality: error
+- check:
+    function: is_in_range
+    arguments:
+      column: retail_disc_amt
+      min_limit: -4.227751025187452
+      max_limit: 0.0
+  name: retail_disc_amt_isnt_in_range
+  criticality: error
+- check:
+    function: is_not_null
+    arguments:
+      column: coupon_disc_amt
+  name: coupon_disc_amt_is_null
+  criticality: error
+- check:
+    function: is_in_range
+    arguments:
+      column: coupon_disc_amt
+      min_limit: -0.4383914078870946
+      max_limit: 0.0
+  name: coupon_disc_amt_isnt_in_range
+  criticality: error
+- check:
+    function: is_not_null
+    arguments:
+      column: coupon_match_disc_amt
+  name: coupon_match_disc_amt_is_null
+  criticality: error
+- check:
+    function: is_in_range
+    arguments:
+      column: coupon_match_disc_amt
+      min_limit: -0.15954441419667717
+      max_limit: 0.0
+  name: coupon_match_disc_amt_isnt_in_range
+  criticality: error
+- check:
+    function: is_not_null
+    arguments:
+      column: transaction_ts
+  name: transaction_ts_is_null
+  criticality: error
+- check:
+    function: is_in_range
+    arguments:
+      column: transaction_ts
+      min_limit: 2024-01-30T00:00:00.000000+0000
+      max_limit: 2025-12-12T00:00:00.000000+0000
+  name: transaction_ts_isnt_in_range
+  criticality: error

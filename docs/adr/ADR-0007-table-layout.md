@@ -64,8 +64,17 @@ means a full rewrite.
 | `bronze.basket_line_events` | `AUTO` | Ingest-only; let Databricks infer from query patterns rather than guess before any query exists. |
 | `silver.fact_basket_line` | `transaction_date`, `store_id` | The two predicates present in essentially every downstream query. |
 | `gold.fct_basket_line` | `date_key`, `product_key` | BI access is date-scoped then product-sliced. |
-| `silver.dim_product_scd2` | `product_id`, `is_current` | Point-in-time joins filter on both; see ADR-0008. |
+| `silver.dim_product_scd2` | `product_id`, `__START_AT` | Point-in-time joins predicate on the key and the validity window; see ADR-0008. |
 | `gold.promo_performance_rt` | `AUTO` | Streaming, small, query pattern still emerging. |
+
+> **Corrected 2026-08-06.** The `dim_product_scd2` row above originally specified
+> `(product_id, is_current)`. There is no `is_current` column: `AUTO CDC ... STORED AS SCD TYPE 2`
+> emits `__START_AT` / `__END_AT`, and currency is expressed as `__END_AT IS NULL`. The clustering
+> key now names what the point-in-time join actually predicates on.
+>
+> A worked example written before the code exists will contain a column that does not. The rule the
+> ADR states was right; the illustration was invented. Worth leaving visible, because an ADR is
+> trusted precisely to the extent its examples were checked against something real.
 
 Rules enforced by test (`tests/unit/test_table_properties.py`):
 
