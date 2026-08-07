@@ -10,8 +10,10 @@ This document records the staged re-run that was supposed to settle ING-003 and 
 landing volume and the schema location, upload only the files preceding the first drift point, run,
 then upload the next tranche and run again, so drift arrives in order.
 
-**Result: ING-003 is proven. ING-004 is not.** The experiment was stopped by a platform failure,
-not by a result, and that is recorded below rather than smoothed over.
+**Result: ING-003 and ING-004 are both proven.** It took eight pipeline updates rather than four,
+because six of them failed or stalled on platform capacity rather than on anything about the data.
+That detour is recorded below rather than smoothed out, because it is the part a reader would
+otherwise repeat.
 
 ---
 
@@ -40,18 +42,59 @@ and the 36.8M-row causal table on every tranche.
 | stage | files | rows | `_schema/_schemas/` | drift columns present | rescued rows |
 |---|---|---|---|---|---|
 | T1 pre-drift | 0–99 | 50,000 | `0` | `trans_time` | 0 |
-| T2 additive | 100–199 | 100,000 | `0`, `1` | `trans_time`, `loyalty_tier` | 0 |
-| T3 rename | 200–299 | — | — | — | — |
-| T4 retype | 300–399 | — | — | — | — |
+| T2 additive | 100–199 | 100,000 | `0`, `1` | + `loyalty_tier` | 0 |
+| T3 rename | 200–299 | 150,000 | `0`, `1`, `2` | + `transaction_time` | 0 |
+| T4 retype | 300–399 | 200,000 | `0`, `1`, `2` | unchanged | **49,468** |
 
 **T1 is the control, and it is the part the backfill never had.** One schema version, 50,000 rows,
 `_rescued_data` null on every row, and no `loyalty_tier` anywhere. That is the state a backfill
 cannot produce, because the sample would already have seen the post-drift files.
 
-**T2 closes ING-003.** A second schema version appeared under `landing/_schema/_schemas/`, the new
-column is in the table, the pre-drift 50,000 rows are null for it, and the run completed. Additive
-drift did not fail the pipeline and was observable afterwards — which is the requirement, stated in
-the terms it was written in.
+**T2 and T3 close ING-003.** Each additive change produced a new version under
+`landing/_schema/_schemas/`, put the new column in the table, left the earlier rows null for it,
+and completed. Additive drift did not fail the pipeline and was observable afterwards — which is
+the requirement in the terms it was written in.
+
+**T4 closes ING-004**, and the number is worth more than the pass:
+
+```json
+{"quantity": "2 units", "_file_path": "/Volumes/dng_dev/bronze/landing/events-000304.json"}
+```
+
+The generator retypes `quantity` from a number to `"<n> units"` from event 150,000. Right column
+name, incompatible type — the case `_rescued_data` exists for, as distinct from the additive case,
+which evolves the schema instead.
+
+Row conservation holds exactly: 200,000 rows for 400 files × 500 events, matching
+`_manifest.json`'s `total_events`. ING-004 asks for the count to be preserved, and it is.
+
+### The rescued count was checked against the source, not just reported
+
+49,468 rescued rows out of a 50,000-event tranche is a 532-row shortfall, and a shortfall that
+looks like rounding is exactly the kind of number this project has been wrong about before. Counted
+directly from the files on disk:
+
+```
+source files 300-399: 50000 events, 49468 with string quantity
+```
+
+An exact match. The 532 are events emitted *before* index 150,000 that were held back by the
+late-arrival buffer and written into later files, so they carry the pre-drift numeric `quantity`
+and correctly do not rescue. The instrument agrees with the source; had it not, the plausible
+reading — "Auto Loader rescued about 99% of them" — would have been a fabricated explanation for a
+real defect.
+
+### What T3 shows that no requirement asks for
+
+`trans_time` and `transaction_time` are now **both** columns in the table, and both are non-null
+somewhere: `trans_time` for rows before event 100,000, `transaction_time` after. Nothing errored and
+nothing rescued, because a rename is not a type conflict — it is one column ending and another
+beginning.
+
+That is the failure `silver-findings.md` already records halving a dashboard's data with no error,
+visible here at its origin. A downstream query keyed on `trans_time` keeps returning rows and
+silently stops covering the recent half of the stream. It is the most dangerous of the three drift
+types and the only one that neither fails nor rescues.
 
 ## F-D1 — schema evolution presents as a **cancelled** update, not a failed or a completed one
 
@@ -81,7 +124,7 @@ This is a measurement-instrument failure of the same family as the others in thi
 harness was wrong about the shape of a correct result, and its output was indistinguishable from a
 real defect.
 
-## F-D2 — the experiment was stopped by platform capacity, and ING-004 is unproven
+## F-D2 — six of the eight updates failed on capacity, and "may be transient" was not
 
 T3 did not fail on data. It failed on initialisation, five consecutive times:
 
@@ -91,32 +134,40 @@ This issue may be transient. Try restarting your pipeline and contact Databricks
 if this issue persists.
 ```
 
-"May be transient" is what the message says; five identical failures in a row is what happened. A
-sixth attempt after a pause got further — it reached `SETTING_UP_TABLES`, cancelled with the
-schema-change signature above, and its auto-started successor then sat in `INITIALIZING` for over
-fifteen minutes. `databricks pipelines stop` timed out against it. The SQL warehouse stayed healthy
-throughout (`SELECT 1` returned immediately), so this is pipeline compute specifically, not the
-account.
+"May be transient" is what the message says; five identical failures in a row is what happened, and
+a message that describes a possibility is not evidence about the case in front of you. A sixth
+attempt after a pause reached `SETTING_UP_TABLES`, cancelled with the schema-change signature
+above, and its auto-started successor then sat in `INITIALIZING` for **over thirty-five minutes**.
+`databricks pipelines stop` timed out against it once, succeeded on a second call with a longer
+window, and the pipeline returned to `IDLE`.
 
-That matches a limitation already recorded in this project — an update stalling 49 minutes in
-`INITIALIZING`, with cancel-and-resubmit getting capacity immediately — and it is the reason the
-staged experiment stops here rather than continuing to burn a shared daily quota whose exhaustion
-takes all compute down until tomorrow.
+From `IDLE`, the identical T3 request completed in **52.5s** and T4 in **21.8s**. Nothing about the
+request changed. This is the limitation already recorded in this project — an update stalling 49
+minutes in `INITIALIZING` with cancel-and-resubmit getting capacity immediately — and the practical
+rule it implies is worth stating: **a Free Edition pipeline update that has not left `INITIALIZING`
+in a few minutes is waiting for capacity that is not coming. Cancel it and resubmit.** Retrying
+without cancelling produced five failures and one thirty-five-minute stall; cancelling produced a
+result in under a minute.
 
-**Consequences, stated plainly:**
+The SQL warehouse answered `SELECT 1` immediately throughout, which is how the fault was localised
+to pipeline compute rather than to the account or its quota. Worth doing before concluding "the
+environment is down", because the two have the same symptom from inside a pipeline.
 
-- **ING-003** — additive drift does not fail the pipeline. **Proven** at T2.
-- **ING-004** — a type-incompatible field lands in `_rescued_data` with the row count preserved.
-  **Not proven.** It needs T4, and T4 needs the retype tranche to be ingested.
-- The rename case (T3) is also unmeasured. It is interesting for a reason ING-003 does not cover:
-  a rename is an *addition plus a disappearance*, so the old column silently becomes null for new
-  rows rather than erroring. That is the failure mode `silver-findings.md` already records halving
-  a dashboard's data with no error, and it deserves its own measurement.
+## The state the workspace is left in
 
-`_rescued_data` remaining at zero here is **not** evidence that nothing is rescued. It is evidence
-that the tranche which would populate it was never ingested. The distinction matters because a zero
-that has not been earned reads exactly like a clean result — the same trap as the drift scenario
-that never fired at 200k events, recorded in the decision log on 2026-08-06.
+Deliberately not reverted, because this *is* the correct end state of the experiment.
+
+| | |
+|---|---|
+| `/Volumes/dng_dev/bronze/landing` | all 400 event files, re-uploaded in tranche order. `_manifest.json` was deleted with the rest and is regenerable from `data/generated/stress/`. |
+| `landing/_schema/_schemas/` | versions `0`, `1`, `2` |
+| `dng_dev.bronze.basket_line_events_raw` | 200,000 rows; 49,468 with non-null `_rescued_data`; `trans_time`, `loyalty_tier` and `transaction_time` all present |
+| pipeline `c677bdef` | `IDLE` |
+| source files | all 400 remain in `data/generated/stress/` |
+
+This replaces the state Finding B1 described, where a backfill had produced one schema version and
+zero rescued rows across the same 200,000 events. Same input, same pipeline, different arrival
+order, opposite result — which is the whole point of B1 and now has both halves on record.
 
 ## Reproducing
 

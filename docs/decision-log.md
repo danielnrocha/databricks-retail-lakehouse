@@ -157,6 +157,38 @@ them ends up being the copy that does not check.
 
 ---
 
+### 2026-08-07 — **Correction:** ING-004 was not blocked; the pipeline needed cancelling, not retrying
+
+The entry below, written the same afternoon, concluded that ING-004 could not be proven on this
+tier. That conclusion was wrong, and the original text is kept because the reason it was wrong is
+the useful part.
+
+Once the stalled update was **cancelled** — not retried — the pipeline returned to `IDLE` and the
+identical T3 request completed in 52.5s and T4 in 21.8s. Nothing about the request changed. Five
+`PYTHON_REPL_CREATION_FAILED` retries and a thirty-five-minute `INITIALIZING` stall had all been
+attempts to push through a queue that was never going to move; one cancel produced a result in
+under a minute. The rule this yields, which is now in
+[`architecture/drift-findings.md`](architecture/drift-findings.md) F-D2: **a Free Edition pipeline
+update that has not left `INITIALIZING` within a few minutes is waiting for capacity that is not
+coming — cancel and resubmit.** This project had already recorded a 49-minute stall with the same
+resolution and did not apply it.
+
+Results: T3 evolved to a third schema version with `transaction_time` present; T4 rescued **49,468
+rows** carrying `{"quantity": "2 units", …}`, with the row count preserved at exactly 200,000. Both
+requirements are now `PASSING` against `tests/integration/test_schema_drift.py`.
+
+The 49,468 was checked against the source rather than reported: files 300–399 hold 50,000 events of
+which exactly 49,468 carry a string `quantity`, the 532 difference being pre-retype events pushed
+into later files by the late-arrival buffer. The convenient explanation — "roughly all of them were
+rescued" — would have been an invented rationalisation for a number nobody had verified, and this
+project has now been wrong that way often enough that the check is not optional.
+
+What stands from the original entry: the harness finding about `CANCELED` (F-D1), and the warning
+that an unearned zero reads exactly like a clean result. The latter is what made the wrong
+conclusion legible as provisional rather than final.
+
+---
+
 ### 2026-08-07 — Staged ingestion proved ING-003 and was stopped by capacity before ING-004
 
 **Forced by:** Finding B1 — a backfill cannot demonstrate schema evolution, because Auto Loader

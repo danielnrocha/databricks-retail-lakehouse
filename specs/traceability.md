@@ -14,8 +14,8 @@ the owning phase is open) · `WAIVED` (requires paid-tier features; see note).
 |---|---|---|---|
 | ING-001 | `tests/integration/test_autoloader_incremental.py::test_second_run_processes_only_new_files` | integration | PLANNED |
 | ING-002 | `tests/unit/test_lineage_columns.py::test_bronze_lineage_columns_non_null` | unit | PLANNED |
-| ING-003 | `tests/integration/test_schema_drift.py::test_additive_column_survives` | integration | PLANNED |
-| ING-004 | `tests/integration/test_schema_drift.py::test_incompatible_field_lands_in_rescued_data` | integration | PLANNED |
+| ING-003 | `tests/integration/test_schema_drift.py::test_additive_column_survives` | integration | PASSING |
+| ING-004 | `tests/integration/test_schema_drift.py::test_incompatible_field_lands_in_rescued_data` | integration | PASSING |
 | ING-005 | `tests/integration/test_cdc_idempotency.py::test_replay_window_is_idempotent` | integration | PLANNED |
 | ING-006 | `tests/integration/test_watermark.py::test_late_within_watermark_is_counted` | integration | PLANNED |
 | ING-007 | `tests/integration/test_watermark.py::test_late_beyond_watermark_is_recorded_not_silent` | integration | PLANNED |
