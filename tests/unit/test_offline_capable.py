@@ -81,7 +81,7 @@ def empty_home(tmp_path: Path) -> Path:
 )
 def test_unit_suite_needs_no_workspace(empty_home: Path) -> None:
     """ENV-006. The entire unit suite, minus this file, with no route to a workspace."""
-    result = subprocess.run(  # noqa: S603
+    result = subprocess.run(
         [
             sys.executable,
             "-m",
@@ -139,7 +139,7 @@ def test_the_offline_environment_really_has_no_credentials(empty_home: Path) -> 
         "else:\n"
         "    print('AUTHENTICATED')\n"
     )
-    result = subprocess.run(  # noqa: S603
+    result = subprocess.run(
         [sys.executable, "-c", probe],
         cwd=REPO_ROOT,
         env=offline_environment(empty_home),

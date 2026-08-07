@@ -205,14 +205,11 @@ def test_no_literal_catalog_in_src() -> None:
     )
 
     unlisted = sorted(
-        {v.relative for v in all_violations() if v.path.resolve() not in shipped}
-        - set(QUARANTINE)
+        {v.relative for v in all_violations() if v.path.resolve() not in shipped} - set(QUARANTINE)
     )
     assert not unlisted, (
         "Literal catalog name in operator tooling that is not in the QUARANTINE ledger:\n\n"
-        + "\n".join(
-            f"  {v}" for v in all_violations() if v.relative in unlisted
-        )
+        + "\n".join(f"  {v}" for v in all_violations() if v.relative in unlisted)
         + "\n\nEither parameterise it, or add it to QUARANTINE with a reason a reviewer can "
         "disagree with. Adding it silently is the erosion ADR-0002 names."
     )
@@ -278,9 +275,7 @@ def test_scanner_ignores_prose() -> None:
     injection contract by name. If those tripped the scan, the rule would be turned off, and a
     disabled rule protects nothing.
     """
-    prose_only = "\n".join(
-        line for line in PLANTED.splitlines() if "SELECT * FROM" not in line
-    )
+    prose_only = "\n".join(line for line in PLANTED.splitlines() if "SELECT * FROM" not in line)
     assert scan_source(prose_only, Path("prose.py")) == []
 
 
