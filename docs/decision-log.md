@@ -157,6 +157,87 @@ them ends up being the copy that does not check.
 
 ---
 
+### 2026-08-07 — The prod bundle target had never validated, and nothing could have noticed
+
+**Forced by:** running `databricks bundle validate -t prod` for the first time, as the instrument
+for ENV-002.
+
+```
+Error: target with 'mode: production' cannot include a pipeline with 'development: true'
+```
+
+`resources/bronze_pipeline.yml` had pinned `development: true` since the file was written. Every
+prod deploy would have died at its first validate step. The reason it went unnoticed for the whole
+life of the file is worth more than the fix: CI's `bundle` job is gated on `vars.DATABRICKS_HOST
+!= ''`, that variable is unset, and a skipped job renders as a *green* check. The gate that would
+have caught this was configured in a way that made its absence look like success.
+
+The fix is to delete the field rather than to make it conditional. `mode: development` sets
+`pipelines_development: true` through its presets and `mode: production` leaves it false, so
+restating the value in the resource only created a way for the resource and the target to
+disagree. `test_no_pipeline_resource_pins_development_mode` now fails if it comes back.
+
+The general lesson, which is the second time this project has hit it: a gate whose skip condition
+is indistinguishable from a pass is not a gate. The traceability gate learned the same thing in a
+different shape on 2026-08-06.
+
+---
+
+### 2026-08-07 — The `test` target moved to `mode: production`
+
+**Forced by:** ENV-003 claiming more than the configuration supported.
+
+ENV-003 says "the deployed artifact is the tested artifact". Under `mode: development` the `test`
+target did not resolve to the same shape prod would receive. Measured, by diffing the resolved
+configurations leaf by leaf, eight keys existed only on test:
+
+| Key | test (before) | prod |
+|---|---|---|
+| `presets.name_prefix` | `[dev daniel_rocha] ` | absent |
+| `presets.pipelines_development` | `true` | absent |
+| `presets.trigger_pause_status` | `PAUSED` | absent |
+| `presets.jobs_max_concurrent_runs` | `4` | absent |
+| `presets.tags.dev` / `pipelines.*.tags.dev` | `daniel_rocha` | absent |
+| `bundle.deployment.lock.enabled` | `false` | absent (locking on) |
+| `pipelines.dng_medallion.development` | `true` | absent (false) |
+| `pipelines.dng_medallion.name` | `[dev daniel_rocha] dng-medallion-test` | `dng-medallion-prod` |
+
+Two of those change behaviour rather than labelling. A development-mode pipeline reuses compute
+between updates and does not retry, so a failure mode prod would recover from was never exercised
+on test. And the deployment lock — which serialises concurrent deploys — was off on test and on in
+prod, so the one target where two deploys could collide was the one without the guard.
+
+With `test` at `mode: production`, the two resolved configurations now differ *only* by a
+`test`→`prod` substring substitution, and every leaf path is present in both.
+`test_test_and_prod_differ_only_in_the_environment_axis` asserts exactly that, and it fails on
+the old configuration — checked, not assumed.
+
+The cost is accepted rather than waved away: production mode refuses to deploy a dirty tree, so
+`test` is no longer usable as an interactive edit-and-deploy loop. That loop is what `dev` is for.
+A promotion gate that accepts uncommitted changes is not a promotion gate.
+
+---
+
+### 2026-08-07 — An ENV-003 assertion passed while the property it named was false
+
+**Forced by:** running the negative control instead of trusting a green test.
+
+`test_the_tested_sha_is_an_output_of_the_test_deploy_not_a_constant` originally asserted that the
+step emitting `tested_sha` *contained* the string `git rev-parse HEAD`. Mutating the workflow so
+the emitted line read `echo "sha=$EXPECTED_SHA" >> "$GITHUB_OUTPUT"` — the exact defect the test
+exists to catch, an output recording what the workflow *intended* to check out rather than what it
+did — left the test green, because the derivation was still elsewhere in the same script.
+
+The strengthened version captures the variable assigned from `$(git rev-parse HEAD)` and requires
+that same variable to be the one written to `$GITHUB_OUTPUT`. Both mutations now fail.
+
+This is the third appearance of one pattern, and it is recorded again because the repetition is
+the finding: **an existence check inside the right step is still an existence check.** GEN-005 went
+green at 73% duplicates against a configured 0.5% for the same reason. The defence is not "write
+better assertions" — it is to run the mutation and watch the test fail before believing it.
+
+---
+
 ### 2026-08-06 — Catalogs are created via SQL DDL, not the Unity Catalog REST API
 
 **Forced by:** the REST path failing on an account with Default Storage.

@@ -44,8 +44,8 @@ the owning phase is open) · `WAIVED` (requires paid-tier features; see note).
 | PRF-005 | `tests/unit/test_perf_evidence_doc.py::test_every_claim_has_measurements` | unit | PASSING |
 | PRF-006 | `tests/unit/test_table_properties.py::test_po_and_manual_optimize_disjoint` | unit | PASSING |
 | ENV-001 | `tests/unit/test_no_hardcoded_catalog.py::test_no_literal_catalog_in_src` | unit | PASSING |
-| ENV-002 | `tests/integration/test_bundle_targets.py::test_test_target_writes_only_to_test_catalog` | integration | PLANNED |
-| ENV-003 | `tests/unit/test_deploy_provenance.py::test_prod_deploy_references_tested_sha` | unit | PLANNED |
+| ENV-002 | `tests/integration/test_bundle_targets.py::test_test_target_writes_only_to_test_catalog` | integration | PASSING |
+| ENV-003 | `tests/unit/test_deploy_provenance.py::test_prod_deploy_references_tested_sha` | unit | PASSING |
 | ENV-004 | `tests/integration/test_reproducibility.py::test_clean_deploy_matches_golden_fixture` | integration | PLANNED |
 | ENV-005 | `tests/integration/test_rollback.py::test_redeploy_prior_sha_restores_state` | integration | PLANNED |
 | ENV-006 | `tests/unit/test_offline_capable.py::test_unit_suite_needs_no_workspace` | unit | PASSING |

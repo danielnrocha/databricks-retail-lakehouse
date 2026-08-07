@@ -40,7 +40,20 @@ targets:
       host: https://dbc-b1debb7b-807a.cloud.databricks.com
 
   test:
-    mode: development
+    # `mode: production`, not `development`, even though this is not production.
+    #
+    # ENV-003 claims the deployed artifact is the tested artifact. Under `mode: development` the
+    # test target resolved to a materially different resource than prod would: the pipeline was
+    # named `[dev daniel_rocha] dng-medallion-test`, `development` was forced to `true`, and any
+    # trigger would have been force-PAUSED. `pipelines_development: true` is not cosmetic — a
+    # development-mode pipeline reuses compute between updates and does not retry — so a test
+    # deploy exercised a different failure behaviour from the one prod gets. That reduces the gate
+    # to "the same commit ran somewhere", which is a weaker claim than the requirement makes.
+    #
+    # The cost is real and is accepted: production mode refuses to deploy a dirty tree, so test is
+    # no longer usable as an interactive edit-and-deploy loop. That loop is what `dev` is for, and
+    # a promotion gate that accepts uncommitted changes is not a promotion gate.
+    mode: production
     variables:
       catalog: dng_test
       environment: test
@@ -48,6 +61,7 @@ targets:
       events_landing: /Volumes/dng_test/bronze/landing
     workspace:
       host: https://dbc-b1debb7b-807a.cloud.databricks.com
+      root_path: /Workspace/Users/daniel.rocha@dadosnagringa.com/.bundle/${bundle.name}/${bundle.target}
 
   prod:
     # `mode: production` is not cosmetic — it forbids the development-mode conveniences that

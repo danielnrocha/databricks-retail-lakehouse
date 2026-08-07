@@ -29,7 +29,18 @@ resources:
       # cost of a permanently-running one. Choosing the loosest trigger that satisfies the SLO is
       # the engineering decision; choosing the tightest is a reflex.
       continuous: false
-      development: true
+
+      # `development` is deliberately NOT set here. It used to be hardcoded `true`, which made
+      # `databricks bundle validate -t prod` fail outright:
+      #
+      #     Error: target with 'mode: production' cannot include a pipeline with 'development: true'
+      #
+      # That went unnoticed for the whole life of the file because the CI `bundle` job is gated on
+      # `vars.DATABRICKS_HOST != ''`, which is unset — so nothing had ever validated the prod
+      # target. Leaving the field out lets the target decide: `mode: development` sets
+      # `pipelines_development: true` through its presets, and `mode: production` leaves it false.
+      # Which is the point of bundle modes, and restating the value here only created a way for the
+      # resource and the target to disagree.
 
       channel: CURRENT
 
