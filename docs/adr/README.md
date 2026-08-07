@@ -30,7 +30,7 @@ started — writing them now would be fiction.
 | [0001](ADR-0001-spec-driven-agent-loop.md) | Spec-driven development with an adversarial agent loop | Accepted | Low |
 | 0006 | Two-layer data quality: DQX + UC-governed expectations | Pending (Phase 5) | Low |
 | 0008 | SCD Type 2 via AUTO CDC, not hand-written MERGE | Pending (Phase 5) | Medium |
-| 0009 | Declarative Automation Bundles + GitHub Actions | Pending (Phase 10) | Low |
+| [0009](ADR-0009-cicd.md) | Bundles deployed by GitHub Actions, dispatched by hand | Accepted | Low |
 | 0010 | MLflow 3 + Unity Catalog model registry + inference monitoring | Pending (Phase 8) | Low |
 | 0011 | Managed MCP for grounding; MLflow judges for evaluation | Pending (Phase 9) | Low |
 | 0012 | English as the primary documentation language | Accepted (below) | Low |
