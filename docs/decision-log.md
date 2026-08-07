@@ -157,6 +157,37 @@ them ends up being the copy that does not check.
 
 ---
 
+### 2026-08-07 — UC Domains and UC Metric Views are both available; four negative probes said otherwise
+
+**Forced by:** GOV-003 and MOD-005 having sat `PLANNED` with "availability unverified", which is a
+polite way of recording that nobody had run the command.
+
+Both features exist on Free Edition and both are enforced rather than cosmetic. A metric view
+refuses `SELECT measure_column` without `MEASURE()`; a governed domain tag refuses a value outside
+its policy's allowed list. Evidence in
+[`architecture/governance-findings.md`](architecture/governance-findings.md).
+
+The reason this is in the log rather than only in the findings file is the search that preceded it.
+Domains returned *nothing* from the CLI, nothing from the SDK, and `No API found` from four REST
+paths — `/api/2.1/unity-catalog/domains`, `/api/2.0/unity-catalog/domains`,
+`/api/2.1/unity-catalog/data-domains`, `/api/2.0/lineage-tracking/domains`. Four negative results
+agreeing with each other read like a conclusion. They were four spellings of one guess, and the
+feature was at `/api/2.0/domains` the whole time.
+
+The transferable rule: **agreement among probes is not independent evidence when the probes share
+an assumption.** Enumerate the surface before concluding from its silence. This is the same error
+as the perf lab's comment-based cache busting — 84 internally consistent runs, all meaningless —
+in a different costume.
+
+A second finding fell out of it and is a fault of this repository rather than the platform. The
+`dng_domain` tag policy and its domain record already existed in the workspace, created by hand at
+03:46 the same morning, described as "Business domain assignment for gold assets (GOV-003)".
+**No committed artifact creates them.** A fresh account following `make bootstrap` would not have
+them, so GOV-003 would have passed here and failed everywhere else — green on the author's machine
+only, which is worse than red.
+
+---
+
 ### 2026-08-07 — The prod bundle target had never validated, and nothing could have noticed
 
 **Forced by:** running `databricks bundle validate -t prod` for the first time, as the instrument
