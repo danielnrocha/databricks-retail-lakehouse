@@ -56,6 +56,8 @@ resources:
         # enumerating the silver modules alongside the bronze glob is not available either.
         - glob:
             include: ../src/retail_lakehouse/silver/pipeline/**
+        - glob:
+            include: ../src/retail_lakehouse/gold/pipeline/**
 
       # Pipeline event log as a governed table rather than a UI-only artifact. Without this,
       # "what did the pipeline do last Tuesday?" is answerable only by clicking, and every
