@@ -123,7 +123,13 @@ Código: Apache-2.0. Dados: dunnhumby *The Complete Journey*, CC BY 4.0.
 
 ## Diagrama
 
-`docs/diagrams/arquitetura-plataforma.excalidraw` — a plataforma inteira em uma página, em
-linguagem de negócio: por que existe, o caminho do dado, o que as pessoas usam, o que foi
-abandonado de propósito e o que impede o projeto de apodrecer. Abra em excalidraw.com.
-É gerado por `scripts/make_architecture_diagram.py`, não desenhado à mão.
+Dois, em `docs/diagrams/` — ambos gerados por script, não desenhados à mão:
+
+- **`arquitetura-plataforma.excalidraw`** — a plataforma em uma página, em linguagem de negócio:
+  por que existe, o caminho do dado, o que as pessoas usam, o que foi abandonado de propósito e o
+  que impede o projeto de apodrecer.
+- **`referencia-tecnica.excalidraw`** — para engenheiro de dados Databricks: opções do Auto Loader,
+  o lab de skew e spill com os números medidos, os dois portões (ML e agente), CI/CD e os limites
+  da plataforma que só aparecem rodando.
+
+Abra em excalidraw.com. Ver `docs/diagrams/README.md`.

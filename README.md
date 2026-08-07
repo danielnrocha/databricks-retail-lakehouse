@@ -136,7 +136,7 @@ docs/
   decision-log.md           chronological, including every reversal
   adr/                      architecture decision records
   architecture/             findings, perf evidence, production delta
-  diagrams/                 one-page didactic overview (.excalidraw, generated)
+  diagrams/                 business overview + technical reference (.excalidraw, generated)
   mentoring/                session plan and break-and-fix exercises
   quality/                  DQX candidates and the human review of each
 specs/
