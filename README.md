@@ -140,12 +140,13 @@ docs/
 specs/
   REQUIREMENTS.md           numbered, testable requirements
   traceability.md           requirement -> test, CI-enforced
-src/retail_lakehouse/       bronze · silver · gold · quality · perf
+src/retail_lakehouse/       bronze · silver · gold · quality · perf · ml · agents
 generator/                  distribution-preserving synthetic amplifier
 resources/                  bundle resource definitions
-tests/unit/                 no workspace required (63 tests)
+tests/unit/                 no workspace required (71 tests)
 tests/integration/          requires an authenticated workspace
 data/perf/                  84 measured runs, each with its statement_id
+data/agents/                curated eval set and judged results
 scripts/                    gates and operational tooling
 ```
 

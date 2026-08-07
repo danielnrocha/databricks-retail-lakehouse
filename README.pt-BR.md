@@ -22,8 +22,8 @@ diagnosticar — e prova toda afirmação de performance com um perfil de query 
 | Dados | 2.595.732 linhas de transação · 36.786.524 de exposição promocional · 582 lojas |
 | Camadas | bronze → silver → gold, rodando em Lakeflow Spark Declarative Pipelines |
 | Ambientes | `dng_dev` · `dng_test` · `dng_prod` como catálogos, injetados pelo bundle |
-| Testes | 63 unitários, verdes sem conexão com workspace |
-| Requisitos | 53 numerados, 10 provados, gate de CI que quebra o build se faltar teste |
+| Testes | 71 unitários, verdes sem conexão com workspace |
+| Requisitos | 53 numerados, 19 provados, gate de CI que quebra o build se faltar teste |
 | Conciliação | gold 198.013 linhas / 613.396,36 — variância **zero** contra silver |
 
 ---
