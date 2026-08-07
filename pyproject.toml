@@ -103,6 +103,10 @@ ignore = [
     # satisfy a naming rule would make every Spark example on the internet stop matching this
     # codebase, which is a worse outcome than an unconventional capital.
     "N812",
+    # `X_train` / `X_test`. Capital X for the feature matrix and lowercase y for the target is the
+    # notation every scikit-learn doc, paper and tutorial uses; it comes from the linear algebra,
+    # not from carelessness. Renaming to `x_train` would make this codebase the odd one out.
+    "N806",
 ]
 
 [tool.ruff.lint.per-file-ignores]

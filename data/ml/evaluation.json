@@ -1,0 +1,12 @@
+{
+  "model_pr_auc": 0.14200378578337122,
+  "baseline_pr_auc": 0.3845976107879848,
+  "relative_lift": -0.6307730942674709,
+  "model_roc_auc": 0.8867465693937814,
+  "baseline_roc_auc": 0.9274361646690985,
+  "n_train": 1873,
+  "n_test": 625,
+  "lapse_rate_train": 0.030432461292044848,
+  "lapse_rate_test": 0.0304,
+  "passes_gate": false
+}
