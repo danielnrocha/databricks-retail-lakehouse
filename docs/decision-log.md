@@ -157,6 +157,42 @@ them ends up being the copy that does not check.
 
 ---
 
+### 2026-08-07 — Staged ingestion proved ING-003 and was stopped by capacity before ING-004
+
+**Forced by:** Finding B1 — a backfill cannot demonstrate schema evolution, because Auto Loader
+samples the directory rather than reading in arrival order, so the post-drift shape becomes the
+initial schema.
+
+The landing volume and the schema location were cleared, files were uploaded one tranche per drift
+point, and only `basket_line_events_raw` was refreshed via `refresh_selection` so silver and gold
+did not rebuild over the 36.8M-row causal table on each run.
+
+T1 (pre-drift, 50,000 rows) gave the control the backfill never had: exactly one version under
+`_schema/_schemas/`, `_rescued_data` null on every row, no `loyalty_tier`. T2 evolved it — two
+versions, the new column present, the earlier rows null for it, run completed. **ING-003 is
+measured.** T3 and T4 are not: five consecutive `PYTHON_REPL_CREATION_FAILED` initialisation
+failures, then a sixth attempt whose auto-restarted update sat in `INITIALIZING` past twenty-five
+minutes with `databricks pipelines stop` timing out against it. The SQL warehouse stayed healthy
+throughout, so this is pipeline compute, not the account. Stopped there rather than keep spending a
+shared daily quota whose exhaustion removes all compute until the next day.
+
+**The finding worth keeping is about the harness.** Schema evolution does not present as a failed
+update or a completed one — the flow terminates, the update goes to **`CANCELED`**, and Lakeflow
+auto-starts a successor with `cause: SCHEMA_CHANGE`. The first driver treated `CANCELED` as
+terminal and reported a failure on the one event ING-003 exists to prove is survivable. Any
+orchestration polling for `COMPLETED` inherits that, and so would a test asserting the update
+completed: it would go red exactly when the pipeline behaved correctly.
+
+**And the negative result must not be misread.** `_rescued_data` is still zero, and that is *not*
+evidence that nothing gets rescued — it is evidence that the tranche which would populate it was
+never ingested. An unearned zero reads exactly like a clean result, which is the same trap as the
+drift scenario that never fired at 200k events (2026-08-06). ING-004 stays `PLANNED`, and so does
+ING-003, because a measurement in a findings document is not a test.
+
+Evidence: [`architecture/drift-findings.md`](architecture/drift-findings.md).
+
+---
+
 ### 2026-08-07 — UC Domains and UC Metric Views are both available; four negative probes said otherwise
 
 **Forced by:** GOV-003 and MOD-005 having sat `PLANNED` with "availability unverified", which is a
