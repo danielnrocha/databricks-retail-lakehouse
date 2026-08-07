@@ -25,18 +25,19 @@ the author's job.
 | **Data quality** | DQX profiling as *candidates* + reviewed rules; quarantine with reason codes; row conservation asserted per run | [rule-review](docs/quality/rule-review.md) |
 | **Performance** | Skew and spill measured on real distributions across 84 runs, each traceable to a `statement_id` | [perf-lab](docs/architecture/perf-lab.md) |
 | **CI/CD** | Bundles with three catalog environments, GitHub Actions, no literal catalog in `src/` | [ci.yml](.github/workflows/ci.yml) |
+| **ML** | Lapse model with MLflow and a promotion gate — which **refused** the model, correctly | [ml-findings](docs/architecture/ml-findings.md) |
+| **Agents** | Agent over governed UC functions, LLM-as-judge gating, declines rather than guesses | [agent-findings](docs/architecture/agent-findings.md) |
 
 **Not built.** Named rather than implied, because an unstated gap reads as an oversight:
 
 | Area | Status |
 |---|---|
-| ML / MLflow 3 | Requirements written (`MLR-001..006`), nothing implemented |
-| Agentic layer / managed MCP | Requirements written (`AGT-001..006`), nothing implemented |
+| Managed MCP | Agent tools are UC functions called directly; same governance, different transport |
+| Adversarial robustness | No prompt-injection cases in the agent eval set |
 | Lakebase CDC | Designed in ADR-0005, not wired |
 | Unity Catalog Metrics · Domains | Availability on Free Edition unverified |
-| `GOV-001` column documentation | **Fails** — 9 of 22 gold columns uncommented; see [G3](docs/architecture/gold-findings.md) |
 
-`specs/traceability.md` is the authoritative count: **10 of 53 requirements proven.** Everything
+`specs/traceability.md` is the authoritative count: **19 of 53 requirements proven.** Everything
 else reads `PLANNED`, and that file is the single source of truth for the difference between what
 is written and what is shown.
 

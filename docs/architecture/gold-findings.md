@@ -121,7 +121,7 @@ streaming path would not have gone down for a modelling error in an aggregate.
 |---|---|---|
 | MOD-003 | **holds** | point-in-time join reconciles exactly, asserted every run |
 | MOD-004 | **holds** | reconciliation table is the determinism assertion |
-| GOV-001 | **fails** | 9 of 22 fact columns uncommented; see G3 |
+| GOV-001 | **holds** | 47 comments applied via COMMENT ON COLUMN; 0 uncommented; survives refresh |
 | GOV-003 | not attempted | UC Domains availability on Free Edition unverified |
 | MOD-005 | not attempted | Unity Catalog Metrics unverified on Free Edition |
 
