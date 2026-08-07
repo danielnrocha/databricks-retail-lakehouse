@@ -1,0 +1,98 @@
+{
+  "probes": [
+    {
+      "name": "spark.databricks.execution.timeout",
+      "statement": "SET spark.databricks.execution.timeout = 3600",
+      "succeeded": false,
+      "message": "[CONFIG_NOT_AVAILABLE.WITHOUT_SUGGESTION] Configuration spark.databricks.execution.timeout is not available.  SQLSTATE: 42K0I"
+    },
+    {
+      "name": "spark.sql.legacy.timeParserPolicy",
+      "statement": "SET spark.sql.legacy.timeParserPolicy = LEGACY",
+      "succeeded": false,
+      "message": "[CONFIG_NOT_AVAILABLE.WITHOUT_SUGGESTION] Configuration spark.sql.legacy.timeParserPolicy is not available.  SQLSTATE: 42K0I"
+    },
+    {
+      "name": "spark.sql.session.timeZone",
+      "statement": "SET spark.sql.session.timeZone = 'UTC'",
+      "succeeded": false,
+      "message": "[CONFIG_NOT_AVAILABLE.WITHOUT_SUGGESTION] Configuration spark.sql.session.timeZone is not available.  SQLSTATE: 42K0I"
+    },
+    {
+      "name": "spark.sql.shuffle.partitions",
+      "statement": "SET spark.sql.shuffle.partitions = 200",
+      "succeeded": false,
+      "message": "[CONFIG_NOT_AVAILABLE.WITHOUT_SUGGESTION] Configuration spark.sql.shuffle.partitions is not available.  SQLSTATE: 42K0I"
+    },
+    {
+      "name": "spark.sql.ansi.enabled",
+      "statement": "SET spark.sql.ansi.enabled = true",
+      "succeeded": false,
+      "message": "[CONFIG_NOT_AVAILABLE.WITHOUT_SUGGESTION] Configuration spark.sql.ansi.enabled is not available.  SQLSTATE: 42K0I"
+    },
+    {
+      "name": "spark.sql.files.maxPartitionBytes",
+      "statement": "SET spark.sql.files.maxPartitionBytes = 33554432",
+      "succeeded": false,
+      "message": "[CONFIG_NOT_AVAILABLE.WITHOUT_SUGGESTION] Configuration spark.sql.files.maxPartitionBytes is not available.  SQLSTATE: 42K0I"
+    },
+    {
+      "name": "spark.sql.adaptive.enabled",
+      "statement": "SET spark.sql.adaptive.enabled = false",
+      "succeeded": false,
+      "message": "[CONFIG_NOT_AVAILABLE.WITHOUT_SUGGESTION] Configuration spark.sql.adaptive.enabled is not available.  SQLSTATE: 42K0I"
+    },
+    {
+      "name": "spark.sql.adaptive.skewJoin.enabled",
+      "statement": "SET spark.sql.adaptive.skewJoin.enabled = true",
+      "succeeded": false,
+      "message": "[CONFIG_NOT_AVAILABLE.WITHOUT_SUGGESTION] Configuration spark.sql.adaptive.skewJoin.enabled is not available.  SQLSTATE: 42K0I"
+    },
+    {
+      "name": "spark.sql.adaptive.skewJoin.skewedPartitionFactor",
+      "statement": "SET spark.sql.adaptive.skewJoin.skewedPartitionFactor = 2",
+      "succeeded": false,
+      "message": "[CONFIG_NOT_AVAILABLE.WITHOUT_SUGGESTION] Configuration spark.sql.adaptive.skewJoin.skewedPartitionFactor is not available.  SQLSTATE: 42K0I"
+    },
+    {
+      "name": "spark.sql.adaptive.skewJoin.skewedPartitionThresholdInBytes",
+      "statement": "SET spark.sql.adaptive.skewJoin.skewedPartitionThresholdInBytes = 8388608",
+      "succeeded": false,
+      "message": "[CONFIG_NOT_AVAILABLE.WITHOUT_SUGGESTION] Configuration spark.sql.adaptive.skewJoin.skewedPartitionThresholdInBytes is not available.  SQLSTATE: 42K0I"
+    },
+    {
+      "name": "spark.sql.autoBroadcastJoinThreshold",
+      "statement": "SET spark.sql.autoBroadcastJoinThreshold = -1",
+      "succeeded": false,
+      "message": "[CONFIG_NOT_AVAILABLE.WITHOUT_SUGGESTION] Configuration spark.sql.autoBroadcastJoinThreshold is not available.  SQLSTATE: 42K0I"
+    },
+    {
+      "name": "use_cached_result",
+      "statement": "SET use_cached_result = false",
+      "succeeded": true,
+      "message": "SUCCEEDED"
+    },
+    {
+      "name": "CACHE TABLE",
+      "statement": "CACHE TABLE dng_dev.perf.transactions",
+      "succeeded": false,
+      "message": "[NOT_SUPPORTED_WITH_DB_SQL] CACHE TABLE is not supported on a SQL warehouse. SQLSTATE: 0A000"
+    },
+    {
+      "name": "CACHE SELECT",
+      "statement": "CACHE SELECT * FROM dng_dev.perf.transactions",
+      "succeeded": true,
+      "message": "SUCCEEDED"
+    },
+    {
+      "name": "UNCACHE TABLE",
+      "statement": "UNCACHE TABLE dng_dev.perf.transactions",
+      "succeeded": false,
+      "message": "[NOT_SUPPORTED_WITH_DB_SQL] UNCACHE TABLE is not supported on a SQL warehouse. SQLSTATE: 0A000"
+    }
+  ],
+  "session_persistence": {
+    "set_to": "false",
+    "read_back": "true"
+  }
+}

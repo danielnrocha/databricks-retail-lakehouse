@@ -1,0 +1,62 @@
+[
+  {
+    "table": "dng_dev.perf.transactions",
+    "key": "STORE_ID",
+    "distinct_keys": 582,
+    "total_rows": 2595732,
+    "max_rows": 75573,
+    "median_rows": 30,
+    "p99_rows": 41147,
+    "max_over_median": 2519.1
+  },
+  {
+    "table": "dng_dev.perf.transactions",
+    "key": "PRODUCT_ID",
+    "distinct_keys": 92339,
+    "total_rows": 2595732,
+    "max_rows": 29778,
+    "median_rows": 3,
+    "p99_rows": 365,
+    "max_over_median": 9926.0
+  },
+  {
+    "table": "dng_dev.perf.transactions",
+    "key": "PRODUCT_ID, STORE_ID, WEEK_NO",
+    "distinct_keys": 2370784,
+    "total_rows": 2595732,
+    "max_rows": 21,
+    "median_rows": 1,
+    "p99_rows": 3,
+    "max_over_median": 21.0
+  },
+  {
+    "table": "dng_dev.perf.causal",
+    "key": "STORE_ID",
+    "distinct_keys": 115,
+    "total_rows": 36786524,
+    "max_rows": 469670,
+    "median_rows": 342674,
+    "p99_rows": 439767,
+    "max_over_median": 1.370602963749803
+  },
+  {
+    "table": "dng_dev.perf.causal",
+    "key": "PRODUCT_ID",
+    "distinct_keys": 68377,
+    "total_rows": 36786524,
+    "max_rows": 7083,
+    "median_rows": 142,
+    "p99_rows": 4262,
+    "max_over_median": 49.88028169014085
+  },
+  {
+    "table": "dng_dev.perf.causal",
+    "key": "PRODUCT_ID, STORE_ID, WEEK_NO",
+    "distinct_keys": 36771279,
+    "total_rows": 36786524,
+    "max_rows": 2,
+    "median_rows": 1,
+    "p99_rows": 1,
+    "max_over_median": 2.0
+  }
+]

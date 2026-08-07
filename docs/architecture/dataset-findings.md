@@ -40,22 +40,52 @@ Any join keyed on household will not produce a straggler, so the lab must key on
 
 ---
 
-## F2 — The wide join silently drops 467 stores, and that is the demo
+## F2 — The wide join silently drops most of the fact table
+
+> **Corrected 2026-08-06.** The first version of this finding said the inner join "loses 1.4% of
+> revenue". That number is real but it describes a *different join* than the one the architecture
+> actually performs, and using it here understated the problem by a factor of fifty.
+>
+> The original text conflated **store coverage** (are there any promotion rows for this store?)
+> with the **composite-key match rate** (is there a promotion row for this product, in this store,
+> in this week?). The first is the friendlier number. I used it to describe the join, which is the
+> exact species of error this document exists to catch — measure one thing, describe another,
+> and the sentence still reads as true.
+>
+> Caught by an independent pass that ran the join instead of reasoning about it. Re-verified below.
 
 **Measured.**
 
-- `transaction_data` covers **582** stores.
-- `causal_data` (promotion exposure: display, mailer) covers **115** stores — 19.8% of them.
-- But those 115 stores carry **98.6%** of transaction lines.
+- `transaction_data` covers **582** stores; `causal_data` (promotion exposure) covers **115**.
+- Those 115 stores carry **98.6%** of transaction lines.
 
-**Interpretation.** dunnhumby collected in-store promotion data for the large stores only. The 467
-absent stores are the long tail — individually negligible, collectively 1.4% of volume and **80% of
-the store count**.
+| Join key | Lines matched | Share | Dropped by an inner join |
+|---|---:|---:|---:|
+| `STORE_ID` alone | 2,558,610 | 98.57% | **1.43%** |
+| `(PRODUCT_ID, STORE_ID, WEEK_NO)` — the actual join | 563,774 | 21.72% | **78.28%** |
 
-**Why this is the single best teaching artifact in the dataset.** An inner join of transactions to
-promotion exposure loses 1.4% of revenue — which nobody notices — while losing 80% of stores, which
-destroys any store-count metric. A dashboard reading "stores with sales: 115" would be wrong by
-5×, and the revenue number sitting next to it would look fine.
+`causal_data` also holds **15,245 duplicate composite keys** across 30,490 rows, so a `LEFT JOIN`
+does not merely preserve row count — it *fans out*.
+
+**Interpretation.** Promotion exposure is recorded for large stores only, and within those, only
+for the product-weeks that actually ran a promotion. Most product-weeks have no promotion, which
+is not a data gap — it is the business reality. Absence of a `causal_data` row means "not promoted",
+not "unknown".
+
+**Why this is the single best teaching artifact in the dataset.** Three distinct failure modes
+stack, and each one alone would survive review:
+
+1. An inner join on the composite key **discards 78% of the fact table** while looking like an
+   ordinary enrichment step.
+2. A join on `STORE_ID` alone drops only 1.4% of lines but **80% of stores**, so a store-count
+   metric is wrong by 5× while the revenue figure beside it looks fine.
+3. A `LEFT JOIN` on the composite key inflates by 858 rows from duplicate keys, so even the
+   "safe" fix changes the numbers.
+
+The general lesson, which is why the correction is left visible: **the match rate of a join is a
+measurement, not an inference.** It cannot be reasoned out from the cardinality of either side, and
+the intuition that "98.6% of lines are covered, so the join is nearly lossless" is exactly the
+plausible-and-wrong reasoning that produced the original error.
 
 This is the failure mode that survives code review, survives testing against row counts, and gets
 caught in a meeting nine months later by someone who knows the business. It is exactly what

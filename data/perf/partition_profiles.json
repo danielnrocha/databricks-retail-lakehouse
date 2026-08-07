@@ -1,0 +1,218 @@
+[
+  {
+    "table": "dng_dev.perf.transactions",
+    "key": "STORE_ID",
+    "num_partitions": 16,
+    "max_rows": 324340,
+    "median_rows": 157657,
+    "total_rows": 2595732,
+    "bytes_per_row": 0.0
+  },
+  {
+    "table": "dng_dev.perf.transactions",
+    "key": "STORE_ID",
+    "num_partitions": 64,
+    "max_rows": 205619,
+    "median_rows": 31741,
+    "total_rows": 2595732,
+    "bytes_per_row": 0.0
+  },
+  {
+    "table": "dng_dev.perf.transactions",
+    "key": "STORE_ID",
+    "num_partitions": 200,
+    "max_rows": 108742,
+    "median_rows": 676,
+    "total_rows": 2595732,
+    "bytes_per_row": 0.0
+  },
+  {
+    "table": "dng_dev.perf.transactions",
+    "key": "STORE_ID",
+    "num_partitions": 1024,
+    "max_rows": 75576,
+    "median_rows": 50,
+    "total_rows": 2595732,
+    "bytes_per_row": 0.0
+  },
+  {
+    "table": "dng_dev.perf.transactions",
+    "key": "PRODUCT_ID",
+    "num_partitions": 16,
+    "max_rows": 194081,
+    "median_rows": 155942,
+    "total_rows": 2595732,
+    "bytes_per_row": 0.0
+  },
+  {
+    "table": "dng_dev.perf.transactions",
+    "key": "PRODUCT_ID",
+    "num_partitions": 64,
+    "max_rows": 70402,
+    "median_rows": 39321,
+    "total_rows": 2595732,
+    "bytes_per_row": 0.0
+  },
+  {
+    "table": "dng_dev.perf.transactions",
+    "key": "PRODUCT_ID",
+    "num_partitions": 200,
+    "max_rows": 38281,
+    "median_rows": 12159,
+    "total_rows": 2595732,
+    "bytes_per_row": 0.0
+  },
+  {
+    "table": "dng_dev.perf.transactions",
+    "key": "PRODUCT_ID",
+    "num_partitions": 1024,
+    "max_rows": 37083,
+    "median_rows": 2100,
+    "total_rows": 2595732,
+    "bytes_per_row": 0.0
+  },
+  {
+    "table": "dng_dev.perf.transactions",
+    "key": "PRODUCT_ID, STORE_ID, WEEK_NO",
+    "num_partitions": 16,
+    "max_rows": 163044,
+    "median_rows": 162058,
+    "total_rows": 2595732,
+    "bytes_per_row": 0.0
+  },
+  {
+    "table": "dng_dev.perf.transactions",
+    "key": "PRODUCT_ID, STORE_ID, WEEK_NO",
+    "num_partitions": 64,
+    "max_rows": 41084,
+    "median_rows": 40554,
+    "total_rows": 2595732,
+    "bytes_per_row": 0.0
+  },
+  {
+    "table": "dng_dev.perf.transactions",
+    "key": "PRODUCT_ID, STORE_ID, WEEK_NO",
+    "num_partitions": 200,
+    "max_rows": 13340,
+    "median_rows": 12976,
+    "total_rows": 2595732,
+    "bytes_per_row": 0.0
+  },
+  {
+    "table": "dng_dev.perf.transactions",
+    "key": "PRODUCT_ID, STORE_ID, WEEK_NO",
+    "num_partitions": 1024,
+    "max_rows": 2737,
+    "median_rows": 2535,
+    "total_rows": 2595732,
+    "bytes_per_row": 0.0
+  },
+  {
+    "table": "dng_dev.perf.causal",
+    "key": "STORE_ID",
+    "num_partitions": 16,
+    "max_rows": 4236106,
+    "median_rows": 2401544,
+    "total_rows": 36786524,
+    "bytes_per_row": 0.0
+  },
+  {
+    "table": "dng_dev.perf.causal",
+    "key": "STORE_ID",
+    "num_partitions": 64,
+    "max_rows": 2409770,
+    "median_rows": 664507,
+    "total_rows": 36786524,
+    "bytes_per_row": 0.0
+  },
+  {
+    "table": "dng_dev.perf.causal",
+    "key": "STORE_ID",
+    "num_partitions": 200,
+    "max_rows": 1086223,
+    "median_rows": 355464,
+    "total_rows": 36786524,
+    "bytes_per_row": 0.0
+  },
+  {
+    "table": "dng_dev.perf.causal",
+    "key": "STORE_ID",
+    "num_partitions": 1024,
+    "max_rows": 865047,
+    "median_rows": 350315,
+    "total_rows": 36786524,
+    "bytes_per_row": 0.0
+  },
+  {
+    "table": "dng_dev.perf.causal",
+    "key": "PRODUCT_ID",
+    "num_partitions": 16,
+    "max_rows": 2475047,
+    "median_rows": 2293292,
+    "total_rows": 36786524,
+    "bytes_per_row": 0.0
+  },
+  {
+    "table": "dng_dev.perf.causal",
+    "key": "PRODUCT_ID",
+    "num_partitions": 64,
+    "max_rows": 659154,
+    "median_rows": 579900,
+    "total_rows": 36786524,
+    "bytes_per_row": 0.0
+  },
+  {
+    "table": "dng_dev.perf.causal",
+    "key": "PRODUCT_ID",
+    "num_partitions": 200,
+    "max_rows": 244624,
+    "median_rows": 184518,
+    "total_rows": 36786524,
+    "bytes_per_row": 0.0
+  },
+  {
+    "table": "dng_dev.perf.causal",
+    "key": "PRODUCT_ID",
+    "num_partitions": 1024,
+    "max_rows": 75722,
+    "median_rows": 35570,
+    "total_rows": 36786524,
+    "bytes_per_row": 0.0
+  },
+  {
+    "table": "dng_dev.perf.causal",
+    "key": "PRODUCT_ID, STORE_ID, WEEK_NO",
+    "num_partitions": 16,
+    "max_rows": 2301452,
+    "median_rows": 2299005,
+    "total_rows": 36786524,
+    "bytes_per_row": 0.0
+  },
+  {
+    "table": "dng_dev.perf.causal",
+    "key": "PRODUCT_ID, STORE_ID, WEEK_NO",
+    "num_partitions": 64,
+    "max_rows": 576805,
+    "median_rows": 574785,
+    "total_rows": 36786524,
+    "bytes_per_row": 0.0
+  },
+  {
+    "table": "dng_dev.perf.causal",
+    "key": "PRODUCT_ID, STORE_ID, WEEK_NO",
+    "num_partitions": 200,
+    "max_rows": 185278,
+    "median_rows": 183955,
+    "total_rows": 36786524,
+    "bytes_per_row": 0.0
+  },
+  {
+    "table": "dng_dev.perf.causal",
+    "key": "PRODUCT_ID, STORE_ID, WEEK_NO",
+    "num_partitions": 1024,
+    "max_rows": 36544,
+    "median_rows": 35923,
+    "total_rows": 36786524,
+    "bytes_per_row": 0.0
+  }
+]
