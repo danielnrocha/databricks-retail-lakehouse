@@ -83,7 +83,8 @@ def _sha256(path: Path) -> str:
 
 def _load_manifest() -> dict[str, dict[str, object]]:
     if MANIFEST.exists():
-        return json.loads(MANIFEST.read_text(encoding="utf-8"))
+        loaded = json.loads(MANIFEST.read_text(encoding="utf-8"))
+        return {str(k): v for k, v in loaded.items()}
     return {}
 
 

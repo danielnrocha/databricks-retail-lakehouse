@@ -97,7 +97,7 @@ def _run(client: WorkspaceClient, warehouse: str, sql: str) -> tuple[bool, str]:
     if result.status and result.status.state == StatementState.SUCCEEDED:
         return True, ""
     message = result.status.error.message if result.status and result.status.error else "?"
-    return False, message[:160]
+    return False, (message or "?")[:160]
 
 
 def uncommented(client: WorkspaceClient, warehouse: str, catalog: str) -> list[tuple[str, str]]:
@@ -111,7 +111,8 @@ def uncommented(client: WorkspaceClient, warehouse: str, catalog: str) -> list[t
             "ORDER BY table_name, ordinal_position"
         ),
     )
-    return [(r[0], r[1]) for r in (result.result.data_array or [])]
+    data = result.result.data_array if result.result else None
+    return [(r[0] or "", r[1] or "") for r in (data or [])]
 
 
 def main() -> int:
@@ -121,7 +122,10 @@ def main() -> int:
     args = parser.parse_args()
 
     client = WorkspaceClient()
-    warehouse = next(iter(client.warehouses.list())).id
+    warehouses = list(client.warehouses.list())
+    if not warehouses or warehouses[0].id is None:
+        raise RuntimeError("No SQL warehouse with an id is available.")
+    warehouse = warehouses[0].id
 
     before = uncommented(client, warehouse, args.catalog)
     print(f"uncommented gold columns before: {len(before)}")

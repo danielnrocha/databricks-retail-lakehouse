@@ -37,10 +37,12 @@ import statistics
 import sys
 from dataclasses import asdict, dataclass
 from pathlib import Path
+from typing import Any
 
 from databricks.sdk import WorkspaceClient
 
 from retail_lakehouse.agents.agent import AGENT_MODEL, Answer, MerchandisingAgent
+from retail_lakehouse.common.workspace import openai_client
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 EVAL_SET = REPO_ROOT / "data" / "agents" / "eval_set.json"
@@ -122,8 +124,8 @@ def _evidence(answer: Answer) -> str:
     return "\n".join(lines)
 
 
-def judge(client: WorkspaceClient, case: dict, answer: Answer) -> Score:
-    openai = client.serving_endpoints.get_open_ai_client()
+def judge(client: WorkspaceClient, case: dict[str, Any], answer: Answer) -> Score:
+    openai = openai_client(client)
     response = openai.chat.completions.create(
         model=JUDGE_MODEL,
         messages=[

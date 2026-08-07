@@ -124,12 +124,42 @@ ignore = [
 # Types
 # ---------------------------------------------------------------------------
 [tool.mypy]
-python_version = "3.11"
+# 3.12, not 3.11. The venv, CI and Databricks serverless all run 3.12, and declaring 3.11 here
+# made mypy reject numpy's own bundled stubs with "Type statement is only supported in Python 3.12
+# and greater" -- a type checker failing on a dependency's stubs because we lied to it about the
+# interpreter. The lower bound in requires-python stays 3.11 for installability; the checker
+# should describe what we actually run.
+python_version = "3.12"
 strict = true
 warn_unreachable = true
-# PySpark's own stubs are incomplete; strict mode against them produces noise, not safety.
+
+# Lakeflow pipeline modules are excluded because mypy structurally cannot analyse them: they
+# import `pyspark.pipelines`, which exists only inside the Databricks runtime and is absent from
+# the installed PySpark. Every error reported there is the checker failing to resolve a decorator
+# it cannot see, not a defect in the code — ADR-0004 records this as one of the two real costs of
+# the declarative framework.
+#
+# This is an exclusion of code the tool cannot check, NOT of code the tool dislikes. Everything
+# importable stays strict. The distinction matters: the second kind of exclusion is how a type
+# gate quietly stops gating.
+exclude = "(^|/)(bronze|silver/pipeline|gold/pipeline)/"
+
+# Third-party packages that ship no stubs and no py.typed marker. Listing them is not the same as
+# disabling type checking: our own code is still strict, and a call into these is still checked
+# against the annotations we write at the boundary. What is silenced is mypy complaining that
+# someone else did not annotate their library.
 [[tool.mypy.overrides]]
-module = ["pyspark.*", "delta.*", "databricks.labs.dqx.*", "chispa.*"]
+module = [
+    "pyspark.*",
+    "delta.*",
+    "databricks.labs.dqx.*",
+    "chispa.*",
+    "pandas.*",
+    "sklearn.*",
+    "lightgbm.*",
+    "pyarrow.*",
+    "openai.*",
+]
 ignore_missing_imports = true
 
 # ---------------------------------------------------------------------------

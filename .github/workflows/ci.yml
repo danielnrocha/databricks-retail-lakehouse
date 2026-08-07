@@ -23,7 +23,10 @@ concurrency:
 
 env:
   PYTHON_VERSION: "3.12"
-  INSTALL_EXTRAS: ".[local-spark,data,ml,dev]"
+  # `agents` is included so mypy and the unit suite see the same dependency set a
+  # developer has. A CI that type-checks a subset of the code is a CI that finds a
+  # subset of the errors.
+  INSTALL_EXTRAS: ".[local-spark,data,ml,agents,dev]"
 
 jobs:
   # -------------------------------------------------------------------------------------------

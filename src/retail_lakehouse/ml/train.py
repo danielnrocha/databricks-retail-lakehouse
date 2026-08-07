@@ -93,7 +93,7 @@ def train_and_evaluate(fs: feat.FeatureSet) -> tuple[object, Evaluation, pd.Data
         verbose=-1,
     )
     model.fit(X_train, y_train)
-    model_score = model.predict_proba(X_test)[:, 1]
+    model_score = np.asarray(model.predict_proba(X_test))[:, 1]
 
     # The baseline: recency alone, higher is more likely to lapse. No fitting, no parameters.
     baseline_score = X_test["recency_days"].to_numpy(dtype=float)

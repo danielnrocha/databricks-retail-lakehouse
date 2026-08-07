@@ -34,6 +34,7 @@ from databricks.sdk import WorkspaceClient
 from databricks.sdk.service.sql import StatementState
 
 from retail_lakehouse.agents import tools
+from retail_lakehouse.common.workspace import openai_client, warehouse_id
 
 # gpt-oss-120b: the largest chat endpoint available on this workspace that supports tool calling.
 # Named as a constant rather than inlined because the judge in evaluate.py must use a *different*
@@ -114,8 +115,8 @@ class MerchandisingAgent:
     def __init__(self, catalog: str, *, client: WorkspaceClient | None = None) -> None:
         self._client = client or WorkspaceClient()
         self._catalog = catalog
-        self._warehouse = next(iter(self._client.warehouses.list())).id
-        self._openai = self._client.serving_endpoints.get_open_ai_client()
+        self._warehouse: str = warehouse_id(self._client)
+        self._openai: Any = openai_client(self._client)
 
     # -- tool execution ------------------------------------------------------------------
 
@@ -146,10 +147,17 @@ class MerchandisingAgent:
         )
         if result.status and result.status.state != StatementState.SUCCEEDED:
             message = result.status.error.message if result.status.error else "unknown"
-            return ToolCall(name, arguments, [], error=message[:200])
+            return ToolCall(name, arguments, [], error=(message or "unknown")[:200])
 
-        columns = [c.name for c in result.manifest.schema.columns]
-        rows = [dict(zip(columns, r, strict=True)) for r in (result.result.data_array or [])]
+        # A SUCCEEDED statement always carries a manifest and a result, but the SDK types both
+        # as optional. Narrowing explicitly keeps the happy path readable and turns a genuinely
+        # impossible shape into a loud failure rather than an AttributeError three frames down.
+        manifest = result.manifest
+        if manifest is None or manifest.schema is None or manifest.schema.columns is None:
+            return ToolCall(name, arguments, [], error="Statement returned no manifest.")
+        columns = [c.name or "" for c in manifest.schema.columns]
+        data = result.result.data_array if result.result else None
+        rows: list[dict[str, Any]] = [dict(zip(columns, r, strict=True)) for r in (data or [])]
         return ToolCall(name, arguments, rows)
 
     @staticmethod

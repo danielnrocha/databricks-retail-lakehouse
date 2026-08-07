@@ -26,6 +26,7 @@ behaviour we want. An agent holding `run_sql` will always produce *something*.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Any
 
 # Each tool is declared once, here, and used three times: to create the UC function, to build the
 # JSON schema the model sees, and to dispatch a call. Declaring it once means the three cannot
@@ -55,7 +56,7 @@ class Tool:
             f"RETURN {self.body.format(catalog=catalog)}"
         )
 
-    def schema(self) -> dict:
+    def schema(self) -> dict[str, Any]:
         return {
             "type": "function",
             "function": {
@@ -150,5 +151,5 @@ TOOLS: list[Tool] = [
 BY_NAME = {t.name: t for t in TOOLS}
 
 
-def schemas() -> list[dict]:
+def schemas() -> list[dict[str, Any]]:
     return [t.schema() for t in TOOLS]

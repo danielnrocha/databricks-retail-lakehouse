@@ -169,7 +169,7 @@ def execute(
     return StatementResult(
         statement_id=response.statement_id or "",
         state=state,
-        rows=rows,
+        rows=[list(row) for row in rows],
         error=error,
         columns=columns,
     )

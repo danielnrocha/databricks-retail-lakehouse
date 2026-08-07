@@ -17,6 +17,7 @@ import argparse
 import csv
 import sys
 from collections import Counter
+from collections.abc import Iterator
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -42,7 +43,7 @@ class TableProfile:
     numeric_range: dict[str, tuple[float, float]] = field(default_factory=dict)
 
 
-def _iter_csv(path: Path):
+def _iter_csv(path: Path) -> Iterator[dict[str, str]]:
     with path.open(newline="", encoding="utf-8-sig") as handle:
         yield from csv.DictReader(handle)
 

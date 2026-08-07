@@ -98,6 +98,9 @@ def run(client: WorkspaceClient, warehouse_id: str, statement: str) -> None:
         StatementState.RUNNING,
     ):
         time.sleep(2)
+        # statement_id is optional in the SDK's type, but a statement we are already polling
+        # necessarily has one. Narrow rather than propagate the Optional upward.
+        assert result.statement_id is not None
         result = client.statement_execution.get_statement(result.statement_id)
     if result.status and result.status.state != StatementState.SUCCEEDED:
         raise RuntimeError(f"{result.status.state}: {result.status.error}")
