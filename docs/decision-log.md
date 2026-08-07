@@ -105,6 +105,58 @@ write and the easiest to mistake for coverage.
 
 ---
 
+### 2026-08-07 — The ML gate refused the model, and the model stayed refused
+
+The household-lapse model scored PR-AUC 0.1420 against a recency-only baseline at 0.3846 — a
+relative lift of −63.1% against a required +10%. Not registered.
+
+The obvious move was to shorten the outcome window from day 547 to day 660, where the base rate
+rises from 3.0% to 12.4% and the problem becomes learnable. That is choosing the experiment to fit
+the desired result, so it was not done and is recorded as not done. Twenty-three weeks was chosen
+on business reasoning before any model existed: seven weeks of grocery silence means someone went
+on holiday.
+
+The deeper finding is that the evaluation was underpowered from the start — 76 positives, 19 in
+the test split — so it could not have resolved the difference either way. And the base rate is
+structural: dunnhumby selected 2,500 *frequent shoppers*, so the dataset's own inclusion criteria
+make its churn problem nearly unlearnable.
+
+---
+
+### 2026-08-07 — The agent eval failed, and the fix was to the specification, not the threshold
+
+First run: unanswerable 100%, trap 100%, empty 100%, **answerable 33%**. The agent handled every
+hard case and failed the easy ones, because the expectations were written as exhaustive lists and
+the judge read extra *correct* columns as non-compliance.
+
+Lowering `THRESHOLDS` from 90% to 80% would have been tuning. Rewriting "report X and Y" as "MUST
+INCLUDE X and Y; extra facts from the same tool are welcome" fixes a statement that said something
+other than what it meant. The thresholds were not touched.
+
+The honest caveat, recorded because it is the shape of p-hacking: the correction was made *after*
+seeing a failure. The only defence is that the change is inspectable and the bar did not move.
+
+---
+
+### 2026-08-07 — mypy had been failing CI for four runs
+
+Root cause was three-layered: `python_version = "3.11"` while everything actually runs 3.12, so
+mypy rejected numpy's own bundled stubs; missing stubs for pandas/sklearn/pyarrow/openai; and CI
+installing a dependency subset that excluded `agents`, so it type-checked less code than a
+developer has.
+
+Fixing those surfaced 81 errors. 46 were in Lakeflow pipeline modules, which mypy **structurally
+cannot** analyse — they import `pyspark.pipelines`, which exists only inside the Databricks
+runtime. Those are excluded, with the config comment stating explicitly that this excludes code
+the tool cannot check rather than code the tool dislikes. The second kind of exclusion is how a
+type gate quietly stops gating.
+
+The remaining 35 were genuine and were fixed. The dominant pattern was the SDK typing every id and
+manifest as optional, narrowed five slightly different ways in five modules — which is how one of
+them ends up being the copy that does not check.
+
+---
+
 ### 2026-08-06 — Catalogs are created via SQL DDL, not the Unity Catalog REST API
 
 **Forced by:** the REST path failing on an account with Default Storage.
