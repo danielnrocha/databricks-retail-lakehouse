@@ -26,6 +26,16 @@ so the fixes can be measured rather than claimed.
 
 ---
 
+---
+
+## Leitura visual e em português
+
+📊 **[Os seis achados, em uma página](https://claude.ai/code/artifact/23926add-e082-4dc4-8450-1cbb35e353fa)** — the six measured defects, one page.
+
+🇧🇷 **[README.pt-BR.md](README.pt-BR.md)** — resumo executivo em português.
+
+🎓 **[docs/mentoring/](docs/mentoring/)** — a 90-minute session plan and six break-and-fix exercises.
+
 ## Start here
 
 Read in this order. The code will not make sense without the first two.
