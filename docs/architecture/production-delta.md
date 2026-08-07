@@ -126,6 +126,37 @@ judgement.
 | Provisioned throughput serving | Unavailable | Excluded |
 | Predictive Query Execution | Uncertain | Documented for DBSQL Serverless; no official statement found for serverless notebooks |
 
+## 11. Reproducibility (ENV-004) is waived, and the cost was measured
+
+**Here.** ENV-004 asks that a deploy to an empty catalog from a fixed input snapshot produce gold
+matching a golden fixture. It is not tested. The blocker is §7: a full medallion run over 2.6M
+transaction lines and 36.8M causal rows into a fresh catalog is exactly the shape of workload that
+exhausts a shared daily quota, and the penalty for exhausting it is losing all compute in the
+account — including the environment every other result in this repository lives in.
+
+**What was measured before waiving.** ENV-004 and ENV-005 look like one expensive pair and are not.
+`databricks bundle deploy` applies resource definitions without starting a pipeline update; three
+deploys against `test` were timed at 19.2s, 12.6s and 13.2s with every pipeline in the account
+remaining `IDLE` throughout. ENV-005 needs only deploys, so it is implemented, it runs, and it
+passes (`tests/integration/test_rollback.py`). ENV-004 needs a run, and there is no version of that
+run which is cheap. The two were separated by timing them, not by grouping them under "CI/CD".
+
+**What the waiver actually costs.** Nothing in this repository demonstrates that a fixed input
+produces byte-identical gold. That is a real gap and it is the one NFR-4 singles out —
+"reproducibility is the requirement most often claimed and least often tested". Two weaker things
+*are* covered and should not be mistaken for it: MOD-004 covers re-run stability of gold inside an
+existing catalog, and ENV-005 covers the deployment layer. Neither is a clean-catalog rebuild.
+
+**Production.** A nightly CI job deploying to a throwaway catalog from a pinned input snapshot and
+diffing gold against a stored fixture, on compute that is budgeted rather than rationed. The
+fixture would be regenerated deliberately and its regeneration reviewed, since a golden fixture
+that is refreshed whenever it fails is a test that asserts nothing.
+
+**The honest reason this is a waiver and not a `@pytest.mark.slow` test.** A test that is written,
+never run, and skipped by default rots into a false claim: the traceability row goes green, a
+reader infers coverage, and nobody discovers it was broken until the day it is needed. A waiver
+carries the same information without the false green.
+
 ---
 
 ## The honest summary

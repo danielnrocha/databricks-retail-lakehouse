@@ -46,8 +46,8 @@ the owning phase is open) · `WAIVED` (requires paid-tier features; see note).
 | ENV-001 | `tests/unit/test_no_hardcoded_catalog.py::test_no_literal_catalog_in_src` | unit | PASSING |
 | ENV-002 | `tests/integration/test_bundle_targets.py::test_test_target_writes_only_to_test_catalog` | integration | PASSING |
 | ENV-003 | `tests/unit/test_deploy_provenance.py::test_prod_deploy_references_tested_sha` | unit | PASSING |
-| ENV-004 | `tests/integration/test_reproducibility.py::test_clean_deploy_matches_golden_fixture` | integration | PLANNED |
-| ENV-005 | `tests/integration/test_rollback.py::test_redeploy_prior_sha_restores_state` | integration | PLANNED |
+| ENV-004 | `docs/architecture/production-delta.md#11` | integration | WAIVED |
+| ENV-005 | `tests/integration/test_rollback.py::test_redeploy_prior_sha_restores_state` | integration | PASSING |
 | ENV-006 | `tests/unit/test_offline_capable.py::test_unit_suite_needs_no_workspace` | unit | PASSING |
 | MLR-001 | `tests/integration/test_ml_reproducibility.py::test_rerun_from_logged_params` | integration | PLANNED |
 | MLR-002 | `tests/integration/test_model_gate.py::test_beats_recency_baseline` | integration | PLANNED |
@@ -98,6 +98,25 @@ assertion is strong. Nothing can, except reading it.
 
 ## Waivers
 
-None yet. Anything requiring service principals, multi-workspace, or private networking will be
-marked `WAIVED` with a pointer to `docs/architecture/production-delta.md`, which describes what the
-design would be on a paid tier. A waiver is a documented gap; a silent omission is a lie.
+Anything requiring service principals, multi-workspace, or private networking is marked `WAIVED`
+with a pointer to `docs/architecture/production-delta.md`, which describes what the design would be
+on a paid tier. A waiver is a documented gap; a silent omission is a lie.
+
+**ENV-004 — a clean deploy is reproducible.** Waived on cost, with the cost measured rather than
+estimated. The acceptance criterion is a deploy to an *empty* catalog from a fixed input snapshot
+producing gold that matches a golden fixture, which requires a full medallion run over 2.6M
+transaction lines and 36.8M causal rows. Free Edition's quota is shared account-wide and
+exhausting it shuts down all compute for the rest of the day — including the environment the rest
+of this repository is demonstrated in. See `production-delta.md` §11.
+
+ENV-004 was separated from ENV-005 by measurement, not by grouping them as "the expensive CI/CD
+ones". `bundle deploy` applies definitions without starting a pipeline update: three deploys
+against `test` were timed at 19.2s / 12.6s / 13.2s with every pipeline in the account staying
+`IDLE`. ENV-005 needs only those, so it is implemented and passes. Waiving both would have been
+waiving one requirement for a cost the other one has.
+
+What remains genuinely unproven is stated rather than implied: **nothing in this repository
+demonstrates that a fixed input produces byte-identical gold.** MOD-004 (`PLANNED`) covers re-run
+stability of gold within an existing catalog, which is a weaker and different claim. NFR-4 in the
+North Star calls reproducibility "the requirement most often claimed and least often tested", and
+this row is that claim going untested here too — named, not quietly dropped.

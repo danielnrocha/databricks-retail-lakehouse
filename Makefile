@@ -77,7 +77,14 @@ test-unit: ## Unit tests — no workspace required (ENV-006)
 
 .PHONY: test-integration
 test-integration: ## Integration tests — requires an authenticated workspace
-	$(VENV_DBC)/bin/pytest tests/integration -m integration
+	$(VENV_DBC)/bin/pytest tests/integration -m "integration and not slow"
+
+# `slow` is not about duration. It marks the tests that mutate the workspace — ENV-005 deploys the
+# test target three times — so running them has to be a decision, not a side effect of typing
+# `make test-integration`. They still cost no compute; see tests/integration/test_rollback.py.
+.PHONY: test-slow
+test-slow: ## Workspace-mutating integration tests (ENV-005). Needs a clean tree.
+	$(VENV_DBC)/bin/pytest tests/integration -m slow
 
 .PHONY: check
 check: lint types trace test-unit ## Everything CI runs on a pull request
