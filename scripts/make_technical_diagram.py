@@ -172,7 +172,8 @@ s.put(
     W,
     "SCD Type 2 via AUTO CDC",
     "AUTO CDC ... STORED AS SCD TYPE 2 sobre produto e domicílio. Escrever MERGE à mão daria o "
-    "mesmo resultado com mais superfície de erro (ADR-0008).",
+    "mesmo resultado com mais superfície de erro. O ADR-0008 que registraria essa escolha NÃO "
+    "foi escrito — ver docs/adr/README.md.",
     BLUE,
     BG_BLUE,
 )

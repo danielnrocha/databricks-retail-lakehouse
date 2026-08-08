@@ -64,7 +64,7 @@ means a full rewrite.
 | `bronze.basket_line_events` | `AUTO` | Ingest-only; let Databricks infer from query patterns rather than guess before any query exists. |
 | `silver.fact_basket_line` | `transaction_date`, `store_id` | The two predicates present in essentially every downstream query. |
 | `gold.fct_basket_line` | `date_key`, `product_key` | BI access is date-scoped then product-sliced. |
-| `silver.dim_product_scd2` | `product_id`, `__START_AT` | Point-in-time joins predicate on the key and the validity window; see ADR-0008. |
+| `silver.dim_product_scd2` | `product_id`, `__START_AT` | Point-in-time joins predicate on the key and the validity window (ADR-0008 was never written — see `README.md` in this directory). |
 | `gold.promo_performance_rt` | `AUTO` | Streaming, small, query pattern still emerging. |
 
 > **Corrected 2026-08-06.** The `dim_product_scd2` row above originally specified

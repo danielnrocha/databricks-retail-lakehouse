@@ -178,5 +178,11 @@ hiding it.
 2. `docs/adr/` — the decision record, in numeric order.
 3. `specs/REQUIREMENTS.md` — what the system must do.
 4. `specs/traceability.md` — proof that each requirement is tested.
-5. `docs/architecture/` — the how.
-6. `docs/runbooks/` — what to do when it breaks.
+5. `docs/architecture/` — the how, plus the measured findings per layer.
+6. `docs/diagrams/` — the same story in one page, twice: once for the business, once for an
+   engineer.
+
+**Not written, and named rather than implied:** `docs/runbooks/` — what to do when it breaks. An
+earlier version of this list pointed at it as though it existed. It does not, and a reading order
+that sends a reviewer to an empty directory is the same defect this repository keeps finding
+elsewhere: a claim that is easier to make than to check.

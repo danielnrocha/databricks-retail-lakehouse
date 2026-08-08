@@ -1,7 +1,7 @@
 {
   "type": "excalidraw",
   "version": 2,
-  "source": "https://marketplace.visualstudio.com/items?itemName=pomdtr.excalidraw-editor",
+  "source": "https://excalidraw.com",
   "elements": [
     {
       "id": "e1356523",
@@ -24,14 +24,13 @@
         "type": 3
       },
       "seed": 841229332,
-      "version": 163,
-      "versionNonce": 167978206,
+      "version": 162,
+      "versionNonce": 1841244617,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800545,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "a0"
+      "locked": false
     },
     {
       "id": "e1156984",
@@ -54,20 +53,19 @@
         "type": 3
       },
       "seed": 1626652617,
-      "version": 23,
-      "versionNonce": 1725210626,
+      "version": 22,
+      "versionNonce": 508441185,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800545,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "a1"
+      "locked": false
     },
     {
       "id": "e0997245",
       "type": "rectangle",
-      "x": 51.64874155808877,
-      "y": 1723.576622673498,
+      "x": 52,
+      "y": 1723.24,
       "width": 2160,
       "height": 353.53,
       "angle": -0.0018,
@@ -84,14 +82,13 @@
         "type": 3
       },
       "seed": 1987661596,
-      "version": 327,
-      "versionNonce": 2043345090,
+      "version": 325,
+      "versionNonce": 1600802621,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786142132091,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "a2"
+      "locked": false
     },
     {
       "id": "e0835242",
@@ -114,14 +111,13 @@
         "type": 3
       },
       "seed": 1283193923,
-      "version": 279,
-      "versionNonce": 2030391234,
+      "version": 278,
+      "versionNonce": 483364987,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800545,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "a3"
+      "locked": false
     },
     {
       "id": "e0646388",
@@ -144,14 +140,13 @@
         "type": 3
       },
       "seed": 1183384856,
-      "version": 120,
-      "versionNonce": 9045342,
+      "version": 119,
+      "versionNonce": 1328032488,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "a4"
+      "locked": false
     },
     {
       "id": "e0463713",
@@ -174,14 +169,13 @@
         "type": 3
       },
       "seed": 697532816,
-      "version": 161,
-      "versionNonce": 688523138,
+      "version": 160,
+      "versionNonce": 2069030342,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "a5"
+      "locked": false
     },
     {
       "id": "e0321119",
@@ -204,22 +198,21 @@
         "type": 3
       },
       "seed": 215117867,
-      "version": 188,
-      "versionNonce": 1243457950,
+      "version": 187,
+      "versionNonce": 1772567209,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "a6"
+      "locked": false
     },
     {
       "id": "e0001548",
       "type": "text",
       "x": 70,
       "y": 40,
-      "width": 592,
-      "height": 40,
+      "width": 592.0,
+      "height": 40.0,
       "angle": 0,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
@@ -232,11 +225,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 712744720,
-      "version": 206,
-      "versionNonce": 790742850,
+      "version": 205,
+      "versionNonce": 958980927,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "Retail Lakehouse — referência técnica",
@@ -247,15 +240,14 @@
       "verticalAlign": "top",
       "containerId": null,
       "lineHeight": 1.25,
-      "autoResize": true,
-      "index": "a7"
+      "autoResize": true
     },
     {
       "id": "e0011943",
       "type": "text",
       "x": 74,
       "y": 92,
-      "width": 864,
+      "width": 864.0,
       "height": 22.5,
       "angle": 0,
       "strokeColor": "#495057",
@@ -269,11 +261,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 672578908,
-      "version": 242,
-      "versionNonce": 573752798,
+      "version": 241,
+      "versionNonce": 1772783702,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "O que foi usado, o que foi medido, e onde a plataforma não entrega o que a documentação promete.",
@@ -284,16 +276,15 @@
       "verticalAlign": "top",
       "containerId": null,
       "lineHeight": 1.25,
-      "autoResize": true,
-      "index": "a8"
+      "autoResize": true
     },
     {
       "id": "e0028800",
       "type": "text",
       "x": 74,
       "y": 120,
-      "width": 576,
-      "height": 20,
+      "width": 576.0,
+      "height": 20.0,
       "angle": 0,
       "strokeColor": "#495057",
       "backgroundColor": "transparent",
@@ -306,11 +297,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 621118473,
-      "version": 261,
-      "versionNonce": 1672187650,
+      "version": 260,
+      "versionNonce": 782733318,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "Databricks Free Edition · serverless · Unity Catalog · 2X-Small + Photon",
@@ -321,16 +312,15 @@
       "verticalAlign": "top",
       "containerId": null,
       "lineHeight": 1.25,
-      "autoResize": true,
-      "index": "a9"
+      "autoResize": true
     },
     {
       "id": "e0032269",
       "type": "text",
       "x": 70,
       "y": 190,
-      "width": 466.96759033203125,
-      "height": 30,
+      "width": 444.0,
+      "height": 30.0,
       "angle": 0,
       "strokeColor": "#6741d9",
       "backgroundColor": "transparent",
@@ -343,11 +333,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1914965758,
-      "version": 65,
-      "versionNonce": 1971560450,
+      "version": 63,
+      "versionNonce": 2040851651,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786146817380,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "1 · STACK — o que de fato está em uso",
@@ -358,8 +348,7 @@
       "verticalAlign": "top",
       "containerId": null,
       "lineHeight": 1.25,
-      "autoResize": true,
-      "index": "aA"
+      "autoResize": true
     },
     {
       "id": "e0049819",
@@ -382,8 +371,8 @@
         "type": 3
       },
       "seed": 1307489580,
-      "version": 96,
-      "versionNonce": 992370370,
+      "version": 95,
+      "versionNonce": 194461790,
       "isDeleted": false,
       "boundElements": [
         {
@@ -391,10 +380,9 @@
           "id": "e0049253"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "aB"
+      "locked": false
     },
     {
       "id": "e0049253",
@@ -415,11 +403,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 914790883,
-      "version": 290,
-      "versionNonce": 939877982,
+      "version": 289,
+      "versionNonce": 125686144,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "Lakeflow Spark Declarative Pipelines",
@@ -430,8 +418,7 @@
       "verticalAlign": "middle",
       "containerId": "e0049819",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "aC"
+      "autoResize": false
     },
     {
       "id": "e0069991",
@@ -454,8 +441,8 @@
         "type": 3
       },
       "seed": 1732910026,
-      "version": 29,
-      "versionNonce": 1110521474,
+      "version": 28,
+      "versionNonce": 886936033,
       "isDeleted": false,
       "boundElements": [
         {
@@ -463,10 +450,9 @@
           "id": "e0062906"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "aD"
+      "locked": false
     },
     {
       "id": "e0062906",
@@ -487,11 +473,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1515892449,
-      "version": 75,
-      "versionNonce": 495250078,
+      "version": 74,
+      "versionNonce": 1948973025,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "Auto Loader (cloudFiles)",
@@ -502,8 +488,7 @@
       "verticalAlign": "middle",
       "containerId": "e0069991",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "aE"
+      "autoResize": false
     },
     {
       "id": "e0088649",
@@ -526,8 +511,8 @@
         "type": 3
       },
       "seed": 268064159,
-      "version": 321,
-      "versionNonce": 428545602,
+      "version": 320,
+      "versionNonce": 464050839,
       "isDeleted": false,
       "boundElements": [
         {
@@ -535,10 +520,9 @@
           "id": "e0082388"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "aF"
+      "locked": false
     },
     {
       "id": "e0082388",
@@ -559,11 +543,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1672382351,
-      "version": 118,
-      "versionNonce": 1762256606,
+      "version": 117,
+      "versionNonce": 282762766,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "AUTO CDC → SCD Type 2",
@@ -574,8 +558,7 @@
       "verticalAlign": "middle",
       "containerId": "e0088649",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "aG"
+      "autoResize": false
     },
     {
       "id": "e0103607",
@@ -598,8 +581,8 @@
         "type": 3
       },
       "seed": 148843642,
-      "version": 34,
-      "versionNonce": 1913847298,
+      "version": 33,
+      "versionNonce": 1487933334,
       "isDeleted": false,
       "boundElements": [
         {
@@ -607,10 +590,9 @@
           "id": "e0107926"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "aH"
+      "locked": false
     },
     {
       "id": "e0107926",
@@ -631,11 +613,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1686964394,
-      "version": 360,
-      "versionNonce": 723868446,
+      "version": 359,
+      "versionNonce": 1166800086,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "Unity Catalog: catálogos, volumes, lineage",
@@ -646,8 +628,7 @@
       "verticalAlign": "middle",
       "containerId": "e0103607",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "aI"
+      "autoResize": false
     },
     {
       "id": "e0124823",
@@ -670,8 +651,8 @@
         "type": 3
       },
       "seed": 1867099000,
-      "version": 374,
-      "versionNonce": 147320258,
+      "version": 373,
+      "versionNonce": 882410928,
       "isDeleted": false,
       "boundElements": [
         {
@@ -679,10 +660,9 @@
           "id": "e0127750"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "aJ"
+      "locked": false
     },
     {
       "id": "e0127750",
@@ -703,11 +683,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1630292776,
-      "version": 152,
-      "versionNonce": 977815390,
+      "version": 151,
+      "versionNonce": 1768354818,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "UC Metric Views",
@@ -718,8 +698,7 @@
       "verticalAlign": "middle",
       "containerId": "e0124823",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "aK"
+      "autoResize": false
     },
     {
       "id": "e0145561",
@@ -742,8 +721,8 @@
         "type": 3
       },
       "seed": 1838378012,
-      "version": 94,
-      "versionNonce": 583591298,
+      "version": 93,
+      "versionNonce": 420780619,
       "isDeleted": false,
       "boundElements": [
         {
@@ -751,10 +730,9 @@
           "id": "e0144440"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "aL"
+      "locked": false
     },
     {
       "id": "e0144440",
@@ -775,11 +753,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 145447705,
-      "version": 49,
-      "versionNonce": 1992534942,
+      "version": 48,
+      "versionNonce": 496091378,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "UC Tag Policies (Domains)",
@@ -790,8 +768,7 @@
       "verticalAlign": "middle",
       "containerId": "e0145561",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "aM"
+      "autoResize": false
     },
     {
       "id": "e0162201",
@@ -814,8 +791,8 @@
         "type": 3
       },
       "seed": 435476523,
-      "version": 159,
-      "versionNonce": 156558658,
+      "version": 158,
+      "versionNonce": 1251413976,
       "isDeleted": false,
       "boundElements": [
         {
@@ -823,10 +800,9 @@
           "id": "e0168885"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "aN"
+      "locked": false
     },
     {
       "id": "e0168885",
@@ -847,11 +823,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1587013920,
-      "version": 283,
-      "versionNonce": 248023006,
+      "version": 282,
+      "versionNonce": 2009271680,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "DQX + expectations governadas",
@@ -862,8 +838,7 @@
       "verticalAlign": "middle",
       "containerId": "e0162201",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "aO"
+      "autoResize": false
     },
     {
       "id": "e0189223",
@@ -886,8 +861,8 @@
         "type": 3
       },
       "seed": 2110652240,
-      "version": 340,
-      "versionNonce": 97185026,
+      "version": 339,
+      "versionNonce": 2128142622,
       "isDeleted": false,
       "boundElements": [
         {
@@ -895,10 +870,9 @@
           "id": "e0183973"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "aP"
+      "locked": false
     },
     {
       "id": "e0183973",
@@ -919,11 +893,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 874982753,
-      "version": 390,
-      "versionNonce": 1114102814,
+      "version": 389,
+      "versionNonce": 321928175,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "Liquid clustering + Predictive Optimization",
@@ -934,8 +908,7 @@
       "verticalAlign": "middle",
       "containerId": "e0189223",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "aQ"
+      "autoResize": false
     },
     {
       "id": "e0203420",
@@ -958,8 +931,8 @@
         "type": 3
       },
       "seed": 2072208106,
-      "version": 246,
-      "versionNonce": 1571421378,
+      "version": 245,
+      "versionNonce": 103678578,
       "isDeleted": false,
       "boundElements": [
         {
@@ -967,10 +940,9 @@
           "id": "e0204605"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "aR"
+      "locked": false
     },
     {
       "id": "e0204605",
@@ -991,11 +963,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1620170906,
-      "version": 286,
-      "versionNonce": 663922782,
+      "version": 285,
+      "versionNonce": 1228666565,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "MLflow 3: tracing, evaluate, registry, alias",
@@ -1006,8 +978,7 @@
       "verticalAlign": "middle",
       "containerId": "e0203420",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "aS"
+      "autoResize": false
     },
     {
       "id": "e0223383",
@@ -1030,8 +1001,8 @@
         "type": 3
       },
       "seed": 482486717,
-      "version": 287,
-      "versionNonce": 1318130818,
+      "version": 286,
+      "versionNonce": 1894700147,
       "isDeleted": false,
       "boundElements": [
         {
@@ -1039,10 +1010,9 @@
           "id": "e0224387"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "aT"
+      "locked": false
     },
     {
       "id": "e0224387",
@@ -1063,11 +1033,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 2122769585,
-      "version": 166,
-      "versionNonce": 1847192734,
+      "version": 165,
+      "versionNonce": 1107958300,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "Model Serving (gpt-oss-120b, tool calling)",
@@ -1078,8 +1048,7 @@
       "verticalAlign": "middle",
       "containerId": "e0223383",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "aU"
+      "autoResize": false
     },
     {
       "id": "e0241421",
@@ -1102,8 +1071,8 @@
         "type": 3
       },
       "seed": 1716332163,
-      "version": 287,
-      "versionNonce": 171914306,
+      "version": 286,
+      "versionNonce": 1125834023,
       "isDeleted": false,
       "boundElements": [
         {
@@ -1111,10 +1080,9 @@
           "id": "e0248774"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "aV"
+      "locked": false
     },
     {
       "id": "e0248774",
@@ -1135,11 +1103,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 975443342,
-      "version": 30,
-      "versionNonce": 598649054,
+      "version": 29,
+      "versionNonce": 2093909781,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "UC Functions como tools do agente",
@@ -1150,8 +1118,7 @@
       "verticalAlign": "middle",
       "containerId": "e0241421",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "aW"
+      "autoResize": false
     },
     {
       "id": "e0269755",
@@ -1174,8 +1141,8 @@
         "type": 3
       },
       "seed": 1201960117,
-      "version": 123,
-      "versionNonce": 848518146,
+      "version": 122,
+      "versionNonce": 1532708921,
       "isDeleted": false,
       "boundElements": [
         {
@@ -1183,10 +1150,9 @@
           "id": "e0265001"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "aX"
+      "locked": false
     },
     {
       "id": "e0265001",
@@ -1207,11 +1173,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1923439953,
-      "version": 275,
-      "versionNonce": 2011290910,
+      "version": 274,
+      "versionNonce": 785916206,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "Databricks Asset Bundles (3 targets)",
@@ -1222,8 +1188,7 @@
       "verticalAlign": "middle",
       "containerId": "e0269755",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "aY"
+      "autoResize": false
     },
     {
       "id": "e0287885",
@@ -1246,8 +1211,8 @@
         "type": 3
       },
       "seed": 281350018,
-      "version": 333,
-      "versionNonce": 1435274178,
+      "version": 332,
+      "versionNonce": 2027001842,
       "isDeleted": false,
       "boundElements": [
         {
@@ -1255,10 +1220,9 @@
           "id": "e0286397"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "aZ"
+      "locked": false
     },
     {
       "id": "e0286397",
@@ -1279,11 +1243,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 630908713,
-      "version": 113,
-      "versionNonce": 2394462,
+      "version": 112,
+      "versionNonce": 1826032250,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "Statement Execution API",
@@ -1294,14 +1258,13 @@
       "verticalAlign": "middle",
       "containerId": "e0287885",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "aa"
+      "autoResize": false
     },
     {
       "id": "e0306987",
       "type": "rectangle",
       "x": 70,
-      "y": 325,
+      "y": 325.0,
       "width": 360.66,
       "height": 33.5,
       "angle": 0.0072,
@@ -1318,8 +1281,8 @@
         "type": 3
       },
       "seed": 839263879,
-      "version": 96,
-      "versionNonce": 1766441858,
+      "version": 95,
+      "versionNonce": 1689396572,
       "isDeleted": false,
       "boundElements": [
         {
@@ -1327,16 +1290,15 @@
           "id": "e0301581"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "ab"
+      "locked": false
     },
     {
       "id": "e0301581",
       "type": "text",
       "x": 78,
-      "y": 333,
+      "y": 333.0,
       "width": 344.66,
       "height": 17.5,
       "angle": 0.0072,
@@ -1351,11 +1313,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 227626782,
-      "version": 253,
-      "versionNonce": 2076683678,
+      "version": 252,
+      "versionNonce": 1576756441,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "system.query.history / information_schema",
@@ -1366,16 +1328,15 @@
       "verticalAlign": "middle",
       "containerId": "e0306987",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "ac"
+      "autoResize": false
     },
     {
       "id": "e0335892",
       "type": "text",
       "x": 70,
       "y": 428.5,
-      "width": 711.67138671875,
-      "height": 30,
+      "width": 684.0,
+      "height": 30.0,
       "angle": 0,
       "strokeColor": "#6741d9",
       "backgroundColor": "transparent",
@@ -1388,11 +1349,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 171548461,
-      "version": 340,
-      "versionNonce": 62334046,
+      "version": 338,
+      "versionNonce": 809559584,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786146816408,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "2 · INGESTÃO — Auto Loader dentro do pipeline declarativo",
@@ -1403,8 +1364,7 @@
       "verticalAlign": "top",
       "containerId": null,
       "lineHeight": 1.25,
-      "autoResize": true,
-      "index": "ad"
+      "autoResize": true
     },
     {
       "id": "e0344465",
@@ -1427,8 +1387,8 @@
         "type": 3
       },
       "seed": 82601507,
-      "version": 381,
-      "versionNonce": 402409950,
+      "version": 380,
+      "versionNonce": 1354803686,
       "isDeleted": false,
       "boundElements": [
         {
@@ -1436,10 +1396,9 @@
           "id": "e0342777"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "ae"
+      "locked": false
     },
     {
       "id": "e0342777",
@@ -1460,11 +1419,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1015383969,
-      "version": 154,
-      "versionNonce": 741100290,
+      "version": 153,
+      "versionNonce": 1164347736,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "cloudFiles.format = json\ncloudFiles.schemaLocation = <landing>/_schema\ncloudFiles.schemaEvolutionMode = addNewColumns\ncloudFiles.rescuedDataColumn = _rescued_data\ncloudFiles.inferColumnTypes = true\ncloudFiles.schemaHints = event_ts TIMESTAMP",
@@ -1475,8 +1434,7 @@
       "verticalAlign": "middle",
       "containerId": "e0344465",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "af"
+      "autoResize": false
     },
     {
       "id": "e0365089",
@@ -1499,8 +1457,8 @@
         "type": 3
       },
       "seed": 258564,
-      "version": 365,
-      "versionNonce": 869490206,
+      "version": 364,
+      "versionNonce": 906290611,
       "isDeleted": false,
       "boundElements": [
         {
@@ -1508,10 +1466,9 @@
           "id": "e0362744"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "ag"
+      "locked": false
     },
     {
       "id": "e0362744",
@@ -1532,11 +1489,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 823931079,
-      "version": 241,
-      "versionNonce": 741317314,
+      "version": 240,
+      "versionNonce": 1389272026,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "Colunas de linhagem em 100% das linhas\n\n_source_file · _source_file_ts · _ingest_ts · _pipeline_id. Sem\nisso, ING-002 é uma promessa e não uma coluna que dá para\nconsultar.",
@@ -1547,14 +1504,13 @@
       "verticalAlign": "middle",
       "containerId": "e0365089",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "ah"
+      "autoResize": false
     },
     {
       "id": "e0382538",
       "type": "rectangle",
       "x": 623.74,
-      "y": 478,
+      "y": 478.0,
       "width": 500,
       "height": 128.5,
       "angle": -0.007,
@@ -1571,8 +1527,8 @@
         "type": 3
       },
       "seed": 400606558,
-      "version": 223,
-      "versionNonce": 608037470,
+      "version": 222,
+      "versionNonce": 1105969394,
       "isDeleted": false,
       "boundElements": [
         {
@@ -1580,16 +1536,15 @@
           "id": "e0382099"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "ai"
+      "locked": false
     },
     {
       "id": "e0382099",
       "type": "text",
       "x": 631.74,
-      "y": 486,
+      "y": 486.0,
       "width": 484,
       "height": 112.5,
       "angle": -0.007,
@@ -1604,11 +1559,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1433044173,
-      "version": 284,
-      "versionNonce": 917697154,
+      "version": 283,
+      "versionNonce": 1657142708,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "Auto Loader infere de amostra do diretório\n\nNão da ordem de chegada. Consequência: um backfill NUNCA\ndemonstra evolução de schema — a forma pós-drift vira o schema\ninicial e nada evolui. A prova exige subir em tranches, com run\nentre cada uma.",
@@ -1619,8 +1574,7 @@
       "verticalAlign": "middle",
       "containerId": "e0382538",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "aj"
+      "autoResize": false
     },
     {
       "id": "e0403814",
@@ -1628,7 +1582,7 @@
       "x": 620.46,
       "y": 629.61,
       "width": 500,
-      "height": 123,
+      "height": 109.75,
       "angle": 0.0002,
       "strokeColor": "#e03131",
       "backgroundColor": "#ffc9c9",
@@ -1643,8 +1597,8 @@
         "type": 3
       },
       "seed": 926207653,
-      "version": 255,
-      "versionNonce": 79110978,
+      "version": 253,
+      "versionNonce": 2000094582,
       "isDeleted": false,
       "boundElements": [
         {
@@ -1652,18 +1606,17 @@
           "id": "e0404851"
         }
       ],
-      "updated": 1786142656055,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "ak"
+      "locked": false
     },
     {
       "id": "e0404851",
       "type": "text",
-      "x": 625.46,
-      "y": 634.86,
+      "x": 628.46,
+      "y": 637.61,
       "width": 484,
-      "height": 112.5,
+      "height": 93.75,
       "angle": 0.0002,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
@@ -1676,14 +1629,14 @@
       "frameId": null,
       "roundness": null,
       "seed": 987828745,
-      "version": 229,
-      "versionNonce": 577519134,
+      "version": 226,
+      "versionNonce": 1520116532,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786142656517,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
-      "text": "Evolução de schema = update CANCELED\n\nO flow termina, o update vai a CANCELED e o Lakeflow inicia um\nsucessor com cause=SCHEMA_CHANGE. Orquestração que trata\nCANCELED como falha alarma exatamente quando o pipeline\nacertou.",
+      "text": "Evolução de schema = update CANCELED\n\nO flow termina, o update vai a CANCELED e o Lakeflow inicia um\nsucessor com cause=SCHEMA_CHANGE. Orquestração que trata\nCANCELED como falha alarma exatamente quando o pipeline acertou.",
       "originalText": "Evolução de schema = update CANCELED\n\nO flow termina, o update vai a CANCELED e o Lakeflow inicia um\nsucessor com cause=SCHEMA_CHANGE. Orquestração que trata\nCANCELED como falha alarma exatamente quando o pipeline acertou.",
       "fontSize": 15,
       "fontFamily": 5,
@@ -1691,8 +1644,7 @@
       "verticalAlign": "middle",
       "containerId": "e0403814",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "al"
+      "autoResize": false
     },
     {
       "id": "e0422884",
@@ -1700,7 +1652,7 @@
       "x": 1169.34,
       "y": 476.44,
       "width": 500,
-      "height": 198,
+      "height": 184.75,
       "angle": -0.0066,
       "strokeColor": "#2f9e44",
       "backgroundColor": "#b2f2bb",
@@ -1715,8 +1667,8 @@
         "type": 3
       },
       "seed": 738715842,
-      "version": 118,
-      "versionNonce": 1389287938,
+      "version": 116,
+      "versionNonce": 672640780,
       "isDeleted": false,
       "boundElements": [
         {
@@ -1724,18 +1676,17 @@
           "id": "e0426845"
         }
       ],
-      "updated": 1786142657224,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "am"
+      "locked": false
     },
     {
       "id": "e0426845",
       "type": "text",
-      "x": 1174.34,
-      "y": 481.69,
+      "x": 1177.34,
+      "y": 484.44,
       "width": 484,
-      "height": 187.5,
+      "height": 168.75,
       "angle": -0.0066,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
@@ -1748,14 +1699,14 @@
       "frameId": null,
       "roundness": null,
       "seed": 922994794,
-      "version": 372,
-      "versionNonce": 657173342,
+      "version": 369,
+      "versionNonce": 655719969,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786142657661,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
-      "text": "Medido em 4 tranches de 100 arquivos\n\nT1 pré-drift: 1 versão de schema, 0 resgatadas.\nT2 coluna nova → 2 versões.\nT3 rename → 3 versões.\nT4 retype → 49.468 resgatadas, 200.000 linhas preservadas\n(400\narq. × 500).\nConferido contra a fonte em disco: 49.468 eventos com quantity\nstring. Bate exato.",
+      "text": "Medido em 4 tranches de 100 arquivos\n\nT1 pré-drift: 1 versão de schema, 0 resgatadas.\nT2 coluna nova → 2 versões.\nT3 rename → 3 versões.\nT4 retype → 49.468 resgatadas, 200.000 linhas preservadas (400\narq. × 500).\nConferido contra a fonte em disco: 49.468 eventos com quantity\nstring. Bate exato.",
       "originalText": "Medido em 4 tranches de 100 arquivos\n\nT1 pré-drift: 1 versão de schema, 0 resgatadas.\nT2 coluna nova → 2 versões.\nT3 rename → 3 versões.\nT4 retype → 49.468 resgatadas, 200.000 linhas preservadas (400\narq. × 500).\nConferido contra a fonte em disco: 49.468 eventos com quantity\nstring. Bate exato.",
       "fontSize": 15,
       "fontFamily": 5,
@@ -1763,8 +1714,7 @@
       "verticalAlign": "middle",
       "containerId": "e0422884",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "an"
+      "autoResize": false
     },
     {
       "id": "e0448621",
@@ -1787,8 +1737,8 @@
         "type": 3
       },
       "seed": 787540056,
-      "version": 272,
-      "versionNonce": 1048338206,
+      "version": 271,
+      "versionNonce": 133621353,
       "isDeleted": false,
       "boundElements": [
         {
@@ -1796,15 +1746,14 @@
           "id": "e0447971"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "ao"
+      "locked": false
     },
     {
       "id": "e0447971",
       "type": "text",
-      "x": 1724.63,
+      "x": 1727.63,
       "y": 489.01,
       "width": 484,
       "height": 112.5,
@@ -1820,11 +1769,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1995177093,
-      "version": 164,
-      "versionNonce": 24926402,
+      "version": 162,
+      "versionNonce": 234287869,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786142658933,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "O drift que não erra nem resgata\n\nRename deixa trans_time E transaction_time na tabela, cada um\nnon-null em metade das linhas. Nada falha, nada vai para\n_rescued_data. Query presa ao nome antigo continua devolvendo\nlinhas e para de cobrir o presente — em silêncio.",
@@ -1835,16 +1784,15 @@
       "verticalAlign": "middle",
       "containerId": "e0448621",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "ap"
+      "autoResize": false
     },
     {
       "id": "e0473755",
       "type": "text",
       "x": 70,
-      "y": 809.9798717738638,
-      "width": 601.3674926757812,
-      "height": 30,
+      "y": 809.36,
+      "width": 576.0,
+      "height": 30.0,
       "angle": 0,
       "strokeColor": "#6741d9",
       "backgroundColor": "transparent",
@@ -1857,11 +1805,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 2125692477,
-      "version": 331,
-      "versionNonce": 1811687810,
+      "version": 328,
+      "versionNonce": 1318894296,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786146812580,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "3 · SILVER e GOLD — modelagem, qualidade, layout",
@@ -1872,16 +1820,15 @@
       "verticalAlign": "top",
       "containerId": null,
       "lineHeight": 1.25,
-      "autoResize": true,
-      "index": "aq"
+      "autoResize": true
     },
     {
       "id": "e0489642",
       "type": "rectangle",
-      "x": 70.287269467802,
-      "y": 859.3030618112475,
+      "x": 70.27,
+      "y": 859.47,
       "width": 500,
-      "height": 142,
+      "height": 128.5,
       "angle": -0.0035,
       "strokeColor": "#1971c2",
       "backgroundColor": "#a5d8ff",
@@ -1896,8 +1843,8 @@
         "type": 3
       },
       "seed": 9670907,
-      "version": 317,
-      "versionNonce": 586141022,
+      "version": 313,
+      "versionNonce": 287077081,
       "isDeleted": false,
       "boundElements": [
         {
@@ -1905,18 +1852,17 @@
           "id": "e0484576"
         }
       ],
-      "updated": 1786142649967,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "ar"
+      "locked": false
     },
     {
       "id": "e0484576",
       "type": "text",
-      "x": 75.287269467802,
-      "y": 864.6780618112475,
+      "x": 78.27,
+      "y": 867.47,
       "width": 484,
-      "height": 131.25,
+      "height": 112.5,
       "angle": -0.0035,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
@@ -1929,29 +1875,28 @@
       "frameId": null,
       "roundness": null,
       "seed": 2113412824,
-      "version": 119,
-      "versionNonce": 214269762,
+      "version": 114,
+      "versionNonce": 328728373,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786142650694,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
-      "text": "SCD Type 2 via AUTO CDC\n\nAUTO CDC ... STORED AS SCD TYPE 2 sobre produto e\ndomicílio.\nEscrever MERGE à mão daria o mesmo resultado com mais\nsuperfície\nde erro (ADR-0008).",
-      "originalText": "SCD Type 2 via AUTO CDC\n\nAUTO CDC ... STORED AS SCD TYPE 2 sobre produto e domicílio.\nEscrever MERGE à mão daria o mesmo resultado com mais superfície\nde erro (ADR-0008).",
+      "text": "SCD Type 2 via AUTO CDC\n\nAUTO CDC ... STORED AS SCD TYPE 2 sobre produto e domicílio.\nEscrever MERGE à mão daria o mesmo resultado com mais superfície\nde erro. O ADR-0008 que registraria essa escolha NÃO foi escrito\n— ver docs/adr/README.md.",
+      "originalText": "SCD Type 2 via AUTO CDC\n\nAUTO CDC ... STORED AS SCD TYPE 2 sobre produto e domicílio.\nEscrever MERGE à mão daria o mesmo resultado com mais superfície\nde erro. O ADR-0008 que registraria essa escolha NÃO foi escrito\n— ver docs/adr/README.md.",
       "fontSize": 15,
       "fontFamily": 5,
       "textAlign": "left",
       "verticalAlign": "middle",
       "containerId": "e0489642",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "as"
+      "autoResize": false
     },
     {
       "id": "e0504834",
       "type": "rectangle",
-      "x": 70.60196041156405,
-      "y": 1023.2043178569429,
+      "x": 69.75,
+      "y": 1015.06,
       "width": 500,
       "height": 109.75,
       "angle": 0.0062,
@@ -1968,8 +1913,8 @@
         "type": 3
       },
       "seed": 1178583720,
-      "version": 247,
-      "versionNonce": 1608563742,
+      "version": 195,
+      "versionNonce": 110407185,
       "isDeleted": false,
       "boundElements": [
         {
@@ -1977,16 +1922,15 @@
           "id": "e0506839"
         }
       ],
-      "updated": 1786142653414,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "at"
+      "locked": false
     },
     {
       "id": "e0506839",
       "type": "text",
-      "x": 75.60196041156405,
-      "y": 1031.204317856943,
+      "x": 77.75,
+      "y": 1023.06,
       "width": 484,
       "height": 93.75,
       "angle": 0.0062,
@@ -2001,11 +1945,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 491424728,
-      "version": 250,
-      "versionNonce": 1659865182,
+      "version": 197,
+      "versionNonce": 1231190302,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786142653414,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "Qualidade em duas camadas\n\nDQX + expectations governadas em UC. Linha reprovada vai para\nquarentena com rule_name, rule_expression e failed_at; QLT-003\nexige input = passed + quarantined, sem tolerância.",
@@ -2016,8 +1960,7 @@
       "verticalAlign": "middle",
       "containerId": "e0504834",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "au"
+      "autoResize": false
     },
     {
       "id": "e0529774",
@@ -2040,8 +1983,8 @@
         "type": 3
       },
       "seed": 339418516,
-      "version": 360,
-      "versionNonce": 1959766274,
+      "version": 359,
+      "versionNonce": 1973689306,
       "isDeleted": false,
       "boundElements": [
         {
@@ -2049,10 +1992,9 @@
           "id": "e0521577"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "av"
+      "locked": false
     },
     {
       "id": "e0521577",
@@ -2073,11 +2015,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 603411572,
-      "version": 324,
-      "versionNonce": 1075634206,
+      "version": 323,
+      "versionNonce": 926387,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "A armadilha do SCD2, medida\n\nJoin fato × dimensão pela chave natural, sem predicado de janela\nde validade, faz fan-out silencioso: +1,706% de receita. O\nnúmero fica plausível e errado. MOD-003 assere cardinalidade 1:1\npara que não volte.",
@@ -2088,8 +2030,7 @@
       "verticalAlign": "middle",
       "containerId": "e0529774",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "aw"
+      "autoResize": false
     },
     {
       "id": "e0549450",
@@ -2112,8 +2053,8 @@
         "type": 3
       },
       "seed": 1945456969,
-      "version": 227,
-      "versionNonce": 79116482,
+      "version": 226,
+      "versionNonce": 368906715,
       "isDeleted": false,
       "boundElements": [
         {
@@ -2121,10 +2062,9 @@
           "id": "e0549967"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "ax"
+      "locked": false
     },
     {
       "id": "e0549967",
@@ -2145,11 +2085,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1423548922,
-      "version": 287,
-      "versionNonce": 805776478,
+      "version": 286,
+      "versionNonce": 2067791622,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "O profiler do DQX é bom demais para confiar\n\nAs regras auto-geradas teriam quarentenado 23,6% da receita —\ncodificam como lei a anomalia presente no momento do profiling.\nQLT-005: profiling propõe, humano dispõe.",
@@ -2160,8 +2100,7 @@
       "verticalAlign": "middle",
       "containerId": "e0549450",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "ay"
+      "autoResize": false
     },
     {
       "id": "e0569875",
@@ -2169,7 +2108,7 @@
       "x": 1171.16,
       "y": 862.17,
       "width": 500,
-      "height": 160,
+      "height": 128.5,
       "angle": 0.0025,
       "strokeColor": "#2f9e44",
       "backgroundColor": "#b2f2bb",
@@ -2184,8 +2123,8 @@
         "type": 3
       },
       "seed": 1581574413,
-      "version": 359,
-      "versionNonce": 1652606722,
+      "version": 357,
+      "versionNonce": 598695618,
       "isDeleted": false,
       "boundElements": [
         {
@@ -2193,18 +2132,17 @@
           "id": "e0567473"
         }
       ],
-      "updated": 1786142566250,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "az"
+      "locked": false
     },
     {
       "id": "e0567473",
       "type": "text",
-      "x": 1176.16,
-      "y": 867.17,
+      "x": 1179.16,
+      "y": 870.17,
       "width": 484,
-      "height": 150,
+      "height": 112.5,
       "angle": 0.0025,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
@@ -2217,14 +2155,14 @@
       "frameId": null,
       "roundness": null,
       "seed": 1013753463,
-      "version": 57,
-      "versionNonce": 1741501086,
+      "version": 53,
+      "versionNonce": 1740039543,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786142566981,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
-      "text": "Layout: liquid clustering, sem partition\n\ncluster_by_auto + Predictive Optimization. Sem partitioning e\nsem Z-ORDER (ADR-0007). PRF-006 assere que os conjuntos\n'sob PO'\ne 'sob OPTIMIZE agendado' são disjuntos — rodar os dois na\nmesma\ntabela é anti-pattern documentado.",
+      "text": "Layout: liquid clustering, sem partition\n\ncluster_by_auto + Predictive Optimization. Sem partitioning e\nsem Z-ORDER (ADR-0007). PRF-006 assere que os conjuntos 'sob PO'\ne 'sob OPTIMIZE agendado' são disjuntos — rodar os dois na mesma\ntabela é anti-pattern documentado.",
       "originalText": "Layout: liquid clustering, sem partition\n\ncluster_by_auto + Predictive Optimization. Sem partitioning e\nsem Z-ORDER (ADR-0007). PRF-006 assere que os conjuntos 'sob PO'\ne 'sob OPTIMIZE agendado' são disjuntos — rodar os dois na mesma\ntabela é anti-pattern documentado.",
       "fontSize": 15,
       "fontFamily": 5,
@@ -2232,16 +2170,15 @@
       "verticalAlign": "middle",
       "containerId": "e0569875",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b00"
+      "autoResize": false
     },
     {
       "id": "e0587559",
       "type": "rectangle",
-      "x": 1167.9274804369875,
-      "y": 1040.981183972519,
+      "x": 1168.93,
+      "y": 1014.8,
       "width": 500,
-      "height": 91,
+      "height": 91.0,
       "angle": -0.0021,
       "strokeColor": "#2f9e44",
       "backgroundColor": "#b2f2bb",
@@ -2256,8 +2193,8 @@
         "type": 3
       },
       "seed": 1172379421,
-      "version": 425,
-      "versionNonce": 533180738,
+      "version": 334,
+      "versionNonce": 305688665,
       "isDeleted": false,
       "boundElements": [
         {
@@ -2265,18 +2202,17 @@
           "id": "e0582595"
         }
       ],
-      "updated": 1786142569038,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b01"
+      "locked": false
     },
     {
       "id": "e0582595",
       "type": "text",
-      "x": 1175.9274804369875,
-      "y": 1048.981183972519,
+      "x": 1176.93,
+      "y": 1022.8,
       "width": 484,
-      "height": 75,
+      "height": 75.0,
       "angle": -0.0021,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
@@ -2289,11 +2225,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1301861231,
-      "version": 258,
-      "versionNonce": 1543780610,
+      "version": 167,
+      "versionNonce": 387602757,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786142569038,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "Reconciliação gold × silver\n\n198.013 linhas / 613.396,36 — variância zero. Conferida a cada\nexecução, não uma vez.",
@@ -2304,8 +2240,7 @@
       "verticalAlign": "middle",
       "containerId": "e0587559",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b02"
+      "autoResize": false
     },
     {
       "id": "e0601754",
@@ -2313,7 +2248,7 @@
       "x": 1723.96,
       "y": 858.64,
       "width": 500,
-      "height": 179,
+      "height": 128.5,
       "angle": -0.0016,
       "strokeColor": "#2f9e44",
       "backgroundColor": "#b2f2bb",
@@ -2328,8 +2263,8 @@
         "type": 3
       },
       "seed": 473191204,
-      "version": 236,
-      "versionNonce": 680361310,
+      "version": 234,
+      "versionNonce": 917716963,
       "isDeleted": false,
       "boundElements": [
         {
@@ -2337,18 +2272,17 @@
           "id": "e0606712"
         }
       ],
-      "updated": 1786142575471,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b03"
+      "locked": false
     },
     {
       "id": "e0606712",
       "type": "text",
-      "x": 1728.96,
-      "y": 863.765,
+      "x": 1731.96,
+      "y": 866.64,
       "width": 484,
-      "height": 168.75,
+      "height": 112.5,
       "angle": -0.0016,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
@@ -2361,14 +2295,14 @@
       "frameId": null,
       "roundness": null,
       "seed": 870547489,
-      "version": 75,
-      "versionNonce": 1710280514,
+      "version": 72,
+      "versionNonce": 1681160687,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786142576182,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
-      "text": "UC Metric Views (MOD-005)\n\nCREATE VIEW ... WITH METRICS LANGUAGE YAML. Registra\ntable_type\n= METRIC_VIEW. Selecionar a medida sem MEASURE() é\nRECUSADO — é\nisso que separa métrica governada de view bem nomeada.\nDerivadas\ncompõem: MEASURE(a)/MEASURE(b), nunca SQL repetido.",
+      "text": "UC Metric Views (MOD-005)\n\nCREATE VIEW ... WITH METRICS LANGUAGE YAML. Registra table_type\n= METRIC_VIEW. Selecionar a medida sem MEASURE() é RECUSADO — é\nisso que separa métrica governada de view bem nomeada. Derivadas\ncompõem: MEASURE(a)/MEASURE(b), nunca SQL repetido.",
       "originalText": "UC Metric Views (MOD-005)\n\nCREATE VIEW ... WITH METRICS LANGUAGE YAML. Registra table_type\n= METRIC_VIEW. Selecionar a medida sem MEASURE() é RECUSADO — é\nisso que separa métrica governada de view bem nomeada. Derivadas\ncompõem: MEASURE(a)/MEASURE(b), nunca SQL repetido.",
       "fontSize": 15,
       "fontFamily": 5,
@@ -2376,14 +2310,13 @@
       "verticalAlign": "middle",
       "containerId": "e0601754",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b04"
+      "autoResize": false
     },
     {
       "id": "e0621190",
       "type": "rectangle",
-      "x": 1718.7814703291226,
-      "y": 1047.1488289831182,
+      "x": 1716.36,
+      "y": 1010.58,
       "width": 500,
       "height": 128.5,
       "angle": -0.0045,
@@ -2400,8 +2333,8 @@
         "type": 3
       },
       "seed": 1187950968,
-      "version": 187,
-      "versionNonce": 503540574,
+      "version": 95,
+      "versionNonce": 624113931,
       "isDeleted": false,
       "boundElements": [
         {
@@ -2409,16 +2342,15 @@
           "id": "e0622183"
         }
       ],
-      "updated": 1786142579145,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b05"
+      "locked": false
     },
     {
       "id": "e0622183",
       "type": "text",
-      "x": 1726.7814703291226,
-      "y": 1055.1488289831182,
+      "x": 1724.36,
+      "y": 1018.58,
       "width": 484,
       "height": 112.5,
       "angle": -0.0045,
@@ -2433,11 +2365,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1591621935,
-      "version": 115,
-      "versionNonce": 2138722206,
+      "version": 23,
+      "versionNonce": 1863531866,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786142579145,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "UC Domains (GOV-003)\n\nNão existe objeto 'domain' isolado: é tag policy governada +\nregistro. Valor fora da lista é recusado com\nINVALID_PARAMETER_VALUE. Chave SEM policy aceita qualquer coisa\n— aí a etiqueta não governa nada.",
@@ -2448,16 +2380,15 @@
       "verticalAlign": "middle",
       "containerId": "e0621190",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b06"
+      "autoResize": false
     },
     {
       "id": "e0655868",
       "type": "text",
-      "x": 70.44315964968962,
+      "x": 70,
       "y": 1209.08,
-      "width": 845.3751220703125,
-      "height": 30,
+      "width": 804.0,
+      "height": 30.0,
       "angle": 0,
       "strokeColor": "#6741d9",
       "backgroundColor": "transparent",
@@ -2470,11 +2401,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 261491799,
-      "version": 327,
-      "versionNonce": 1507268382,
+      "version": 324,
+      "versionNonce": 1160898322,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786142618117,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "4 · LAB DE PERFORMANCE — skew, spill e o que não dá para medir aqui",
@@ -2485,15 +2416,14 @@
       "verticalAlign": "top",
       "containerId": null,
       "lineHeight": 1.25,
-      "autoResize": true,
-      "index": "b07"
+      "autoResize": true
     },
     {
       "id": "e0665765",
       "type": "text",
       "x": 70,
       "y": 1243.08,
-      "width": 1035,
+      "width": 1035.0,
       "height": 18.75,
       "angle": -0.0017,
       "strokeColor": "#495057",
@@ -2507,11 +2437,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 257544974,
-      "version": 177,
-      "versionNonce": 384414110,
+      "version": 176,
+      "versionNonce": 340556642,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "Base: 2X-Small serverless + Photon · transactions 2.595.732 · causal 36.786.524 · 84 execuções registradas, cada uma com seu statement_id.",
@@ -2522,8 +2452,7 @@
       "verticalAlign": "top",
       "containerId": null,
       "lineHeight": 1.25,
-      "autoResize": true,
-      "index": "b08"
+      "autoResize": true
     },
     {
       "id": "e0675085",
@@ -2546,8 +2475,8 @@
         "type": 3
       },
       "seed": 97911256,
-      "version": 284,
-      "versionNonce": 1794785090,
+      "version": 283,
+      "versionNonce": 187025170,
       "isDeleted": false,
       "boundElements": [
         {
@@ -2555,15 +2484,14 @@
           "id": "e0677991"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b09"
+      "locked": false
     },
     {
       "id": "e0677991",
       "type": "text",
-      "x": 71.86,
+      "x": 74.86,
       "y": 1302.92,
       "width": 484,
       "height": 131.25,
@@ -2579,11 +2507,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1434192872,
-      "version": 255,
-      "versionNonce": 1388210590,
+      "version": 253,
+      "versionNonce": 2134459642,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786142636754,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "O skew existe, e é enorme\n\nmax/median por chave:\nSTORE_ID 2.519×\nPRODUCT_ID 9.926×\nO teste exige >1.000× e >5.000× para que a premissa do lab falhe\nse o dado mudar.",
@@ -2594,8 +2522,7 @@
       "verticalAlign": "middle",
       "containerId": "e0675085",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b0A"
+      "autoResize": false
     },
     {
       "id": "e0693992",
@@ -2603,7 +2530,7 @@
       "x": 70.63,
       "y": 1468.29,
       "width": 500,
-      "height": 160,
+      "height": 128.5,
       "angle": 0.0016,
       "strokeColor": "#e03131",
       "backgroundColor": "#ffc9c9",
@@ -2618,8 +2545,8 @@
         "type": 3
       },
       "seed": 627068659,
-      "version": 32,
-      "versionNonce": 1549506590,
+      "version": 30,
+      "versionNonce": 1949656737,
       "isDeleted": false,
       "boundElements": [
         {
@@ -2627,18 +2554,17 @@
           "id": "e0691749"
         }
       ],
-      "updated": 1786142634062,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b0B"
+      "locked": false
     },
     {
       "id": "e0691749",
       "type": "text",
-      "x": 75.63,
-      "y": 1473.29,
+      "x": 78.63,
+      "y": 1476.29,
       "width": 484,
-      "height": 150,
+      "height": 112.5,
       "angle": 0.0016,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
@@ -2651,14 +2577,14 @@
       "frameId": null,
       "roundness": null,
       "seed": 424111499,
-      "version": 225,
-      "versionNonce": 1824798786,
+      "version": 221,
+      "versionNonce": 455397548,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786142635252,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
-      "text": "…e a AQE não encosta nele\n\nO skew join da AQE exige AS DUAS condições: fator ≥5× E\npartição\n≥256 MB. STORE_ID passa o fator por três ordens de grandeza\ne a\npartição mais quente fica uma ordem ABAIXO do piso de bytes.\nResultado: AQE, corretamente, não faz nada.",
+      "text": "…e a AQE não encosta nele\n\nO skew join da AQE exige AS DUAS condições: fator ≥5× E partição\n≥256 MB. STORE_ID passa o fator por três ordens de grandeza e a\npartição mais quente fica uma ordem ABAIXO do piso de bytes.\nResultado: AQE, corretamente, não faz nada.",
       "originalText": "…e a AQE não encosta nele\n\nO skew join da AQE exige AS DUAS condições: fator ≥5× E partição\n≥256 MB. STORE_ID passa o fator por três ordens de grandeza e a\npartição mais quente fica uma ordem ABAIXO do piso de bytes.\nResultado: AQE, corretamente, não faz nada.",
       "fontSize": 15,
       "fontFamily": 5,
@@ -2666,14 +2592,13 @@
       "verticalAlign": "middle",
       "containerId": "e0693992",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b0C"
+      "autoResize": false
     },
     {
       "id": "e0716998",
       "type": "rectangle",
       "x": 618.7,
-      "y": 1290.3535666658315,
+      "y": 1290.14,
       "width": 500,
       "height": 147.25,
       "angle": -0.0067,
@@ -2690,8 +2615,8 @@
         "type": 3
       },
       "seed": 1774849806,
-      "version": 32,
-      "versionNonce": 1390802626,
+      "version": 30,
+      "versionNonce": 924016452,
       "isDeleted": false,
       "boundElements": [
         {
@@ -2699,16 +2624,15 @@
           "id": "e0718890"
         }
       ],
-      "updated": 1786142758758,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b0D"
+      "locked": false
     },
     {
       "id": "e0718890",
       "type": "text",
-      "x": 623.7,
-      "y": 1298.3535666658315,
+      "x": 626.7,
+      "y": 1298.14,
       "width": 484,
       "height": 131.25,
       "angle": -0.0067,
@@ -2723,11 +2647,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1733626199,
-      "version": 158,
-      "versionNonce": 1849544322,
+      "version": 155,
+      "versionNonce": 879466077,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786142758758,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "Resultado negativo mantido\n\nA chave de join real é composta: (PRODUCT_ID, STORE_ID,\nWEEK_NO). Em 1024 partições ela dá max/median < 1,5 e não\ndispara a condição de fator. Ou seja: salting seria\ninjustificado neste dataset. O teste existe para impedir alguém\nde reintroduzir salt 'porque tem skew'.",
@@ -2738,8 +2662,7 @@
       "verticalAlign": "middle",
       "containerId": "e0716998",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b0E"
+      "autoResize": false
     },
     {
       "id": "e0732026",
@@ -2747,7 +2670,7 @@
       "x": 620.1,
       "y": 1465.46,
       "width": 500,
-      "height": 81,
+      "height": 81.0,
       "angle": 0.0018,
       "strokeColor": "#495057",
       "backgroundColor": "#e9ecef",
@@ -2762,8 +2685,8 @@
         "type": 3
       },
       "seed": 975192932,
-      "version": 182,
-      "versionNonce": 305966722,
+      "version": 181,
+      "versionNonce": 1164815225,
       "isDeleted": false,
       "boundElements": [
         {
@@ -2771,18 +2694,17 @@
           "id": "e0737742"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b0F"
+      "locked": false
     },
     {
       "id": "e0737742",
       "type": "text",
-      "x": 625.1,
+      "x": 628.1,
       "y": 1473.46,
       "width": 484,
-      "height": 65,
+      "height": 65.0,
       "angle": 0.0018,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
@@ -2795,11 +2717,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 879929695,
-      "version": 270,
-      "versionNonce": 639839682,
+      "version": 268,
+      "versionNonce": 1937984237,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786142640078,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "spark.sql.adaptive.enabled\nspark.sql.adaptive.skewJoin.enabled\nspark.sql.shuffle.partitions\n→ CONFIG_NOT_AVAILABLE · SQLSTATE 42K0I",
@@ -2810,14 +2732,13 @@
       "verticalAlign": "middle",
       "containerId": "e0732026",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b0G"
+      "autoResize": false
     },
     {
       "id": "e0753209",
       "type": "rectangle",
-      "x": 1167.354022568605,
-      "y": 1294.2353003732428,
+      "x": 1167.35,
+      "y": 1294.36,
       "width": 500,
       "height": 147.25,
       "angle": 0.0069,
@@ -2834,8 +2755,8 @@
         "type": 3
       },
       "seed": 1790578794,
-      "version": 126,
-      "versionNonce": 173118658,
+      "version": 123,
+      "versionNonce": 1200212625,
       "isDeleted": false,
       "boundElements": [
         {
@@ -2843,16 +2764,15 @@
           "id": "e0754114"
         }
       ],
-      "updated": 1786142782833,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b0H"
+      "locked": false
     },
     {
       "id": "e0754114",
       "type": "text",
-      "x": 1172.354022568605,
-      "y": 1302.2353003732428,
+      "x": 1175.35,
+      "y": 1302.36,
       "width": 484,
       "height": 131.25,
       "angle": 0.0069,
@@ -2867,11 +2787,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1581529924,
-      "version": 135,
-      "versionNonce": 847621250,
+      "version": 131,
+      "versionNonce": 1437188316,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786142782833,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "Sem Spark UI no serverless\n\nNenhuma métrica por task existe. Consequência afiada: o limiar\nde skew que a própria Databricks documenta — max task > 1,5× o\np75 — é IMENSURÁVEL na plataforma que o recomenda. Isso é\nlimitação de serverless, não de Free Edition: quem padroniza em\nserverless herda independentemente do que paga.",
@@ -2882,8 +2802,7 @@
       "verticalAlign": "middle",
       "containerId": "e0753209",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b0I"
+      "autoResize": false
     },
     {
       "id": "e0778893",
@@ -2891,7 +2810,7 @@
       "x": 1169.83,
       "y": 1467.61,
       "width": 500,
-      "height": 142,
+      "height": 128.5,
       "angle": -0.0067,
       "strokeColor": "#f08c00",
       "backgroundColor": "#ffec99",
@@ -2906,8 +2825,8 @@
         "type": 3
       },
       "seed": 657041702,
-      "version": 43,
-      "versionNonce": 722954462,
+      "version": 41,
+      "versionNonce": 1263094824,
       "isDeleted": false,
       "boundElements": [
         {
@@ -2915,18 +2834,17 @@
           "id": "e0777843"
         }
       ],
-      "updated": 1786142642449,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b0J"
+      "locked": false
     },
     {
       "id": "e0777843",
       "type": "text",
-      "x": 1174.83,
-      "y": 1472.985,
+      "x": 1177.83,
+      "y": 1475.61,
       "width": 484,
-      "height": 131.25,
+      "height": 112.5,
       "angle": -0.0067,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
@@ -2939,14 +2857,14 @@
       "frameId": null,
       "roundness": null,
       "seed": 1052636723,
-      "version": 385,
-      "versionNonce": 1940376514,
+      "version": 382,
+      "versionNonce": 1982000601,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786142643287,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
-      "text": "A evidência vem de onde dá\n\nsystem.query.history + Query Profile. shuffle_read_bytes existe\ne é sempre 0; spilled_local_bytes popula. Daí a largura de\nUnsafeRow ser estimada — e um teste falha no dia em que a\ncoluna\npassar a valer, para trocar estimativa por medição.",
+      "text": "A evidência vem de onde dá\n\nsystem.query.history + Query Profile. shuffle_read_bytes existe\ne é sempre 0; spilled_local_bytes popula. Daí a largura de\nUnsafeRow ser estimada — e um teste falha no dia em que a coluna\npassar a valer, para trocar estimativa por medição.",
       "originalText": "A evidência vem de onde dá\n\nsystem.query.history + Query Profile. shuffle_read_bytes existe\ne é sempre 0; spilled_local_bytes popula. Daí a largura de\nUnsafeRow ser estimada — e um teste falha no dia em que a coluna\npassar a valer, para trocar estimativa por medição.",
       "fontSize": 15,
       "fontFamily": 5,
@@ -2954,16 +2872,15 @@
       "verticalAlign": "middle",
       "containerId": "e0778893",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b0K"
+      "autoResize": false
     },
     {
       "id": "e0792637",
       "type": "rectangle",
-      "x": 1718.547105773936,
-      "y": 1295.778416625889,
+      "x": 1718.54,
+      "y": 1295.84,
       "width": 500,
-      "height": 166,
+      "height": 166.0,
       "angle": 0.0003,
       "strokeColor": "#e03131",
       "backgroundColor": "#ffc9c9",
@@ -2978,8 +2895,8 @@
         "type": 3
       },
       "seed": 1293525805,
-      "version": 312,
-      "versionNonce": 1118493378,
+      "version": 309,
+      "versionNonce": 936214284,
       "isDeleted": false,
       "boundElements": [
         {
@@ -2987,18 +2904,17 @@
           "id": "e0794389"
         }
       ],
-      "updated": 1786142644786,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b0L"
+      "locked": false
     },
     {
       "id": "e0794389",
       "type": "text",
-      "x": 1723.547105773936,
-      "y": 1303.778416625889,
+      "x": 1726.54,
+      "y": 1303.84,
       "width": 484,
-      "height": 150,
+      "height": 150.0,
       "angle": 0.0003,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
@@ -3011,11 +2927,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1870165549,
-      "version": 358,
-      "versionNonce": 472803778,
+      "version": 354,
+      "versionNonce": 619735712,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786142645329,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "O instrumento quase inventou 84 resultados\n\nO lab invalidava o cache variando um COMENTÁRIO na query. O\nDatabricks tira comentário da chave de cache — as 84 execuções\nteriam sido internamente consistentes e completamente sem\nsentido. Só apareceu porque read_bytes voltava 0. Hoje: literal\nvariável na projeção externa, e um teste rejeita run com\nfrom_result_cache.",
@@ -3026,8 +2942,7 @@
       "verticalAlign": "middle",
       "containerId": "e0792637",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b0M"
+      "autoResize": false
     },
     {
       "id": "e0815840",
@@ -3050,8 +2965,8 @@
         "type": 3
       },
       "seed": 336097690,
-      "version": 308,
-      "versionNonce": 894983554,
+      "version": 307,
+      "versionNonce": 515938975,
       "isDeleted": false,
       "boundElements": [
         {
@@ -3059,10 +2974,9 @@
           "id": "e0819169"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b0N"
+      "locked": false
     },
     {
       "id": "e0819169",
@@ -3083,11 +2997,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1814641375,
-      "version": 297,
-      "versionNonce": 822588318,
+      "version": 296,
+      "versionNonce": 1494858109,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "Spill acompanha largura, não linhas\n\nO que derrama é a largura da chave de ordenação, não a contagem\nde linhas — e em serverless não existe 'adicionar memória', que\né a primeira recomendação da Databricks para spill. Toda\nintervenção vira mudança de código.",
@@ -3098,16 +3012,15 @@
       "verticalAlign": "middle",
       "containerId": "e0815840",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b0O"
+      "autoResize": false
     },
     {
       "id": "e0844859",
       "type": "text",
       "x": 70,
       "y": 1687.24,
-      "width": 568.84765625,
-      "height": 30,
+      "width": 504.0,
+      "height": 30.0,
       "angle": 0,
       "strokeColor": "#6741d9",
       "backgroundColor": "transparent",
@@ -3120,11 +3033,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 932201124,
-      "version": 44,
-      "versionNonce": 96416450,
+      "version": 42,
+      "versionNonce": 192379760,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786142930501,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "5 · ML e CAMADA AGÊNTICA — os dois portões",
@@ -3135,8 +3048,7 @@
       "verticalAlign": "top",
       "containerId": null,
       "lineHeight": 1.25,
-      "autoResize": true,
-      "index": "b0P"
+      "autoResize": true
     },
     {
       "id": "e0855965",
@@ -3159,8 +3071,8 @@
         "type": 3
       },
       "seed": 425897355,
-      "version": 246,
-      "versionNonce": 1934331870,
+      "version": 245,
+      "versionNonce": 1724499908,
       "isDeleted": false,
       "boundElements": [
         {
@@ -3168,10 +3080,9 @@
           "id": "e0857152"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b0Q"
+      "locked": false
     },
     {
       "id": "e0857152",
@@ -3192,11 +3103,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1321703951,
-      "version": 249,
-      "versionNonce": 1692165378,
+      "version": 248,
+      "versionNonce": 1786616059,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "ML: LightGBM + MLflow 3 + UC Registry\n\nJanela de lapso pré-registrada ANTES de existir modelo: dia 547\n(23 semanas / 161 dias), por raciocínio de negócio. O mesmo\nnúmero alimenta o KPI lapsed_households — KPI e modelo não podem\ndiscordar do que é 'sumido'.",
@@ -3207,8 +3118,7 @@
       "verticalAlign": "middle",
       "containerId": "e0855965",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b0R"
+      "autoResize": false
     },
     {
       "id": "e0879956",
@@ -3216,7 +3126,7 @@
       "x": 67.18,
       "y": 1892.14,
       "width": 500,
-      "height": 123,
+      "height": 109.75,
       "angle": 0.0019,
       "strokeColor": "#e03131",
       "backgroundColor": "#ffc9c9",
@@ -3231,8 +3141,8 @@
         "type": 3
       },
       "seed": 639224996,
-      "version": 62,
-      "versionNonce": 856187266,
+      "version": 60,
+      "versionNonce": 899386193,
       "isDeleted": false,
       "boundElements": [
         {
@@ -3240,18 +3150,17 @@
           "id": "e0876026"
         }
       ],
-      "updated": 1786142131276,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b0S"
+      "locked": false
     },
     {
       "id": "e0876026",
       "type": "text",
-      "x": 72.18,
-      "y": 1897.39,
+      "x": 75.18,
+      "y": 1900.14,
       "width": 484,
-      "height": 112.5,
+      "height": 93.75,
       "angle": 0.0019,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
@@ -3264,14 +3173,14 @@
       "frameId": null,
       "roundness": null,
       "seed": 33393776,
-      "version": 207,
-      "versionNonce": 535186398,
+      "version": 204,
+      "versionNonce": 580568952,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786142132087,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
-      "text": "O portão REPROVOU o modelo\n\nPR-AUC 0,1420 contra baseline de recência 0,3846 → −63,1%\nfrente\naos +10% exigidos. Não registrado, sem alias champion. MLR-004\nimpede a promoção.",
+      "text": "O portão REPROVOU o modelo\n\nPR-AUC 0,1420 contra baseline de recência 0,3846 → −63,1% frente\naos +10% exigidos. Não registrado, sem alias champion. MLR-004\nimpede a promoção.",
       "originalText": "O portão REPROVOU o modelo\n\nPR-AUC 0,1420 contra baseline de recência 0,3846 → −63,1% frente\naos +10% exigidos. Não registrado, sem alias champion. MLR-004\nimpede a promoção.",
       "fontSize": 15,
       "fontFamily": 5,
@@ -3279,8 +3188,7 @@
       "verticalAlign": "middle",
       "containerId": "e0879956",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b0T"
+      "autoResize": false
     },
     {
       "id": "e0895358",
@@ -3288,7 +3196,7 @@
       "x": 618.63,
       "y": 1739.88,
       "width": 500,
-      "height": 241,
+      "height": 241.0,
       "angle": 0.0076,
       "strokeColor": "#e03131",
       "backgroundColor": "#ffc9c9",
@@ -3303,8 +3211,8 @@
         "type": 3
       },
       "seed": 58065936,
-      "version": 86,
-      "versionNonce": 2096345182,
+      "version": 85,
+      "versionNonce": 712426142,
       "isDeleted": false,
       "boundElements": [
         {
@@ -3312,10 +3220,9 @@
           "id": "e0896432"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b0U"
+      "locked": false
     },
     {
       "id": "e0896432",
@@ -3323,7 +3230,7 @@
       "x": 626.63,
       "y": 1747.88,
       "width": 484,
-      "height": 225,
+      "height": 225.0,
       "angle": 0.0076,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
@@ -3336,11 +3243,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1387444674,
-      "version": 385,
-      "versionNonce": 1101302914,
+      "version": 384,
+      "versionNonce": 1296517379,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "E por que não foi 'consertado'\n\nMover a janela para o dia 660 levaria a taxa base de 3,0% para\n12,4% e tornaria o problema aprendível. Isso é escolher o\nexperimento pelo resultado desejado — não foi feito e está\nregistrado como não feito.\n\nAchado mais duro: a avaliação era subdimensionada desde o início\n— 76 positivos, 19 no split de teste. Não resolveria a diferença\nem nenhuma direção. E dunnhumby selecionou 'frequent shoppers',\nentão o critério de inclusão do dataset torna o próprio problema\nquase inaprendível.",
@@ -3351,8 +3258,7 @@
       "verticalAlign": "middle",
       "containerId": "e0895358",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b0V"
+      "autoResize": false
     },
     {
       "id": "e0914955",
@@ -3375,8 +3281,8 @@
         "type": 3
       },
       "seed": 120266092,
-      "version": 78,
-      "versionNonce": 35255454,
+      "version": 77,
+      "versionNonce": 1272248052,
       "isDeleted": false,
       "boundElements": [
         {
@@ -3384,10 +3290,9 @@
           "id": "e0916864"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b0W"
+      "locked": false
     },
     {
       "id": "e0916864",
@@ -3408,11 +3313,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1798342879,
-      "version": 172,
-      "versionNonce": 1008970818,
+      "version": 171,
+      "versionNonce": 1841327614,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "Agente: tools são UC Functions\n\n3 funções registradas em Unity Catalog como ferramentas. O\ngrounding não é instrução de prompt: se o número não veio de uma\ntool contra objeto governado, ele não existe (AGT-001). Endpoint\ndatabricks-gpt-oss-120b — tool calling funciona; 11 endpoints\ndisponíveis.",
@@ -3423,14 +3328,13 @@
       "verticalAlign": "middle",
       "containerId": "e0914955",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b0X"
+      "autoResize": false
     },
     {
       "id": "e0934267",
       "type": "rectangle",
-      "x": 1168.8272608000152,
-      "y": 1907,
+      "x": 1168.61,
+      "y": 1907.0,
       "width": 500,
       "height": 128.5,
       "angle": 0.007,
@@ -3447,8 +3351,8 @@
         "type": 3
       },
       "seed": 1085211349,
-      "version": 379,
-      "versionNonce": 1685215070,
+      "version": 377,
+      "versionNonce": 1332986297,
       "isDeleted": false,
       "boundElements": [
         {
@@ -3456,16 +3360,15 @@
           "id": "e0937464"
         }
       ],
-      "updated": 1786141943638,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b0Y"
+      "locked": false
     },
     {
       "id": "e0937464",
       "type": "text",
-      "x": 1173.8272608000152,
-      "y": 1915,
+      "x": 1176.61,
+      "y": 1915.0,
       "width": 484,
       "height": 112.5,
       "angle": 0.007,
@@ -3480,11 +3383,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 61553703,
-      "version": 272,
-      "versionNonce": 607434846,
+      "version": 269,
+      "versionNonce": 1953533643,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141992243,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "Tracing e recusa\n\nMLflow 3 trace por request com inputs, tool calls e saída.\nAGT-006 exige recusar em vez de chutar: sem dado de suporte, o\nagente declara a lacuna. Bloco de reasoning é extraído para não\nvazar scratchpad na resposta.",
@@ -3495,8 +3398,7 @@
       "verticalAlign": "middle",
       "containerId": "e0934267",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b0Z"
+      "autoResize": false
     },
     {
       "id": "e0952510",
@@ -3519,8 +3421,8 @@
         "type": 3
       },
       "seed": 453208150,
-      "version": 399,
-      "versionNonce": 25158942,
+      "version": 398,
+      "versionNonce": 878801987,
       "isDeleted": false,
       "boundElements": [
         {
@@ -3528,15 +3430,14 @@
           "id": "e0952690"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b0a"
+      "locked": false
     },
     {
       "id": "e0952690",
       "type": "text",
-      "x": 1723.11,
+      "x": 1726.11,
       "y": 1745.1,
       "width": 484,
       "height": 93.75,
@@ -3552,11 +3453,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1608442114,
-      "version": 38,
-      "versionNonce": 502779294,
+      "version": 36,
+      "versionNonce": 177098504,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786142042280,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "Juízes LLM e o gate — 100/100/100\n\n10 casos adversariais (respondível, irrespondível, pegadinha,\nvazio). Juízes pontuam groundedness, correctness e relevance;\nnota abaixo do limiar bloqueia o deploy.",
@@ -3567,8 +3468,7 @@
       "verticalAlign": "middle",
       "containerId": "e0952510",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b0b"
+      "autoResize": false
     },
     {
       "id": "e0973830",
@@ -3591,8 +3491,8 @@
         "type": 3
       },
       "seed": 1275412272,
-      "version": 32,
-      "versionNonce": 952209758,
+      "version": 31,
+      "versionNonce": 1347851532,
       "isDeleted": false,
       "boundElements": [
         {
@@ -3600,10 +3500,9 @@
           "id": "e0971704"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b0c"
+      "locked": false
     },
     {
       "id": "e0971704",
@@ -3624,11 +3523,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1907692965,
-      "version": 343,
-      "versionNonce": 1524710274,
+      "version": 342,
+      "versionNonce": 1651072191,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "A primeira rodada deu 33% no caso FÁCIL\n\nAs expectativas estavam escritas como listas exaustivas, então\nfato correto A MAIS virava não-conformidade — e o juiz zerou\ngroundedness por uma reclamação de verbosidade. Baixar o limiar\nde 90% para 80% seria tuning. Reescrever 'reporte X e Y' como\n'DEVE INCLUIR X e Y; fatos extras da mesma tool são bem-vindos'\ncorrige um enunciado que dizia outra coisa. Os limiares não\nforam tocados.",
@@ -3639,16 +3538,15 @@
       "verticalAlign": "middle",
       "containerId": "e0973830",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b0d"
+      "autoResize": false
     },
     {
       "id": "e1008136",
       "type": "text",
       "x": 70,
-      "y": 2127.1139405577046,
-      "width": 348.35980224609375,
-      "height": 30,
+      "y": 2126.77,
+      "width": 276.0,
+      "height": 30.0,
       "angle": 0,
       "strokeColor": "#6741d9",
       "backgroundColor": "transparent",
@@ -3661,11 +3559,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1441791826,
-      "version": 78,
-      "versionNonce": 990818946,
+      "version": 75,
+      "versionNonce": 1012062270,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786142121854,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "6 · AMBIENTES E ENTREGA",
@@ -3676,8 +3574,7 @@
       "verticalAlign": "top",
       "containerId": null,
       "lineHeight": 1.25,
-      "autoResize": true,
-      "index": "b0e"
+      "autoResize": true
     },
     {
       "id": "e1018560",
@@ -3700,8 +3597,8 @@
         "type": 3
       },
       "seed": 464689072,
-      "version": 263,
-      "versionNonce": 133331778,
+      "version": 262,
+      "versionNonce": 380499777,
       "isDeleted": false,
       "boundElements": [
         {
@@ -3709,10 +3606,9 @@
           "id": "e1013102"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b0f"
+      "locked": false
     },
     {
       "id": "e1013102",
@@ -3733,11 +3629,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1857440044,
-      "version": 391,
-      "versionNonce": 49762782,
+      "version": 390,
+      "versionNonce": 1085778657,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "target (databricks.yml)\n→ var.catalog\n→ pipeline configuration\n→ spark.conf.get('dng.catalog')\n→ código",
@@ -3748,8 +3644,7 @@
       "verticalAlign": "middle",
       "containerId": "e1018560",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b0g"
+      "autoResize": false
     },
     {
       "id": "e1033939",
@@ -3772,8 +3667,8 @@
         "type": 3
       },
       "seed": 442334497,
-      "version": 42,
-      "versionNonce": 1212531458,
+      "version": 41,
+      "versionNonce": 1296389384,
       "isDeleted": false,
       "boundElements": [
         {
@@ -3781,10 +3676,9 @@
           "id": "e1031401"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b0h"
+      "locked": false
     },
     {
       "id": "e1031401",
@@ -3805,11 +3699,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 836848594,
-      "version": 66,
-      "versionNonce": 439182878,
+      "version": 65,
+      "versionNonce": 430413995,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "ENV-001 é lint de AST, não de regex\n\nVarre apenas literais que o interpretador AVALIA — docstring e\ncomentário ficam fora por construção, senão a regra dispara na\nprópria documentação dela e alguém a desliga. Arquivos shipados\nvêm dos globs de resources/*.yml, então a lista não desatualiza.",
@@ -3820,8 +3714,7 @@
       "verticalAlign": "middle",
       "containerId": "e1033939",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b0i"
+      "autoResize": false
     },
     {
       "id": "e1051558",
@@ -3844,8 +3737,8 @@
         "type": 3
       },
       "seed": 444951481,
-      "version": 393,
-      "versionNonce": 1985614530,
+      "version": 392,
+      "versionNonce": 1925691572,
       "isDeleted": false,
       "boundElements": [
         {
@@ -3853,10 +3746,9 @@
           "id": "e1056945"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b0j"
+      "locked": false
     },
     {
       "id": "e1056945",
@@ -3877,11 +3769,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1982080856,
-      "version": 66,
-      "versionNonce": 1108800094,
+      "version": 65,
+      "versionNonce": 2088325984,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "test e prod em mode: production\n\nCom mode: development o target de teste resolvia para OUTRO\nrecurso: nome prefixado, development semantics forçado e\ndeployment lock DESLIGADO. O teste passava numa forma que\nprodução não recebe. Hoje os dois configs diferem apenas por\nsubstituição test→prod, asserido folha a folha.",
@@ -3892,8 +3784,7 @@
       "verticalAlign": "middle",
       "containerId": "e1051558",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b0k"
+      "autoResize": false
     },
     {
       "id": "e1075442",
@@ -3916,8 +3807,8 @@
         "type": 3
       },
       "seed": 2118166021,
-      "version": 99,
-      "versionNonce": 1154378370,
+      "version": 98,
+      "versionNonce": 479529931,
       "isDeleted": false,
       "boundElements": [
         {
@@ -3925,10 +3816,9 @@
           "id": "e1073156"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b0l"
+      "locked": false
     },
     {
       "id": "e1073156",
@@ -3949,11 +3839,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 980657342,
-      "version": 294,
-      "versionNonce": 92599966,
+      "version": 293,
+      "versionNonce": 763329892,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "Proveniência lida de volta\n\nstate/metadata.json no workspace carrega\nconfig.bundle.git.commit. Prod só sobe o SHA que o job de teste\nemitiu — não uma segunda leitura de github.sha, que só coincide\naté o primeiro re-run.",
@@ -3964,14 +3854,13 @@
       "verticalAlign": "middle",
       "containerId": "e1075442",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b0m"
+      "autoResize": false
     },
     {
       "id": "e1092210",
       "type": "rectangle",
-      "x": 1173.2976020604435,
-      "y": 2178.760107930051,
+      "x": 1173.21,
+      "y": 2178.75,
       "width": 500,
       "height": 184.75,
       "angle": -0.0032,
@@ -3988,8 +3877,8 @@
         "type": 3
       },
       "seed": 843128425,
-      "version": 93,
-      "versionNonce": 1709495582,
+      "version": 90,
+      "versionNonce": 1774630064,
       "isDeleted": false,
       "boundElements": [
         {
@@ -3997,16 +3886,15 @@
           "id": "e1093003"
         }
       ],
-      "updated": 1786146795432,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b0n"
+      "locked": false
     },
     {
       "id": "e1093003",
       "type": "text",
-      "x": 1178.2976020604435,
-      "y": 2186.760107930051,
+      "x": 1181.21,
+      "y": 2186.75,
       "width": 484,
       "height": 168.75,
       "angle": -0.0032,
@@ -4021,11 +3909,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 524941235,
-      "version": 351,
-      "versionNonce": 1822053918,
+      "version": 347,
+      "versionNonce": 1022287573,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786146796081,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "Rollback: rename é update in-place\n\nRedeploy do commit anterior restaura as definições e o\npipeline_id NÃO muda. Se o CLI recriasse em vez de renomear, a\nrecuperação documentada apagaria o histórico do pipeline a cada\nuso. Asserido, não presumido.\n\nO que ele NÃO cobre: dado. Deploy que rodou e gravou linha\nerrada não é desfeito — as definições voltam, as linhas ficam.",
@@ -4036,8 +3924,7 @@
       "verticalAlign": "middle",
       "containerId": "e1092210",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b0o"
+      "autoResize": false
     },
     {
       "id": "e1117159",
@@ -4045,7 +3932,7 @@
       "x": 1722.6,
       "y": 2176.99,
       "width": 500,
-      "height": 160,
+      "height": 147.25,
       "angle": 0.0035,
       "strokeColor": "#e03131",
       "backgroundColor": "#ffc9c9",
@@ -4060,8 +3947,8 @@
         "type": 3
       },
       "seed": 1977569996,
-      "version": 396,
-      "versionNonce": 820028318,
+      "version": 394,
+      "versionNonce": 1076645458,
       "isDeleted": false,
       "boundElements": [
         {
@@ -4069,18 +3956,17 @@
           "id": "e1117168"
         }
       ],
-      "updated": 1786146794804,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b0p"
+      "locked": false
     },
     {
       "id": "e1117168",
       "type": "text",
-      "x": 1727.6,
-      "y": 2181.99,
+      "x": 1730.6,
+      "y": 2184.99,
       "width": 484,
-      "height": 150,
+      "height": 131.25,
       "angle": 0.0035,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
@@ -4093,14 +3979,14 @@
       "frameId": null,
       "roundness": null,
       "seed": 492477963,
-      "version": 243,
-      "versionNonce": 771130562,
+      "version": 239,
+      "versionNonce": 1240681520,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786146795419,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
-      "text": "Um job pulado aparece como verde\n\nO job de bundle validate é condicionado a\nvars.DATABRICKS_HOST,\nque está vazio. Resultado: `validate -t prod` falhou por toda a\nvida do arquivo (pipeline com development: true sob mode:\nproduction) e o CI reportou verde o tempo todo. Mitigação: tudo\no que dá para checar offline virou teste unitário incondicional.",
+      "text": "Um job pulado aparece como verde\n\nO job de bundle validate é condicionado a vars.DATABRICKS_HOST,\nque está vazio. Resultado: `validate -t prod` falhou por toda a\nvida do arquivo (pipeline com development: true sob mode:\nproduction) e o CI reportou verde o tempo todo. Mitigação: tudo\no que dá para checar offline virou teste unitário incondicional.",
       "originalText": "Um job pulado aparece como verde\n\nO job de bundle validate é condicionado a vars.DATABRICKS_HOST,\nque está vazio. Resultado: `validate -t prod` falhou por toda a\nvida do arquivo (pipeline com development: true sob mode:\nproduction) e o CI reportou verde o tempo todo. Mitigação: tudo\no que dá para checar offline virou teste unitário incondicional.",
       "fontSize": 15,
       "fontFamily": 5,
@@ -4108,8 +3994,7 @@
       "verticalAlign": "middle",
       "containerId": "e1117159",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b0q"
+      "autoResize": false
     },
     {
       "id": "e1134193",
@@ -4117,7 +4002,7 @@
       "x": 1722.6,
       "y": 2352.91,
       "width": 500,
-      "height": 123,
+      "height": 109.75,
       "angle": 0.0014,
       "strokeColor": "#2f9e44",
       "backgroundColor": "#b2f2bb",
@@ -4132,8 +4017,8 @@
         "type": 3
       },
       "seed": 1630781081,
-      "version": 276,
-      "versionNonce": 1236582018,
+      "version": 274,
+      "versionNonce": 520737171,
       "isDeleted": false,
       "boundElements": [
         {
@@ -4141,18 +4026,17 @@
           "id": "e1135160"
         }
       ],
-      "updated": 1786146794026,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b0r"
+      "locked": false
     },
     {
       "id": "e1135160",
       "type": "text",
-      "x": 1727.6,
-      "y": 2358.16,
+      "x": 1730.6,
+      "y": 2360.91,
       "width": 484,
-      "height": 112.5,
+      "height": 93.75,
       "angle": 0.0014,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
@@ -4165,14 +4049,14 @@
       "frameId": null,
       "roundness": null,
       "seed": 1039311438,
-      "version": 297,
-      "versionNonce": 1837358814,
+      "version": 294,
+      "versionNonce": 729355607,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786146794564,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
-      "text": "Rastreabilidade como gate\n\n53 requisitos numerados · 26 PASSING · 1 WAIVED com custo\nmedido\n· 26 PLANNED. Requisito sem linha quebra o build; linha PASSING\napontando para arquivo inexistente também.",
+      "text": "Rastreabilidade como gate\n\n53 requisitos numerados · 26 PASSING · 1 WAIVED com custo medido\n· 26 PLANNED. Requisito sem linha quebra o build; linha PASSING\napontando para arquivo inexistente também.",
       "originalText": "Rastreabilidade como gate\n\n53 requisitos numerados · 26 PASSING · 1 WAIVED com custo medido\n· 26 PLANNED. Requisito sem linha quebra o build; linha PASSING\napontando para arquivo inexistente também.",
       "fontSize": 15,
       "fontFamily": 5,
@@ -4180,16 +4064,15 @@
       "verticalAlign": "middle",
       "containerId": "e1134193",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b0s"
+      "autoResize": false
     },
     {
       "id": "e1167774",
       "type": "text",
       "x": 70,
       "y": 2543.79,
-      "width": 825.095458984375,
-      "height": 30,
+      "width": 744.0,
+      "height": 30.0,
       "angle": 0,
       "strokeColor": "#6741d9",
       "backgroundColor": "transparent",
@@ -4202,11 +4085,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 611811531,
-      "version": 235,
-      "versionNonce": 1999005278,
+      "version": 233,
+      "versionNonce": 441785004,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786146827675,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "7 · LIMITES DA PLATAFORMA — medidos, não lidos na documentação",
@@ -4217,8 +4100,7 @@
       "verticalAlign": "top",
       "containerId": null,
       "lineHeight": 1.25,
-      "autoResize": true,
-      "index": "b0t"
+      "autoResize": true
     },
     {
       "id": "e1177007",
@@ -4226,7 +4108,7 @@
       "x": 70.43,
       "y": 2591.23,
       "width": 680,
-      "height": 115,
+      "height": 103.5,
       "angle": 0.0071,
       "strokeColor": "#f08c00",
       "backgroundColor": "#ffec99",
@@ -4241,8 +4123,8 @@
         "type": 3
       },
       "seed": 1330856231,
-      "version": 369,
-      "versionNonce": 722858974,
+      "version": 367,
+      "versionNonce": 157118575,
       "isDeleted": false,
       "boundElements": [
         {
@@ -4250,18 +4132,17 @@
           "id": "e1172256"
         }
       ],
-      "updated": 1786146779076,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b0u"
+      "locked": false
     },
     {
       "id": "e1172256",
       "type": "text",
-      "x": 75.43,
-      "y": 2596.23,
+      "x": 78.43,
+      "y": 2599.23,
       "width": 664,
-      "height": 105,
+      "height": 87.5,
       "angle": 0.0071,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
@@ -4274,14 +4155,14 @@
       "frameId": null,
       "roundness": null,
       "seed": 390543113,
-      "version": 361,
-      "versionNonce": 878405762,
+      "version": 357,
+      "versionNonce": 26533503,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786146779768,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
-      "text": "Criar catálogo\n\nREST e `databricks catalogs create` falham com 'Metastore storage root URL does not exist'\n—\nexigem storage_root que a conta não tem. DDL SQL via Statement Execution API funciona. A\nmensagem aponta para a UI, a única opção que não dá para automatizar.",
+      "text": "Criar catálogo\n\nREST e `databricks catalogs create` falham com 'Metastore storage root URL does not exist' —\nexigem storage_root que a conta não tem. DDL SQL via Statement Execution API funciona. A\nmensagem aponta para a UI, a única opção que não dá para automatizar.",
       "originalText": "Criar catálogo\n\nREST e `databricks catalogs create` falham com 'Metastore storage root URL does not exist' —\nexigem storage_root que a conta não tem. DDL SQL via Statement Execution API funciona. A\nmensagem aponta para a UI, a única opção que não dá para automatizar.",
       "fontSize": 14,
       "fontFamily": 5,
@@ -4289,8 +4170,7 @@
       "verticalAlign": "middle",
       "containerId": "e1177007",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b0v"
+      "autoResize": false
     },
     {
       "id": "e1194478",
@@ -4298,7 +4178,7 @@
       "x": 801.06,
       "y": 2592.5,
       "width": 680,
-      "height": 86,
+      "height": 86.0,
       "angle": 0.0046,
       "strokeColor": "#f08c00",
       "backgroundColor": "#ffec99",
@@ -4313,8 +4193,8 @@
         "type": 3
       },
       "seed": 1590345692,
-      "version": 262,
-      "versionNonce": 960566238,
+      "version": 261,
+      "versionNonce": 113700683,
       "isDeleted": false,
       "boundElements": [
         {
@@ -4322,18 +4202,17 @@
           "id": "e1192564"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b0w"
+      "locked": false
     },
     {
       "id": "e1192564",
       "type": "text",
-      "x": 806.06,
+      "x": 809.06,
       "y": 2600.5,
       "width": 664,
-      "height": 70,
+      "height": 70.0,
       "angle": 0.0046,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
@@ -4346,11 +4225,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 545574127,
-      "version": 234,
-      "versionNonce": 376501598,
+      "version": 232,
+      "versionNonce": 271886549,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786146781172,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "1 pipeline por tipo\n\nBronze, silver e gold compartilham um grafo. Custo honesto: defeito no gold derruba a\ningestão. Em tier pago seriam dois pipelines por domínios de falha independentes.",
@@ -4361,8 +4240,7 @@
       "verticalAlign": "middle",
       "containerId": "e1194478",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b0x"
+      "autoResize": false
     },
     {
       "id": "e1214184",
@@ -4385,8 +4263,8 @@
         "type": 3
       },
       "seed": 1741122268,
-      "version": 41,
-      "versionNonce": 636413982,
+      "version": 40,
+      "versionNonce": 1944565401,
       "isDeleted": false,
       "boundElements": [
         {
@@ -4394,15 +4272,14 @@
           "id": "e1212963"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b0y"
+      "locked": false
     },
     {
       "id": "e1212963",
       "type": "text",
-      "x": 1534.4,
+      "x": 1537.4,
       "y": 2602.44,
       "width": 664,
       "height": 87.5,
@@ -4418,11 +4295,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 458015641,
-      "version": 49,
-      "versionNonce": 2031859970,
+      "version": 47,
+      "versionNonce": 511315338,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786146788850,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "libraries.glob.include\n\nRejeita asterisco simples ('use double asterisk') e a lista não mistura glob com arquivo\nexplícito. Foi isso que forçou silver/pipeline/** — para excluir silver/lib/, que a suíte\nunitária importa e o grafo não pode executar.",
@@ -4433,8 +4310,7 @@
       "verticalAlign": "middle",
       "containerId": "e1214184",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b0z"
+      "autoResize": false
     },
     {
       "id": "e1237724",
@@ -4442,7 +4318,7 @@
       "x": 69.87,
       "y": 2720.68,
       "width": 680,
-      "height": 115,
+      "height": 103.5,
       "angle": 0.0038,
       "strokeColor": "#f08c00",
       "backgroundColor": "#ffec99",
@@ -4457,8 +4333,8 @@
         "type": 3
       },
       "seed": 1493127321,
-      "version": 402,
-      "versionNonce": 1084255938,
+      "version": 400,
+      "versionNonce": 2066342301,
       "isDeleted": false,
       "boundElements": [
         {
@@ -4466,18 +4342,17 @@
           "id": "e1233101"
         }
       ],
-      "updated": 1786146782804,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b10"
+      "locked": false
     },
     {
       "id": "e1233101",
       "type": "text",
-      "x": 74.87,
-      "y": 2725.68,
+      "x": 77.87,
+      "y": 2728.68,
       "width": 664,
-      "height": 105,
+      "height": 87.5,
       "angle": 0.0038,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
@@ -4490,14 +4365,14 @@
       "frameId": null,
       "roundness": null,
       "seed": 2142424019,
-      "version": 85,
-      "versionNonce": 16570078,
+      "version": 81,
+      "versionNonce": 2018840821,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786146783615,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
-      "text": "refresh_selection\n\nResolve contra o schema default do pipeline. ['agg_household_rfm'] falha com\nINVALID_REFRESH_SELECTION.TABLE_NOT_FOUND apontando bronze.*;\n['gold.agg_household_rfm']\nfunciona. É o que torna rerun de uma camada só viável.",
+      "text": "refresh_selection\n\nResolve contra o schema default do pipeline. ['agg_household_rfm'] falha com\nINVALID_REFRESH_SELECTION.TABLE_NOT_FOUND apontando bronze.*; ['gold.agg_household_rfm']\nfunciona. É o que torna rerun de uma camada só viável.",
       "originalText": "refresh_selection\n\nResolve contra o schema default do pipeline. ['agg_household_rfm'] falha com\nINVALID_REFRESH_SELECTION.TABLE_NOT_FOUND apontando bronze.*; ['gold.agg_household_rfm']\nfunciona. É o que torna rerun de uma camada só viável.",
       "fontSize": 14,
       "fontFamily": 5,
@@ -4505,8 +4380,7 @@
       "verticalAlign": "middle",
       "containerId": "e1237724",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b11"
+      "autoResize": false
     },
     {
       "id": "e1251441",
@@ -4514,7 +4388,7 @@
       "x": 797.96,
       "y": 2702.54,
       "width": 680,
-      "height": 115,
+      "height": 103.5,
       "angle": 0.0008,
       "strokeColor": "#f08c00",
       "backgroundColor": "#ffec99",
@@ -4529,8 +4403,8 @@
         "type": 3
       },
       "seed": 1458272298,
-      "version": 29,
-      "versionNonce": 398319262,
+      "version": 27,
+      "versionNonce": 2086984815,
       "isDeleted": false,
       "boundElements": [
         {
@@ -4538,18 +4412,17 @@
           "id": "e1254777"
         }
       ],
-      "updated": 1786146787229,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b12"
+      "locked": false
     },
     {
       "id": "e1254777",
       "type": "text",
-      "x": 802.96,
-      "y": 2707.54,
+      "x": 805.96,
+      "y": 2710.54,
       "width": 664,
-      "height": 105,
+      "height": 87.5,
       "angle": 0.0008,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
@@ -4562,14 +4435,14 @@
       "frameId": null,
       "roundness": null,
       "seed": 1261198229,
-      "version": 105,
-      "versionNonce": 1059404226,
+      "version": 101,
+      "versionNonce": 1644465379,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786146788264,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
-      "text": "Update travado em INITIALIZING\n\nCancelar e resubmeter — não repetir. 5× PYTHON_REPL_CREATION_FAILED ('may be transient':\nnão\nera) e 35 min parado; do IDLE, a MESMA requisição completou em 52s. Cheque SELECT 1 no\nwarehouse antes de concluir 'ambiente caiu': isola compute de pipeline do resto.",
+      "text": "Update travado em INITIALIZING\n\nCancelar e resubmeter — não repetir. 5× PYTHON_REPL_CREATION_FAILED ('may be transient': não\nera) e 35 min parado; do IDLE, a MESMA requisição completou em 52s. Cheque SELECT 1 no\nwarehouse antes de concluir 'ambiente caiu': isola compute de pipeline do resto.",
       "originalText": "Update travado em INITIALIZING\n\nCancelar e resubmeter — não repetir. 5× PYTHON_REPL_CREATION_FAILED ('may be transient': não\nera) e 35 min parado; do IDLE, a MESMA requisição completou em 52s. Cheque SELECT 1 no\nwarehouse antes de concluir 'ambiente caiu': isola compute de pipeline do resto.",
       "fontSize": 14,
       "fontFamily": 5,
@@ -4577,8 +4450,7 @@
       "verticalAlign": "middle",
       "containerId": "e1251441",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b13"
+      "autoResize": false
     },
     {
       "id": "e1272812",
@@ -4586,7 +4458,7 @@
       "x": 1530.08,
       "y": 2721.21,
       "width": 680,
-      "height": 86,
+      "height": 86.0,
       "angle": -0.0018,
       "strokeColor": "#f08c00",
       "backgroundColor": "#ffec99",
@@ -4601,8 +4473,8 @@
         "type": 3
       },
       "seed": 1142533290,
-      "version": 164,
-      "versionNonce": 2004956382,
+      "version": 163,
+      "versionNonce": 1792293572,
       "isDeleted": false,
       "boundElements": [
         {
@@ -4610,18 +4482,17 @@
           "id": "e1275855"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b14"
+      "locked": false
     },
     {
       "id": "e1275855",
       "type": "text",
-      "x": 1535.08,
+      "x": 1538.08,
       "y": 2729.21,
       "width": 664,
-      "height": 70,
+      "height": 70.0,
       "angle": -0.0018,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
@@ -4634,11 +4505,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 874510556,
-      "version": 94,
-      "versionNonce": 624132162,
+      "version": 92,
+      "versionNonce": 2025300429,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786146789556,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "DDL gerada não é escapada\n\ncreate_streaming_table(schema=...), CREATE FUNCTION comment e qualquer COMMENT '...'.\nApóstrofo em prosa vira PARSE_SYNTAX_ERROR. Escape todo literal.",
@@ -4649,16 +4520,15 @@
       "verticalAlign": "middle",
       "containerId": "e1272812",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b15"
+      "autoResize": false
     },
     {
       "id": "e1294077",
       "type": "rectangle",
       "x": 70.73,
-      "y": 2853.1590953815667,
+      "y": 2852.85,
       "width": 680,
-      "height": 115,
+      "height": 103.5,
       "angle": 0.0014,
       "strokeColor": "#f08c00",
       "backgroundColor": "#ffec99",
@@ -4673,8 +4543,8 @@
         "type": 3
       },
       "seed": 5748135,
-      "version": 288,
-      "versionNonce": 1217501278,
+      "version": 285,
+      "versionNonce": 1827771177,
       "isDeleted": false,
       "boundElements": [
         {
@@ -4682,18 +4552,17 @@
           "id": "e1297393"
         }
       ],
-      "updated": 1786146784590,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b16"
+      "locked": false
     },
     {
       "id": "e1297393",
       "type": "text",
-      "x": 75.73,
-      "y": 2858.1590953815667,
+      "x": 78.73,
+      "y": 2860.85,
       "width": 664,
-      "height": 105,
+      "height": 87.5,
       "angle": 0.0014,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
@@ -4706,14 +4575,14 @@
       "frameId": null,
       "roundness": null,
       "seed": 1950827923,
-      "version": 120,
-      "versionNonce": 980904962,
+      "version": 115,
+      "versionNonce": 1621982229,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786146785252,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
-      "text": "Comentário em coluna de MV\n\nCOMMENT ON COLUMN funciona; ALTER TABLE ... ALTER COLUMN devolve\nEXPECT_TABLE_NOT_VIEW (uma MV\ndo Lakeflow é view) e ALTER VIEW ... ALTER COLUMN não é sintaxe válida. Os comentários\nsobrevivem ao refresh — verificado.",
+      "text": "Comentário em coluna de MV\n\nCOMMENT ON COLUMN funciona; ALTER TABLE ... ALTER COLUMN devolve EXPECT_TABLE_NOT_VIEW (uma MV\ndo Lakeflow é view) e ALTER VIEW ... ALTER COLUMN não é sintaxe válida. Os comentários\nsobrevivem ao refresh — verificado.",
       "originalText": "Comentário em coluna de MV\n\nCOMMENT ON COLUMN funciona; ALTER TABLE ... ALTER COLUMN devolve EXPECT_TABLE_NOT_VIEW (uma MV\ndo Lakeflow é view) e ALTER VIEW ... ALTER COLUMN não é sintaxe válida. Os comentários\nsobrevivem ao refresh — verificado.",
       "fontSize": 14,
       "fontFamily": 5,
@@ -4721,14 +4590,13 @@
       "verticalAlign": "middle",
       "containerId": "e1294077",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b17"
+      "autoResize": false
     },
     {
       "id": "e1315848",
       "type": "rectangle",
       "x": 798.88,
-      "y": 2833,
+      "y": 2833.0,
       "width": 680,
       "height": 103.5,
       "angle": -0.0044,
@@ -4745,8 +4613,8 @@
         "type": 3
       },
       "seed": 2119946658,
-      "version": 343,
-      "versionNonce": 298063198,
+      "version": 342,
+      "versionNonce": 1070165283,
       "isDeleted": false,
       "boundElements": [
         {
@@ -4754,16 +4622,15 @@
           "id": "e1312653"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b18"
+      "locked": false
     },
     {
       "id": "e1312653",
       "type": "text",
-      "x": 803.88,
-      "y": 2841,
+      "x": 806.88,
+      "y": 2841.0,
       "width": 664,
       "height": 87.5,
       "angle": -0.0044,
@@ -4778,11 +4645,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 529563017,
-      "version": 189,
-      "versionNonce": 151468510,
+      "version": 187,
+      "versionNonce": 1600718978,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786146786995,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "Upload do seed\n\ndatabricks fs cp é >200× mais lento que files.upload do SDK para o mesmo arquivo na mesma\nsessão. Parquet é ganho separado e aditivo: 15,6× em storage. Um contra-resultado mantido:\ncampaign_desc (30 linhas) ficou MAIOR em Parquet, 0,3×.",
@@ -4793,8 +4660,7 @@
       "verticalAlign": "middle",
       "containerId": "e1315848",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b19"
+      "autoResize": false
     },
     {
       "id": "e1334327",
@@ -4802,7 +4668,7 @@
       "x": 1529.12,
       "y": 2831.7,
       "width": 680,
-      "height": 86,
+      "height": 86.0,
       "angle": -0.0061,
       "strokeColor": "#f08c00",
       "backgroundColor": "#ffec99",
@@ -4817,8 +4683,8 @@
         "type": 3
       },
       "seed": 931362052,
-      "version": 307,
-      "versionNonce": 1234549150,
+      "version": 306,
+      "versionNonce": 1096540593,
       "isDeleted": false,
       "boundElements": [
         {
@@ -4826,18 +4692,17 @@
           "id": "e1333298"
         }
       ],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
-      "locked": false,
-      "index": "b1A"
+      "locked": false
     },
     {
       "id": "e1333298",
       "type": "text",
-      "x": 1534.12,
+      "x": 1537.12,
       "y": 2839.7,
       "width": 664,
-      "height": 70,
+      "height": 70.0,
       "angle": -0.0061,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
@@ -4850,11 +4715,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 2014929925,
-      "version": 312,
-      "versionNonce": 1418825602,
+      "version": 310,
+      "versionNonce": 672059928,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786146790511,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "Cota é da conta inteira\n\nEstourar derruba TODO o compute pelo resto do dia — dev, teste e prod juntos. Por isso\nvar.sample_pct = 0,05 em dev e ENV-004 dispensado. df.cache() levanta erro no serverless.",
@@ -4865,16 +4730,15 @@
       "verticalAlign": "middle",
       "containerId": "e1334327",
       "lineHeight": 1.25,
-      "autoResize": false,
-      "index": "b1B"
+      "autoResize": false
     },
     {
       "id": "e1367561",
       "type": "text",
       "x": 70,
       "y": 2990.35,
-      "width": 2008,
-      "height": 40,
+      "width": 2008.0,
+      "height": 40.0,
       "angle": 0.0039,
       "strokeColor": "#495057",
       "backgroundColor": "transparent",
@@ -4887,11 +4751,11 @@
       "frameId": null,
       "roundness": null,
       "seed": 1602064354,
-      "version": 109,
-      "versionNonce": 405329374,
+      "version": 108,
+      "versionNonce": 298686102,
       "isDeleted": false,
       "boundElements": [],
-      "updated": 1786141800546,
+      "updated": 1786160000000,
       "link": null,
       "locked": false,
       "text": "Cada número acima veio de uma execução registrada. Seis vezes, neste projeto, o instrumento de medição falhou de um jeito indistinguível de um resultado real — limiar abaixo do piso de ruído, grandeza errada descrita com a palavra certa, cache que não\ninvalidava, eval que media outra coisa, teste errado sobre o formato do dado e harness que chamava de falha o comportamento correto. Nenhuma foi pega por code review nem pela suíte. Todas por rodar e ler a saída.",
@@ -4902,14 +4766,11 @@
       "verticalAlign": "top",
       "containerId": null,
       "lineHeight": 1.25,
-      "autoResize": true,
-      "index": "b1C"
+      "autoResize": true
     }
   ],
   "appState": {
-    "gridSize": 20,
-    "gridStep": 5,
-    "gridModeEnabled": false,
+    "gridSize": null,
     "viewBackgroundColor": "#ffffff"
   },
   "files": {}

@@ -36,6 +36,8 @@ the author's job.
 | Adversarial robustness | No prompt-injection cases in the agent eval set |
 | Lakebase CDC | Designed in ADR-0005, not wired |
 | ENV-004 reproducibility | Waived on a measured cost — `docs/architecture/production-delta.md` §11 |
+| ADR-0006 · 0008 · 0010 · 0011 | Decisions shipped, records never written. The largest documentation gap here — `docs/adr/README.md` names where each one's reasoning was captured at the time |
+| `docs/runbooks/` | Named in the North Star reading order and never built |
 
 `specs/traceability.md` is the authoritative count: **26 of 53 requirements proven, 1 waived.**
 Everything else reads `PLANNED`, and that file is the single source of truth for the difference
@@ -159,6 +161,12 @@ scripts/                    gates and operational tooling
 Built in phases; each phase closes only when its requirements move from `PLANNED` to `PASSING` in
 the traceability matrix. Current state is visible in that file — it is the single source of truth
 for what is proven versus what is merely written.
+
+As of 2026-08-07: **26 of 53 `PASSING`, 1 `WAIVED`, 26 `PLANNED`**, 86 unit tests green with no
+workspace connection, CI green. Ingestion, modelling, quality, performance, ML, agents, governance
+and CI/CD have landed; the `PLANNED` rows are concentrated in integration coverage for quality
+(QLT-002/003/004/006/007), performance (PRF-001..004) and ML reproducibility (MLR-001..006) — all
+of which need pipeline runs that the shared Free Edition quota makes expensive.
 
 ## Licence
 

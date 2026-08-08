@@ -157,6 +157,32 @@ them ends up being the copy that does not check.
 
 ---
 
+### 2026-08-07 — Four ADRs were never written, and the rule meant to prevent fiction produced silence
+
+**Forced by:** a sweep for dangling references while updating the documentation.
+
+`docs/adr/README.md` listed ADR-0006, 0008, 0010 and 0011 as *Pending (Phase 5 / 8 / 9)*. Those
+phases are finished — silver, ML and the agentic layer are all merged. The status was not stale in
+the ordinary sense; it asserted something false about the project's own state, in the index a
+reviewer opens first.
+
+The rule that produced it is good and is kept: an ADR written retroactively describes the choice
+you can still justify, not the one you actually faced. What it did not anticipate is a phase
+*finishing* without its record. The gap is now labelled **Not written — shipped** and the index
+names, per ADR, where the reasoning was captured contemporaneously — because assembling an ADR from
+evidence recorded at the time is a different act from reconstructing one from memory, and only the
+second is the thing the rule forbids.
+
+Two related dangling claims fixed in the same pass. The North Star's reading order sent a reviewer
+to `docs/runbooks/`, which does not exist and never did. And ADR-0007 pointed at ADR-0008 as though
+it could be read. Both are now stated as gaps rather than as pointers.
+
+The pattern, for the third time in this project: **the failure mode of a rule is what it does when
+nobody applies it.** A gate whose skip renders green, an existence check that passes while the rate
+is wrong, and now a documentation rule whose correct application produces an empty directory.
+
+---
+
 ### 2026-08-07 — `recency_days` was null on every row, and GOV-001 passed on it
 
 **Forced by:** writing a lapse KPI for MOD-005 and querying the column it depends on.

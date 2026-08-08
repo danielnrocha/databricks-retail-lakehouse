@@ -17,8 +17,24 @@ how platforms end up rewritten.
 
 An ADR is written **when the decision is made**, not retroactively at the end of the project.
 Retroactive ADRs are reconstructions: they describe the choice you can still justify, not the one
-you actually faced. Records below marked *Pending* correspond to decisions whose phase has not
-started — writing them now would be fiction.
+you actually faced.
+
+Four records read **Not written — shipped**, and that is the largest documentation gap in this
+repository. The rule above was meant to stop fiction; what it produced here was silence. The phases
+those ADRs belonged to are finished, the code is merged, and the decisions are undocumented as
+*decisions* — a reviewer following §8 of the North Star reaches `docs/adr/` and cannot find why
+`AUTO CDC` was chosen over a hand-written `MERGE`.
+
+It is recoverable rather than lost, and the distinction matters: the reasoning was captured
+contemporaneously somewhere else, so writing these later assembles evidence instead of
+reconstructing a memory.
+
+| ADR | Where the reasoning was recorded at the time |
+|---|---|
+| 0006 | `architecture/silver-findings.md` — the profiler rules that would have quarantined 23.6% of revenue |
+| 0008 | `architecture/silver-findings.md` — the 1.706% inflation from a join with no validity window |
+| 0010 | `architecture/ml-findings.md` + `decision-log.md` 2026-08-07 — the gate refusing the model |
+| 0011 | `architecture/agent-findings.md` + `decision-log.md` 2026-08-07 — the eval fixed in the spec |
 
 | ADR | Title | Status | Reversal cost |
 |---|---|---|---|
@@ -28,11 +44,11 @@ started — writing them now would be fiction.
 | [0007](ADR-0007-table-layout.md) | Liquid clustering + Predictive Optimization; no partitioning, no Z-ORDER | Accepted | Medium |
 | [0004](ADR-0004-ingestion-framework.md) | Lakeflow Declarative Pipelines over hand-rolled Structured Streaming | Accepted | Medium |
 | [0001](ADR-0001-spec-driven-agent-loop.md) | Spec-driven development with an adversarial agent loop | Accepted | Low |
-| 0006 | Two-layer data quality: DQX + UC-governed expectations | Pending (Phase 5) | Low |
-| 0008 | SCD Type 2 via AUTO CDC, not hand-written MERGE | Pending (Phase 5) | Medium |
+| 0006 | Two-layer data quality: DQX + UC-governed expectations | **Not written** — shipped | Low |
+| 0008 | SCD Type 2 via AUTO CDC, not hand-written MERGE | **Not written** — shipped | Medium |
 | [0009](ADR-0009-cicd.md) | Bundles deployed by GitHub Actions, dispatched by hand | Accepted | Low |
-| 0010 | MLflow 3 + Unity Catalog model registry + inference monitoring | Pending (Phase 8) | Low |
-| 0011 | Managed MCP for grounding; MLflow judges for evaluation | Pending (Phase 9) | Low |
+| 0010 | MLflow 3 + Unity Catalog model registry + inference monitoring | **Not written** — shipped | Low |
+| 0011 | Judges MLflow for evaluation; UC Functions instead of managed MCP | **Not written** — shipped | Low |
 | 0012 | English as the primary documentation language | Accepted (below) | Low |
 
 ### ADR-0012 — English as the primary documentation language
